@@ -49,7 +49,7 @@ const tags: OrbitTag[] = [
 
 export default function CommunityOrbitDemo() {
   return (
-    <div className="w-full flex flex-col items-center justify-center text-center">
+    <div className="w-full min-h-screen flex flex-col items-center justify-between text-center">
       <CommunityOrbit
         items={items}
         stats={stats}

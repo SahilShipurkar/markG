@@ -236,7 +236,7 @@ export default function CommunityOrbit({
 
   return (
     <div
-      className={`w-full flex flex-col items-center justify-center text-center text-[#1f1f1f] bg-[#e8e8e8] ${className ?? ''}`}
+      className={`w-full flex-1 flex flex-col items-center justify-between text-center text-[#1f1f1f] bg-[#e8e8e8] pt-16 sm:pt-28 md:pt-36 ${className ?? ''}`}
       style={{ backgroundColor: '#e8e8e8' }}
     >
       {/* Orbit Visual Stage (Grey background above arc, white dome inside arc) */}
@@ -336,8 +336,8 @@ export default function CommunityOrbit({
         </div>
       </div>
 
-      {/* Lower Section (White ground for Headline and Tags) */}
-      <div className="w-full bg-white flex flex-col items-center justify-center pt-2 pb-10 sm:pb-14 -mt-[1px]">
+      {/* Lower Section (Pure White extending all the way to bottom) */}
+      <div className="w-full flex-1 bg-white flex flex-col items-center justify-center pt-2 pb-14 sm:pb-20 -mt-[1px]">
         {/* Centralized Headline */}
         {headline && (
           <motion.div

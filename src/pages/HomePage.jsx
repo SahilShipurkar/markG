@@ -1,5 +1,7 @@
 import React from 'react';
 import { Hero } from '@/components/ui/hero-1';
+import ApplicationsGridSection from '@/components/ApplicationsGridSection';
+import DataVisionSection from '@/components/DataVisionSection';
 import CommunityOrbitDemo from '@/components/ui/builders-community-hero-demo';
 
 export default function HomePage({ onOpenExpertModal, onNavigate }) {
@@ -16,19 +18,28 @@ export default function HomePage({ onOpenExpertModal, onNavigate }) {
         showMarquee={true}
       />
       
-      {/* 2nd Page: Blank Section */}
+      {/* 2nd Page: Applications & Platforms Grid (Odoo Style) */}
       <section 
-        id="blank-section" 
-        className="w-full min-h-screen bg-[#e8e8e8]"
+        id="applications-section" 
+        className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-center"
         style={{ backgroundColor: '#e8e8e8' }}
       >
+        <ApplicationsGridSection onOpenExpertModal={onOpenExpertModal} />
       </section>
 
-      {/* 3rd Page: Builders Community Orbit Hero */}
+      {/* 3rd Page: Data Vision / Higher Grounds Section */}
+      <section 
+        id="data-vision-section" 
+        className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-start"
+        style={{ backgroundColor: '#e8e8e8' }}
+      >
+        <DataVisionSection />
+      </section>
+
+      {/* 4th Page: Builders Community Orbit Hero */}
       <section 
         id="community-section" 
-        className="w-full min-h-screen flex flex-col items-center justify-center bg-[#e8e8e8] overflow-hidden"
-        style={{ backgroundColor: '#e8e8e8' }}
+        className="w-full min-h-screen flex flex-col overflow-hidden"
       >
         <CommunityOrbitDemo />
       </section>
