@@ -1,11 +1,9 @@
 import React from 'react';
 import { Hero } from '@/components/ui/hero-1';
-import { MarqueeDemo } from '@/components/ui/demo';
 
 export default function HomePage({ onOpenExpertModal, onNavigate }) {
   return (
-    <div className="w-full min-h-screen bg-white text-slate-900 flex flex-col">
-      {/* Hero Section */}
+    <div className="w-full flex flex-col bg-[#e8e8e8] text-slate-900" style={{ backgroundColor: '#e8e8e8' }}>
       <Hero 
         title="The New Standard of"
         highlightText="Digital Industry"
@@ -13,11 +11,14 @@ export default function HomePage({ onOpenExpertModal, onNavigate }) {
         ctaLabel="Learn More"
         ctaHref="#solutions"
         onCtaClick={onOpenExpertModal}
+        showMarquee={true}
       />
-
-      {/* Sliding Marquee Icons Section */}
-      <section className="w-full bg-slate-50/70 dark:bg-zinc-950/50 border-y border-slate-100 dark:border-zinc-800/60 py-4">
-        <MarqueeDemo />
+      {/* Blank Next Page / Section with seamless grey color */}
+      <section 
+        id="blank-section" 
+        className="w-full min-h-screen bg-[#e8e8e8]"
+        style={{ backgroundColor: '#e8e8e8' }}
+      >
       </section>
     </div>
   );

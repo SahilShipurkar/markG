@@ -52,7 +52,7 @@ export default function App() {
       />
 
       {/* Main View Router */}
-      <main style={{ minHeight: '100vh', backgroundColor: '#FFFFFF' }}>
+      <main style={{ minHeight: '100vh' }}>
         {currentPage === 'home' && (
           <HomePage 
             onOpenExpertModal={() => setIsExpertModalOpen(true)}

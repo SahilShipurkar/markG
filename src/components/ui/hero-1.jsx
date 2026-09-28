@@ -2,6 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
+import { MarqueeDemo } from "@/components/ui/demo"
 
 export function Hero({
   title = "The New Standard of",
@@ -10,55 +11,46 @@ export function Hero({
   ctaLabel = "Learn More",
   ctaHref = "#",
   onCtaClick,
+  showMarquee = true,
 }) {
   return (
     <section
       id="hero"
-      className="relative mx-auto w-full overflow-hidden 
-      bg-[linear-gradient(to_bottom,#fff,#ffffff_55%,#e8e8e8_92%)]  
-      dark:bg-[linear-gradient(to_bottom,#000,#0000_30%,#898e8e_78%,#ffffff_99%_50%)] 
-      rounded-b-xl px-6 md:px-8 text-center"
+      className="relative mx-auto w-full overflow-hidden bg-white px-6 md:px-8 text-center"
       style={{
         minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        paddingTop: '5rem',
-        paddingBottom: '5rem',
-        position: 'relative'
+        paddingTop: '5.5rem',
+        paddingBottom: '2.5rem',
+        position: 'relative',
+        backgroundColor: '#ffffff'
       }}
     >
       {/* Grid BG */}
       <div
         className="absolute -z-10 inset-0 opacity-80 h-[650px] w-full 
         bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] 
-        dark:bg-[linear-gradient(to_right,#333_1px,transparent_1px),linear-gradient(to_bottom,#333_1px,transparent_1px)]
         bg-[size:6rem_5rem] 
         [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"
       />
 
-      {/* Radial Accent - Horizon Curvature Arc */}
+      {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
       <div
-        className="absolute left-1/2 top-[calc(100%-90px)] sm:top-[calc(100%-110px)] md:top-[calc(100%-140px)] lg:top-[calc(100%-160px)] 
+        className="absolute left-1/2 top-[calc(100%-110px)] sm:top-[calc(100%-130px)] md:top-[calc(100%-150px)] lg:top-[calc(100%-170px)] 
         h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
-        -translate-x-1/2 rounded-[100%] border-[#B48CDE]/20 bg-white dark:bg-black 
-        bg-[radial-gradient(closest-side,#ffffff_74%,#000000_100%)] 
-        dark:bg-[radial-gradient(closest-side,#000000_82%,#ffffff)] 
-        animate-fade-up shadow-[0_-20px_50px_rgba(0,0,0,0.14)] pointer-events-none z-0"
+        -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
+        animate-fade-up shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
+        style={{
+          backgroundColor: '#e8e8e8'
+        }}
       />
 
       {/* Centered Content Container */}
       <div 
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center"
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          margin: 'auto 0',
-          padding: '1rem'
-        }}
+        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-auto pt-4"
       >
         {/* Title with Highlighted Underline */}
         <h1
@@ -125,11 +117,18 @@ export function Hero({
         )}
       </div>
 
-      {/* Bottom Fade Overlay */}
+      {/* Sliding Marquee Inside Hero */}
+      {showMarquee && (
+        <div className="relative z-20 w-full max-w-6xl mx-auto mt-auto translate-y-12 sm:translate-y-16 md:translate-y-20 pb-2">
+          <MarqueeDemo />
+        </div>
+      )}
+
+      {/* Bottom Fade Overlay transitioning to grey */}
       <div
-        className="animate-fade-up relative mt-12 opacity-0 [perspective:2000px] 
+        className="animate-fade-up relative opacity-0 [perspective:2000px] 
         after:absolute after:inset-0 after:z-50 
-        after:[background:linear-gradient(to_top,hsl(var(--background))_10%,transparent)]"
+        after:[background:linear-gradient(to_top,#e8e8e8_10%,transparent)]"
       />
     </section>
   )
