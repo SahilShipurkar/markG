@@ -3,9 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, 
   CheckCircle2, 
-  Smartphone, 
-  QrCode, 
-  Truck, 
   ShieldCheck, 
   Layers, 
   Globe, 
@@ -22,130 +19,232 @@ import {
   Check,
   ArrowRight,
   Database,
-  SmartphoneNfc,
   ChevronDown,
-  ArrowDown,
   Sparkles,
   PackageCheck,
   KeyRound,
-  Store,
-  Home,
-  BellRing
+  FileText,
+  Building2,
+  Receipt,
+  ShoppingCart,
+  Truck,
+  TrendingUp,
+  FileSpreadsheet,
+  Cpu,
+  BadgePercent,
+  CheckCheck,
+  SlidersHorizontal,
+  FolderTree,
+  Terminal,
+  HelpCircle,
+  Scale
 } from 'lucide-react';
 
-export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) {
-  const [activeStepP1, setActiveStepP1] = useState(0); // active accordion step for Phase 1
-  const [activeStepP2, setActiveStepP2] = useState(0); // active accordion step for Phase 2
+export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
+  const [activeStepSales, setActiveStepSales] = useState(0); // active accordion step for Sales Cycle
+  const [activeStepProcure, setActiveStepProcure] = useState(0); // active accordion step for Procurement Cycle
+  const [activeFinanceTab, setActiveFinanceTab] = useState(0); // active tab for Finance Vouchers
 
   const metricPills = [
-    { label: '< 2s Scan Ingest', sub: 'High-Speed Camera Engine', icon: QrCode },
-    { label: 'GPS Live Route', sub: 'Cluster Navigation', icon: Truck },
-    { label: '100% Intake Proof', sub: 'Digital Manifest & Scan', icon: ShieldCheck },
-    { label: 'Instant Settlement', sub: 'Automated Trip Credit', icon: Wallet }
+    { label: '< 50ms Query Engine', sub: 'PostgreSQL & Prisma ORM', icon: Database },
+    { label: '100% Tax Accuracy', sub: 'CGST, SGST & IGST Engine', icon: BadgePercent },
+    { label: '3 Languages', sub: 'English, Marathi & Hindi', icon: Globe },
+    { label: 'RBAC & Phone OTP', sub: 'JWT Bearer & AWS SNS', icon: ShieldCheck }
   ];
 
-  const phase1Steps = [
+  const salesSteps = [
     {
       num: '1',
-      title: 'Pickup Notification & Route Dispatch',
-      tag: 'Driver Alert & Assignment',
-      desc: 'Transporter driver receives a high-priority app notification assigning the scheduled village SHG pickup cluster and optimal route.',
-      desc2: 'App displays parcel counts, verified weight estimates, and optimal navigation sequence before departure.',
-      status: 'PICKUP_TRANSPORTER_ASSIGNED',
-      icon: BellRing
+      title: 'Customer Account & Credit Master Setup',
+      tag: 'Account Master',
+      desc: 'Create and verify customer profile with state code, GSTIN, billing/shipping addresses, and credit terms in Account Master.',
+      desc2: 'Master record populates customer search indexes and establishes state identification for automated GST calculation.',
+      status: 'ACCOUNT_MASTER_ACTIVE',
+      icon: Building2
     },
     {
       num: '2',
-      title: 'SHG Village Handover Barcode Scan',
-      tag: 'Node Custody Transfer',
-      desc: 'Transporter arrives at the village SHG staging center and scans each parcel’s QR barcode label to transfer custody from SHG to vehicle.',
-      desc2: 'System validates item codes, updates status to PICKUP_TRANSPORTER_PICKED, and establishes transport manifest.',
-      status: 'PICKUP_TRANSPORTER_PICKED',
-      icon: QrCode
+      title: 'Sales Order (SO) Creation & Price Lock',
+      tag: 'Demand Booking',
+      desc: 'Record buyer requirements including product SKUs, ordered quantities, unit rates, item-level discounts, and delivery deadlines.',
+      desc2: 'System reserves stock allocation, locks contract prices, and triggers internal dispatch work-order queues.',
+      status: 'SALES_ORDER_CONFIRMED',
+      icon: ShoppingCart
     },
     {
       num: '3',
-      title: 'Middle-Mile GPS Transit to Hub',
-      tag: 'Fleet Telemetry',
-      desc: 'Vehicle navigates consolidated rural batch transit to the central GMU Regional Logistics Hub with sub-second GPS tracking.',
-      desc2: 'Automated telemetry logs transit velocity, route compliance, and streams estimated time of arrival (ETA) to the hub.',
-      status: 'IN_TRANSIT_TO_HUB',
+      title: 'Sales Delivery Challan & Dispatch',
+      tag: 'Fulfillment & Logistics',
+      desc: 'Generate delivery challan linked directly to the approved Sales Order, verifying dispatch lot quantities and package numbers.',
+      desc2: 'Deducts live inventory from warehouse bins and generates transport proof documentation for carrier handover.',
+      status: 'CHALLAN_DISPATCHED',
       icon: Truck
     },
     {
       num: '4',
-      title: 'GMU Hub Scan-In & Warehouse Ingest',
-      tag: 'Hub Intake Verification',
-      desc: 'Vehicle docks at the GMU Regional Hub. Warehouse intake supervisor scans all incoming barcodes to verify and ingest the batch.',
-      desc2: 'Custody transfers to GMU Hub sorting system, completing first-mile leg and locking trip mileage for payout.',
-      status: 'HUB_INTAKE_VERIFIED',
-      icon: PackageCheck
+      title: 'Sales Invoice (SI) & Auto-GST Calculation',
+      tag: 'Billing Engine',
+      desc: 'Convert dispatched challan into a compliant Sales Invoice. Engine splits taxes into CGST+SGST (intra-state) or IGST (inter-state).',
+      desc2: 'Locks immutable financial values, posts receivable debits, and generates print-ready tax invoices with HSN summaries.',
+      status: 'SALES_INVOICE_POSTED',
+      icon: Receipt
+    },
+    {
+      num: '5',
+      title: 'Customer Receipt & Bill-by-Bill Settlement',
+      tag: 'Accounts Receivable',
+      desc: 'Record customer payment via Bank Transfer, Cash, or Cheque with receipt voucher generation.',
+      desc2: 'Settlement engine reconciles payment against outstanding invoice bills and posts credit to customer ledger.',
+      status: 'RECEIPT_SETTLED',
+      icon: Wallet
     }
   ];
 
-  const phase2Steps = [
+  const procurementSteps = [
     {
       num: '1',
-      title: 'Hub Outbound Dispatch Notification',
-      tag: 'Outbound Allocation',
-      desc: 'Driver receives real-time app alert for sorted outbound parcel batches ready at the GMU Regional Logistics Hub.',
-      desc2: 'App populates target village SHG drop-off nodes, delivery windows, and optimized rural drop routing schedule.',
-      status: 'DROP_TRANSPORTER_ASSIGNED',
-      icon: BellRing
+      title: 'Supplier Onboarding & HSN Mapping',
+      tag: 'Vendor Master',
+      desc: 'Onboard vendor with PAN, MSME certification, GSTIN, payment terms, and mapped supply categories in Master records.',
+      desc2: 'Associates vendor state with tax calculation rules and binds valid banking details for automated payout verification.',
+      status: 'SUPPLIER_MASTER_LINKED',
+      icon: Building2
     },
     {
       num: '2',
-      title: 'Transporter Hub Scan-Out',
-      tag: 'Vehicle Custody Intake',
-      desc: 'Transporter scans each outgoing parcel barcode at the GMU Hub dock to transfer custody from warehouse into the vehicle.',
-      desc2: 'Generates a tamper-proof digital transit manifest with verified parcel counts and destination mapping.',
-      status: 'DROP_TRANSPORTER_LOADED',
-      icon: QrCode
+      title: 'Purchase Order (PO) Generation & Authorization',
+      tag: 'Procurement Order',
+      desc: 'Draft formal Purchase Order specifying raw material / product quantities, agreed purchase rates, and delivery schedules.',
+      desc2: 'Supports multi-tier managerial approval and structured Excel bulk import for large procurement schedules.',
+      status: 'PURCHASE_ORDER_ISSUED',
+      icon: FileText
     },
     {
       num: '3',
-      title: 'Regional Drop-Route Transit',
-      tag: 'Inter-Village Distribution',
-      desc: 'Transporter drives assigned regional circuit delivering to destination village SHG centers with live status tracking.',
-      desc2: 'Destination SHG centers receive proximity arrival notifications when the delivery vehicle approaches.',
-      status: 'IN_TRANSIT_TO_VILLAGE',
-      icon: Truck
+      title: 'Goods Receipt Note (GRN) Ingest & Quality QC',
+      tag: 'Gate Inward & Inspection',
+      desc: 'Warehouse gate officer records physical material inward against PO line-items with gross/tare weights and QC inspection.',
+      desc2: 'Tracks partial receipts with remaining quantity balances (e.g. PO: 10 units, GRN: 5 units, Remaining: 5 units).',
+      status: 'GRN_VERIFIED_QTY',
+      icon: PackageCheck
     },
     {
       num: '4',
-      title: 'Destination SHG Intake Barcode Scan',
-      tag: 'Node Staging Handover',
-      desc: 'Transporter reaches the destination SHG center. SHG coordinator inspects packages and scans barcodes to take intake custody.',
-      desc2: 'Custody transitions to DROP_SHG_ACCEPTED for local buyer doorstep runs, and automated freight settlement is credited to driver ledger.',
-      status: 'DROP_SHG_ACCEPTED',
-      icon: PackageCheck
+      title: 'Purchase Invoice (PI) & Landed Cost Entry',
+      tag: 'Accounts Payable',
+      desc: 'Record vendor tax invoice against accepted GRN items, capturing input tax credit (ITC) eligibility and freight expenses.',
+      desc2: 'Matches PO rates against vendor bill with tolerance verification and posts liability credit to supplier ledger.',
+      status: 'PURCHASE_INVOICE_LOCKED',
+      icon: Receipt
+    },
+    {
+      num: '5',
+      title: 'Supplier Payment Voucher & Account Clearance',
+      tag: 'Disbursement & Ledger',
+      desc: 'Execute payment voucher debiting supplier payable account and crediting bank/cash contra account.',
+      desc2: 'Clears vendor aging liabilities and updates real-time financial balance sheets and audit trail reports.',
+      status: 'PAYMENT_CLEARED',
+      icon: CheckCheck
     }
+  ];
+
+  const financeVouchers = [
+    {
+      title: 'Receipt Voucher',
+      badge: 'Cash Inflow',
+      desc: 'Records incoming funds from customers, debtors, or miscellaneous income.',
+      flow: 'Debit: Bank/Cash A/c → Credit: Customer Ledger A/c',
+      points: ['Bill-by-bill invoice tagging', 'Automatic settlement adjustment', 'Advance payment holding ledger']
+    },
+    {
+      title: 'Payment Voucher',
+      badge: 'Cash Outflow',
+      desc: 'Records disbursements to suppliers, vendors, employee salaries, and operational costs.',
+      flow: 'Debit: Supplier/Expense A/c → Credit: Bank/Cash A/c',
+      points: ['Vendor invoice due-date matching', 'Tax deduction support', 'Audit-ready transaction records']
+    },
+    {
+      title: 'Journal Voucher',
+      badge: 'Book Adjustments',
+      desc: 'Handles non-cash accounting adjustments, depreciation, provisions, and inter-ledger transfers.',
+      flow: 'Debit: Target Ledger A/c → Credit: Source Ledger A/c',
+      points: ['Double-entry debit/credit validation', 'Year-end provision entries', 'Cross-department cost allocation']
+    },
+    {
+      title: 'Contra Voucher',
+      badge: 'Internal Transfers',
+      desc: 'Records internal monetary movements between company bank accounts and cash registers.',
+      flow: 'Debit: Destination Bank/Cash → Credit: Source Bank/Cash',
+      points: ['Zero tax impact transactions', 'Bank deposit & withdrawal tracking', 'Petty cash fund replenishment']
+    }
+  ];
+
+  const masterCategories = [
+    { title: 'Account Master', desc: 'Central directory for customers, vendors, banks, and party classifications with credit limits.' },
+    { title: 'Product Master', desc: 'Complete catalog of SKUs, categories, base pricing, reorder levels, and HSN associations.' },
+    { title: 'Unit Master (UOM)', desc: 'Standardized measurement units (kg, ton, quintal, bags, litres, pcs) for precise inventory.' },
+    { title: 'HSN / SAC Master', desc: 'Pre-seeded statutory GST tax codes, standard tax rate percentages (5%, 12%, 18%, 28%).' },
+    { title: 'Group & Category', desc: 'Multi-level taxonomy hierarchy for structured financial ledger groups and inventory classes.' },
+    { title: 'Pincode & Locations', desc: 'State and postal database enabling auto-detection of intra-state vs inter-state tax rules.' }
+  ];
+
+  const rolesMatrix = [
+    { role: 'Superadmin', desc: 'Highest administrative authority; manages system configurations, tenants, and global audits.', color: '#0F172A' },
+    { role: 'Administrator', desc: 'Oversees daily business operations, master approvals, financial controls, and reports.', color: '#0B3A70' },
+    { role: 'Seller', desc: 'Focuses on customer sales, quotations, Sales Orders, Challans, and billing invoices.', color: '#16A34A' },
+    { role: 'Buyer', desc: 'Manages supplier relations, procurement contracts, Purchase Orders, and GRN verification.', color: '#D97706' },
+    { role: 'Operator', desc: 'Executes rapid routine data entry, gate pass records, and daily voucher entries.', color: '#64748B' }
+  ];
+
+  const techStack = [
+    { category: 'Frontend UI', items: ['React 19', 'Vite 7', 'Redux Toolkit / Saga', 'Tailwind CSS / Inter'] },
+    { category: 'Backend API', items: ['NestJS 11', 'TypeScript 5.9', 'Swagger OpenAPI 3.0', 'JWT Bearer Auth'] },
+    { category: 'Database & ORM', items: ['PostgreSQL 14+', 'Prisma 6.19 ORM', 'Redis & BullMQ Queues', 'Automated Migrations'] },
+    { category: 'Localization & Cloud', items: ['i18next (EN, MR, HI)', 'AWS SNS SMS Gateways', 'Excel Import Engine', 'Secure File Storage'] }
   ];
 
   const connectedApps = [
     {
-      name: 'SHG App',
-      desc: 'Rural village producer collection & doorstep delivery',
-      image: '/SHG Delivary and Transporter Logo 01.jpg',
-      badge: 'Village Network'
+      name: 'CMMS',
+      desc: 'Man, Machine, Method & Material maintenance orchestration',
+      image: '/4M.png',
+      badge: 'Operations'
+    },
+    {
+      name: 'GramUnnati',
+      desc: 'Digital agriculture marketplace & farmer trade advisory',
+      image: '/Final Logo-09.jpg.jpeg',
+      badge: 'Agritech'
+    },
+    {
+      name: 'G-Nova IoT',
+      desc: '50Hz telemetry ingestion & weighbridge automation',
+      image: '/G-Nova IOT logo 02.jpg',
+      badge: 'Hardware IoT'
     },
     {
       name: 'G Track',
       desc: 'Enterprise GPS fleet tracking & cold-chain telemetry',
       image: '/G Track logo.png',
-      badge: 'Live Telemetry'
+      badge: 'Live Fleet'
     },
     {
-      name: 'ERP',
-      desc: 'Centralized procurement, billing & inventory accounts',
-      image: '/ERP Logo.png',
-      badge: 'Core ERP'
+      name: 'SHG App',
+      desc: 'Rural logistics & self-help group dispatch network',
+      image: '/SHG Delivary and Transporter Logo 01.jpg',
+      badge: 'Village Network'
     },
     {
-      name: 'GramUnnati',
-      desc: 'Digital farm marketplace connecting buyers to SHGs',
-      image: '/Final Logo-09.jpg.jpeg',
-      badge: 'Agritech'
+      name: 'Transporter App',
+      desc: 'Middle-mile route logistics & cluster fleet tracking',
+      image: '/SHG Delivary and Transporter Logo.jpg',
+      badge: 'Logistics'
+    },
+    {
+      name: 'Task Management',
+      desc: 'Digital work orders & industrial shift collaboration',
+      image: '/Task Management & Team Collaboration Logo 01.jpg',
+      badge: 'Productivity'
     }
   ];
 
@@ -162,7 +261,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
           paddingTop: '6.5rem', 
           paddingBottom: '5rem', 
           paddingLeft: '1.5rem', 
-          paddingRight: '1.5rem',
+          paddingRight: '1.5rem', 
           position: 'relative',
           overflow: 'hidden'
         }}
@@ -207,7 +306,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               }}
             >
               <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A' }} />
-              GMU LOGISTICS • TRANSPORTER APP v2.0
+              GMARK ENTERPRISE • WEIGHPRO ERP SUITE v2.0
             </div>
           </div>
 
@@ -227,13 +326,12 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                 fontWeight: 400
               }}
             >
-              <span>Middle-Mile & Hub Fleet </span>
+              <span>Enterprise Resource </span>
               <br className="hidden sm:inline" />
-              <span>Logistics of </span>
-              <br className="hidden sm:inline" />
+              <span>Planning & </span>
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 text-slate-900 font-normal">
-                  Transporter Network
+                  Operations
                 </span>
                 {/* Hand-drawn marker brush stroke highlight matching hero */}
                 <svg
@@ -251,26 +349,24 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               </span>
             </h1>
 
-            {/* Floating App Logo Square Card with Hand-drawn Curved Arrow (Positioned beside 'Logistics of' matching red marked location) */}
-            <div className="hidden sm:flex absolute -right-24 sm:-right-28 md:-right-36 lg:-right-44 top-[26%] sm:top-[28%] md:top-[30%] items-center z-20 pointer-events-none">
-              {/* Hand-drawn curved arrow pointing to 'Logistics of' */}
+            {/* Floating App Logo Square Card with Hand-drawn Curved Arrow */}
+            <div className="hidden sm:flex absolute -right-28 md:-right-36 lg:-right-44 bottom-1 md:bottom-2 items-end z-20 pointer-events-none">
+              {/* Hand-drawn curved arrow pointing to the text */}
               <svg
-                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 text-slate-700 pointer-events-none overflow-visible -mr-1"
+                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 text-slate-700 pointer-events-none overflow-visible -mr-1 mb-2"
                 viewBox="0 0 80 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Curved arc from logo towards 'Logistics of' */}
                 <path
-                  d="M 76 26 C 52 40, 24 34, 8 16"
+                  d="M 76 38 C 55 46, 24 38, 8 14"
                   stroke="#475569"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
                 />
-                {/* Arrowhead pointing left/upward */}
                 <path
-                  d="M 20 10 L 8 16 L 16 28"
+                  d="M 6 24 L 8 12 L 20 16"
                   stroke="#475569"
                   strokeWidth="2.5"
                   strokeLinecap="round"
@@ -287,7 +383,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                   borderRadius: '22px',
                   backgroundColor: '#FFFFFF',
                   border: '1.5px solid #CBD5E1',
-                  padding: '6px',
+                  padding: '8px',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -298,14 +394,14 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                 className="hover:scale-105 transition-transform duration-200"
               >
                 <img 
-                  src="/SHG Delivary and Transporter Logo.jpg" 
-                  alt="Transporter App Logo" 
+                  src="/ERP Logo.png" 
+                  alt="Gmark ERP Logo" 
                   style={{
                     width: '100%',
                     height: '100%',
                     objectFit: 'contain',
-                    transform: 'scale(1.22)',
-                    borderRadius: '14px'
+                    transform: 'scale(0.9)',
+                    borderRadius: '12px'
                   }}
                 />
               </div>
@@ -324,7 +420,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               fontWeight: 400
             }}
           >
-            Orchestrate regional cluster pickups, barcode custody handovers, and scheduled GMU Hub dispatches. Connect rural village staging centers directly with centralized sorting facilities.
+            Unified business operations platform for agricultural trading, industrial manufacturing, and procurement. Seamlessly connect customers, suppliers, inventory, tax compliance, and double-entry financial ledgers in one real-time cloud system.
           </p>
 
           {/* Action Button */}
@@ -346,12 +442,12 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                 boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
               }}
             >
-              <span>Request Platform Demo</span>
+              <span>Request ERP Platform Demo</span>
               <ArrowRight size={16} />
             </button>
           </div>
 
-          {/* Support Highlights Ribbon (Inside the grey curvature arc) */}
+          {/* Metric Highlights Ribbon */}
           <div
             style={{
               display: 'grid',
@@ -402,10 +498,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. PHASE 1: VILLAGE NODE PICKUP & GMU HUB INTAKE (WHITE CURVED CARD) */}
+      {/* 2. PHASE 1: SALES & DISTRIBUTION CYCLE (WHITE CURVED CARD ON GREY BG) */}
       {/* ========================================================================= */}
       <section 
-        id="phase-1-section"
+        id="sales-flow-section"
         style={{ 
           backgroundColor: '#e8e8e8', 
           padding: '2.5rem 0 3rem',
@@ -416,7 +512,6 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
           width: '100%'
         }}
       >
-        {/* Container strictly aligned to the right edge with curve wrapping closely beside the text */}
         <div 
           style={{
             position: 'relative',
@@ -450,41 +545,45 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
             className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pl-12 sm:pl-16 md:pl-20 pr-4 sm:pr-6 md:pr-8"
           >
             
-            {/* LEFT: Phase 1 Info (Clean fixed width, placed right beside the curve) */}
+            {/* LEFT: Sales Cycle Info */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', width: '100%', maxWidth: '370px', flexShrink: 0 }}>
               <div>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '400', color: '#0B3A70', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   <Sparkles size={14} style={{ color: '#0B3A70' }} />
-                  <span>PHASE 1 WORKFLOW</span>
+                  <span>SALES & BILLING CYCLE</span>
                 </span>
                 
                 <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Village Node Pickup <br />
-                  & GMU Hub Intake
+                  Customer Orders, <br />
+                  Challans & Invoices
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Receives real-time app notification for village cluster pickup</span>
+                    <span>Creates Customer master & sets credit/payment terms</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Visits SHG staging node & scans barcode to accept custody</span>
+                    <span>Books Sales Order (SO) with pricing & item discounts</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>En-route GPS route telemetry with scheduled GMU Hub ETA logging</span>
+                    <span>Dispatches goods via Delivery Challan & updates stock</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Delivers to GMU Hub where hub supervisor scans & intakes batch</span>
+                    <span>Auto-generates GST Tax Invoice & posts ledger debits</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
+                    <span>Reconciles customer receipt voucher & settles outstanding</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT: Phase 1 Process Steps */}
+            {/* RIGHT: Sales Process Steps */}
             <div style={{ position: 'relative', width: '100%', maxWidth: '530px', flexShrink: 0 }}>
               <div 
                 style={{
@@ -498,8 +597,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {phase1Steps.map((step, index) => {
-                  const isActive = activeStepP1 === index;
+                {salesSteps.map((step, index) => {
+                  const isActive = activeStepSales === index;
                   const IconComp = step.icon;
 
                   return (
@@ -509,8 +608,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                       initial={{ opacity: 0, x: 20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.06 }}
-                      onClick={() => setActiveStepP1(prev => prev === index ? -1 : index)}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      onClick={() => setActiveStepSales(prev => prev === index ? -1 : index)}
                     >
                       <div
                         style={{
@@ -598,7 +697,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
 
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400' }}>
-                                    System Status:
+                                    Document State:
                                   </span>
                                   <code style={{ fontSize: '0.72rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '400' }}>
                                     {step.status}
@@ -621,10 +720,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. PHASE 2: GMU HUB OUTBOUND DISPATCH & DESTINATION SHG DROP (WHITE CURVED CARD) */}
+      {/* 3. PHASE 2: PROCUREMENT & GRN CYCLE (WHITE CURVED CARD ON GREY BG - LEFT) */}
       {/* ========================================================================= */}
       <section 
-        id="phase-2-section"
+        id="purchase-flow-section"
         style={{ 
           backgroundColor: '#e8e8e8', 
           padding: '2.5rem 0 3.5rem',
@@ -635,7 +734,6 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
           width: '100%'
         }}
       >
-        {/* Container strictly aligned to the left edge with curve wrapping closely beside the text */}
         <div 
           style={{
             position: 'relative',
@@ -669,7 +767,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
             className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pr-12 sm:pr-16 md:pr-20 pl-4 sm:pl-6 md:pl-8"
           >
             
-            {/* LEFT: Phase 2 Process Steps */}
+            {/* LEFT: Purchase Process Steps */}
             <div style={{ position: 'relative', width: '100%', maxWidth: '540px', flexShrink: 0, order: 1 }}>
               <div 
                 style={{
@@ -683,8 +781,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                {phase2Steps.map((step, index) => {
-                  const isActive = activeStepP2 === index;
+                {procurementSteps.map((step, index) => {
+                  const isActive = activeStepProcure === index;
                   const IconComp = step.icon;
 
                   return (
@@ -694,8 +792,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: index * 0.06 }}
-                      onClick={() => setActiveStepP2(prev => prev === index ? -1 : index)}
+                      transition={{ duration: 0.4, delay: index * 0.05 }}
+                      onClick={() => setActiveStepProcure(prev => prev === index ? -1 : index)}
                     >
                       <div
                         style={{
@@ -783,7 +881,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
 
                                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem', paddingTop: '0.5rem', borderTop: '1px dashed #CBD5E1' }}>
                                   <span style={{ fontSize: '0.72rem', color: '#64748B', fontWeight: '400' }}>
-                                    System Status:
+                                    Document State:
                                   </span>
                                   <code style={{ fontSize: '0.72rem', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', padding: '2px 8px', borderRadius: '4px', color: '#0F172A', fontWeight: '400' }}>
                                     {step.status}
@@ -800,35 +898,39 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               </div>
             </div>
 
-            {/* RIGHT: Phase 2 Info */}
+            {/* RIGHT: Purchase Process Info */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', order: 2, width: '100%', maxWidth: '380px', flexShrink: 0 }}>
               <div>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '400', color: '#0B3A70', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
                   <Sparkles size={14} style={{ color: '#0B3A70' }} />
-                  <span>PHASE 2 WORKFLOW</span>
+                  <span>PROCUREMENT & GRN LIFECYCLE</span>
                 </span>
                 
                 <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Hub Outbound Dispatch <br />
-                  & Destination SHG Drop-off
+                  Purchase Orders, <br />
+                  GRNs & Inward Stock
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Receives outbound dispatch notification for sorted parcel batches at GMU Hub</span>
+                    <span>Onboards verified suppliers & associates HSN/SAC codes</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Transporter scans parcels at hub dock to accept custody into delivery vehicle</span>
+                    <span>Issues official Purchase Orders with pricing and bulk Excel import</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Navigates delivery transit to destination village drop centers</span>
+                    <span>Generates Goods Receipt Notes (GRN) with strict quantity tracking</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Destination SHG scans barcode to intake parcels for last-mile delivery</span>
+                    <span>Verifies vendor Purchase Invoices against inward GRN logs</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
+                    <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
+                    <span>Executes disbursement payment vouchers & updates ledger credits</span>
                   </div>
                 </div>
               </div>
@@ -840,7 +942,298 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. CONNECTED SUPPLY CHAIN APPS GRID (CLEAN UNBOLDED) */}
+      {/* 4. DOUBLE-ENTRY FINANCE, VOUCHERS & GST RULES */}
+      {/* ========================================================================= */}
+      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          
+          <div style={{ marginBottom: '2.5rem', textAlign: 'center' }}>
+            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              FINANCIAL CORE & TAX ENGINE
+            </span>
+            <h2 style={{ fontSize: '2rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+              Double-Entry Accounting & Automated GST Engine
+            </h2>
+            <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
+              Complete financial control with multi-voucher journals, automated Debit/Credit postings, intra vs inter-state tax logic, and real-time ledger histories.
+            </p>
+          </div>
+
+          {/* 4 Voucher Cards */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.25rem', marginBottom: '3rem' }}>
+            {financeVouchers.map((v, idx) => (
+              <div 
+                key={idx}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #CBD5E1',
+                  borderRadius: '16px',
+                  padding: '1.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.85rem',
+                  boxShadow: '0 4px 14px rgba(0, 0, 0, 0.04)'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <h3 style={{ fontSize: '1.05rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
+                    {v.title}
+                  </h3>
+                  <span style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '100px', backgroundColor: '#EBF3FC', color: '#0B3A70', border: '1px solid #CBD5E1' }}>
+                    {v.badge}
+                  </span>
+                </div>
+                
+                <p style={{ fontSize: '0.82rem', color: '#475569', margin: 0, lineHeight: '1.55' }}>
+                  {v.desc}
+                </p>
+
+                <div style={{ backgroundColor: '#F8FAFC', border: '1px dashed #CBD5E1', borderRadius: '10px', padding: '0.65rem 0.75rem', fontSize: '0.75rem', color: '#0F172A', fontWeight: '500' }}>
+                  {v.flow}
+                </div>
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.35rem', marginTop: '0.25rem' }}>
+                  {v.points.map((pt, pIdx) => (
+                    <div key={pIdx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.76rem', color: '#64748B' }}>
+                      <Check size={13} style={{ color: '#16A34A', flexShrink: 0 }} />
+                      <span>{pt}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        {/* GST Rules & State Logic Comparison Card - Extended to Left Edge */}
+        <div 
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'flex-start'
+          }}
+        >
+          <div 
+            style={{
+              width: '100%',
+              maxWidth: 'calc(50vw + 560px)',
+              marginRight: 'auto',
+              marginLeft: 0,
+              backgroundColor: '#FFFFFF',
+              color: '#0F172A',
+              borderTop: '1px solid #CBD5E1',
+              borderBottom: '1px solid #CBD5E1',
+              borderRight: '1px solid #CBD5E1',
+              borderLeft: 'none',
+              borderTopRightRadius: '28px',
+              borderBottomRightRadius: '28px',
+              borderTopLeftRadius: 0,
+              borderBottomLeftRadius: 0,
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
+              paddingTop: '2.25rem',
+              paddingBottom: '2.25rem',
+              paddingRight: '1.5rem',
+              paddingLeft: 'max(1.5rem, calc((100vw - 1120px) / 2 + 1.5rem))',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div 
+              style={{
+                maxWidth: '1072px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '2rem',
+                alignItems: 'center'
+              }}
+            >
+              <div>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', color: '#0B3A70', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: '0.5rem', fontWeight: '500' }}>
+                  <Scale size={14} style={{ color: '#0B3A70' }} />
+                  <span>STATE-BASED GST COMPUTATION</span>
+                </div>
+                <h3 style={{ fontSize: '1.45rem', fontWeight: '400', color: '#0F172A', margin: 0, marginBottom: '0.75rem' }}>
+                  Automated Intra-State vs Inter-State Tax Rules
+                </h3>
+                <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: '1.6', margin: 0 }}>
+                  Gmark ERP automatically inspects company registration state vs customer/supplier state to apply compliant statutory tax schedules without manual calculation errors.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                <div style={{ backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.02)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#0284C7' }}>Intra-State Transaction (Same State)</span>
+                    <span style={{ fontSize: '0.72rem', backgroundColor: '#E0F2FE', color: '#0369A1', border: '1px solid #BAE6FD', padding: '2px 7px', borderRadius: '6px', fontWeight: '500' }}>CGST + SGST</span>
+                  </div>
+                  <p style={{ fontSize: '0.78rem', color: '#64748B', margin: 0 }}>
+                    GST is split equally: e.g. 18% tax = <strong style={{ color: '#0F172A' }}>CGST 9%</strong> (Central) + <strong style={{ color: '#0F172A' }}>SGST 9%</strong> (State).
+                  </p>
+                </div>
+
+                <div style={{ backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '12px', padding: '1rem', boxShadow: '0 1px 4px rgba(0,0,0,0.02)' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#16A34A' }}>Inter-State Transaction (Different State)</span>
+                    <span style={{ fontSize: '0.72rem', backgroundColor: '#DCFCE7', color: '#15803D', border: '1px solid #BBF7D0', padding: '2px 7px', borderRadius: '6px', fontWeight: '500' }}>IGST</span>
+                  </div>
+                  <p style={{ fontSize: '0.78rem', color: '#64748B', margin: 0 }}>
+                    Full statutory tax applies as integrated tax: e.g. 18% tax = <strong style={{ color: '#0F172A' }}>IGST 18%</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. MASTER DATA DIRECTORY & ROLES MATRIX */}
+      {/* ========================================================================= */}
+      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          
+          <div style={{ marginBottom: '2.5rem' }}>
+            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              SYSTEM MASTERS & SECURITY
+            </span>
+            <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+              Master Data Hierarchy & Role-Based Access (RBAC)
+            </h2>
+          </div>
+
+          {/* Master Directory Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem', marginBottom: '2.75rem' }}>
+            {masterCategories.map((m, idx) => (
+              <div 
+                key={idx}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #CBD5E1',
+                  borderRadius: '14px',
+                  padding: '1.25rem',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                  <FolderTree size={16} style={{ color: '#0B3A70' }} />
+                  <h3 style={{ fontSize: '0.95rem', fontWeight: '500', color: '#0F172A', margin: 0 }}>
+                    {m.title}
+                  </h3>
+                </div>
+                <p style={{ fontSize: '0.8rem', color: '#64748B', margin: 0, lineHeight: '1.55' }}>
+                  {m.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* User Roles & Permissions Matrix */}
+          <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '18px', padding: '1.75rem', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
+            <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Users size={18} style={{ color: '#0B3A70' }} />
+              <span>User Roles & Permission Boundaries</span>
+            </h3>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
+              {rolesMatrix.map((r, idx) => (
+                <div 
+                  key={idx}
+                  style={{
+                    backgroundColor: '#F8FAFC',
+                    border: '1px solid #E2E8F0',
+                    borderRadius: '12px',
+                    padding: '1rem',
+                    borderLeft: `4px solid ${r.color}`
+                  }}
+                >
+                  <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#0F172A', marginBottom: '4px' }}>
+                    {r.role}
+                  </div>
+                  <div style={{ fontSize: '0.76rem', color: '#64748B', lineHeight: '1.45' }}>
+                    {r.desc}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 6. TECHNICAL ARCHITECTURE & DEVELOPER SUITE */}
+      {/* ========================================================================= */}
+      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          
+          <div style={{ marginBottom: '2.5rem' }}>
+            <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              ARCHITECTURE & INFRASTRUCTURE
+            </span>
+            <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+              Enterprise Full-Stack Technology Architecture
+            </h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.25rem', marginBottom: '2.5rem' }}>
+            {techStack.map((stack, idx) => (
+              <div 
+                key={idx}
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #CBD5E1',
+                  borderRadius: '16px',
+                  padding: '1.25rem',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+                }}
+              >
+                <h3 style={{ fontSize: '0.9rem', fontWeight: '500', color: '#0B3A70', textTransform: 'uppercase', letterSpacing: '0.06em', margin: 0, marginBottom: '0.75rem' }}>
+                  {stack.category}
+                </h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+                  {stack.items.map((item, iIdx) => (
+                    <div key={iIdx} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', color: '#334155' }}>
+                      <Code2 size={14} style={{ color: '#0F172A', flexShrink: 0 }} />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Golden Rule Callout Banner */}
+          <div 
+            style={{
+              backgroundColor: '#FFFFFF',
+              border: '1.5px solid #93C5FD',
+              borderRadius: '16px',
+              padding: '1.5rem 1.75rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '1rem',
+              boxShadow: '0 4px 14px rgba(0,0,0,0.04)'
+            }}
+          >
+            <div style={{ width: '36px', height: '36px', borderRadius: '10px', backgroundColor: '#DBEAFE', color: '#1D4ED8', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '2px' }}>
+              <Zap size={18} />
+            </div>
+            <div>
+              <h4 style={{ fontSize: '0.95rem', fontWeight: '600', color: '#1E40AF', margin: 0, marginBottom: '4px' }}>
+                The Golden Architectural Rule of Gmark ERP
+              </h4>
+              <p style={{ fontSize: '0.85rem', color: '#1E3A8A', margin: 0, lineHeight: '1.6' }}>
+                "Understand the business flow first → Understand the code → Make the smallest safe change → Test the complete affected downstream flow (Sales Order → Challan → Invoice → Receipt → Ledger)."
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 7. CONNECTED GMU PLATFORM ECOSYSTEM */}
       {/* ========================================================================= */}
       <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
@@ -850,7 +1243,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               INTEGRATED ECOSYSTEM
             </span>
             <h2 style={{ fontSize: '1.75rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
-              Connected GMU Logistics Applications
+              Connected Enterprise Platforms
             </h2>
           </div>
 
@@ -880,10 +1273,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                 />
                 <div style={{ minWidth: 0 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                    <h3 style={{ fontSize: '0.92rem', fontWeight: '400', color: '#0F172A', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    <h3 style={{ fontSize: '0.92rem', fontWeight: '500', color: '#0F172A', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                       {app.name}
                     </h3>
-                    <span style={{ fontSize: '0.65rem', fontWeight: '400', padding: '1px 5px', borderRadius: '4px', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', color: '#475569' }}>
+                    <span style={{ fontSize: '0.65rem', fontWeight: '400', padding: '1px 5px', borderRadius: '4px', backgroundColor: '#F1F5F9', border: '1px solid #E2E8F0', color: '#475569' }}>
                       {app.badge}
                     </span>
                   </div>
@@ -895,6 +1288,62 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
             ))}
           </div>
 
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 8. BOTTOM CTA CALLOUT */}
+      {/* ========================================================================= */}
+      <section style={{ backgroundColor: '#FFFFFF', color: '#0F172A', padding: '4.5rem 1.5rem', textAlign: 'center', borderTop: '1px solid #CBD5E1' }}>
+        <div style={{ maxWidth: '680px', margin: '0 auto' }}>
+          <h2 style={{ fontSize: '2.25rem', fontWeight: '400', letterSpacing: '-0.02em', margin: 0, marginBottom: '1rem', color: '#0F172A' }}>
+            Transform Your Enterprise Operations with Gmark ERP
+          </h2>
+          <p style={{ fontSize: '1rem', color: '#64748B', lineHeight: '1.6', margin: 0, marginBottom: '2rem' }}>
+            Schedule an interactive product consultation with our engineering and deployment team to evaluate tailored ERP integration for your supply chain.
+          </p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <button
+              onClick={onOpenExpertModal}
+              style={{
+                padding: '0.85rem 2rem',
+                borderRadius: '12px',
+                fontSize: '0.95rem',
+                fontWeight: '500',
+                backgroundColor: '#0F172A',
+                color: '#FFFFFF',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
+              }}
+            >
+              <span>Schedule Enterprise Consultation</span>
+              <ArrowRight size={16} />
+            </button>
+            <button
+              onClick={onBack}
+              style={{
+                padding: '0.85rem 1.75rem',
+                borderRadius: '12px',
+                fontSize: '0.95rem',
+                fontWeight: '400',
+                backgroundColor: '#F8FAFC',
+                color: '#334155',
+                border: '1px solid #CBD5E1',
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
+              }}
+            >
+              <ArrowLeft size={16} />
+              <span>Back to Platforms</span>
+            </button>
+          </div>
         </div>
       </section>
 

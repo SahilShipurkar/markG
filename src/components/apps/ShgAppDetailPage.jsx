@@ -840,7 +840,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
       {/* ========================================================================= */}
       {/* 4. CONNECTED SUPPLY CHAIN APPS GRID (CLEAN UNBOLDED) */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#FFFFFF', padding: '4rem 0 4.5rem', borderTop: '1px solid #E2E8F0' }}>
+      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '1.75rem' }}>
@@ -858,17 +858,18 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
                 key={idx}
                 onClick={onOpenExpertModal}
                 style={{
-                  backgroundColor: '#F8FAFC',
-                  border: '1px solid #E2E8F0',
+                  backgroundColor: '#FFFFFF',
+                  border: '1px solid #CBD5E1',
                   borderRadius: '14px',
                   padding: '1.25rem',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.85rem',
                   cursor: 'pointer',
-                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.03)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
                   transition: 'all 0.2s ease'
                 }}
+                className="hover:-translate-y-1 hover:shadow-md transition-all duration-200"
               >
                 <img 
                   src={app.image} 

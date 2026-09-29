@@ -1,6 +1,7 @@
 import React from 'react';
 import ShgAppDetailPage from '../components/apps/ShgAppDetailPage';
 import TransporterAppDetailPage from '../components/apps/TransporterAppDetailPage';
+import ErpAppDetailPage from '../components/apps/ErpAppDetailPage';
 import { 
   ArrowLeft, 
   CheckCircle2, 
@@ -14,6 +15,17 @@ import {
 } from 'lucide-react';
 
 export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
+  // If ERP App is selected, render full ERP workflow & architecture page
+  if (app?.id === 'erp' || app?.name?.toLowerCase().includes('erp')) {
+    return (
+      <ErpAppDetailPage 
+        app={app} 
+        onBack={onBack} 
+        onOpenExpertModal={onOpenExpertModal} 
+      />
+    );
+  }
+
   // If Transporter App is selected, render full 2-phase middle-mile transporter workflow page
   if (app?.id === 'transporter-app' || (app?.name?.toLowerCase().includes('transporter') && !app?.id?.includes('shg'))) {
     return (
