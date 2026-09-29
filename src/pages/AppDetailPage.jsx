@@ -1,5 +1,6 @@
 import React from 'react';
 import ShgAppDetailPage from '../components/apps/ShgAppDetailPage';
+import TransporterAppDetailPage from '../components/apps/TransporterAppDetailPage';
 import { 
   ArrowLeft, 
   CheckCircle2, 
@@ -13,6 +14,17 @@ import {
 } from 'lucide-react';
 
 export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
+  // If Transporter App is selected, render full 2-phase middle-mile transporter workflow page
+  if (app?.id === 'transporter-app' || (app?.name?.toLowerCase().includes('transporter') && !app?.id?.includes('shg'))) {
+    return (
+      <TransporterAppDetailPage 
+        app={app} 
+        onBack={onBack} 
+        onOpenExpertModal={onOpenExpertModal} 
+      />
+    );
+  }
+
   // If SHG App is selected, render full 2-phase workflow details page
   if (app?.id === 'shg-app' || app?.id === 'shg-transporter' || app?.name?.toLowerCase().includes('shg')) {
     return (

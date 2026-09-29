@@ -29,110 +29,105 @@ import {
   PackageCheck,
   KeyRound,
   Store,
-  Home
+  Home,
+  BellRing
 } from 'lucide-react';
 
-export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
+export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) {
   const [activeStepP1, setActiveStepP1] = useState(0); // active accordion step for Phase 1
   const [activeStepP2, setActiveStepP2] = useState(0); // active accordion step for Phase 2
 
   const metricPills = [
-    { label: '< 3s Latency', sub: 'Camera QR Scan Engine', icon: QrCode },
-    { label: '100% OTP Proof', sub: 'Doorstep Handover', icon: ShieldCheck },
-    { label: 'Instant Credit', sub: 'SHG Commission Ledger', icon: Wallet },
-    { label: '3 Languages', sub: 'Odia, Hindi & English', icon: Globe }
+    { label: '< 2s Scan Ingest', sub: 'High-Speed Camera Engine', icon: QrCode },
+    { label: 'GPS Live Route', sub: 'Cluster Navigation', icon: Truck },
+    { label: '100% Intake Proof', sub: 'Digital Manifest & Scan', icon: ShieldCheck },
+    { label: 'Instant Settlement', sub: 'Automated Trip Credit', icon: Wallet }
   ];
 
   const phase1Steps = [
     {
       num: '1',
-      title: 'Seller Doorstep Visit & Inspection',
-      tag: 'Pickup Assignment',
-      desc: 'SHG representative receives notification on the app, visits the rural producer or farmer’s home, and verifies product condition.',
-      desc2: 'Confirms item count, inspects packaging integrity, and affixes the standardized GMU barcode label.',
-      status: 'PICKUP_SHG_ACCEPTED',
-      icon: Home
+      title: 'Pickup Notification & Route Dispatch',
+      tag: 'Driver Alert & Assignment',
+      desc: 'Transporter driver receives a high-priority app notification assigning the scheduled village SHG pickup cluster and optimal route.',
+      desc2: 'App displays parcel counts, verified weight estimates, and optimal navigation sequence before departure.',
+      status: 'PICKUP_TRANSPORTER_ASSIGNED',
+      icon: BellRing
     },
     {
       num: '2',
-      title: 'Barcode / QR Scan & Weight Registration',
-      tag: 'Camera Scanner Engine',
-      desc: 'SHG opens the camera scanner interface, scans the affixed parcel QR label, and logs the gross verified weight.',
-      desc2: 'Status transitions in real-time to PICKUP_SHG_PICKED, establishing initial chain-of-custody in the cloud database.',
-      status: 'PICKUP_SHG_PICKED',
+      title: 'SHG Village Handover Barcode Scan',
+      tag: 'Node Custody Transfer',
+      desc: 'Transporter arrives at the village SHG staging center and scans each parcel’s QR barcode label to transfer custody from SHG to vehicle.',
+      desc2: 'System validates item codes, updates status to PICKUP_TRANSPORTER_PICKED, and establishes transport manifest.',
+      status: 'PICKUP_TRANSPORTER_PICKED',
       icon: QrCode
     },
     {
       num: '3',
-      title: 'Staging at Village Center Node',
-      tag: 'Local Aggregation',
-      desc: 'Collected parcels are securely staged at the local village SHG center awaiting scheduled middle-mile transport.',
-      desc2: 'Inventory view tracks all staged parcels grouped by destination hub pincodes.',
-      status: 'VILLAGE_NODE_STAGED',
-      icon: Layers
+      title: 'Middle-Mile GPS Transit to Hub',
+      tag: 'Fleet Telemetry',
+      desc: 'Vehicle navigates consolidated rural batch transit to the central GMU Regional Logistics Hub with sub-second GPS tracking.',
+      desc2: 'Automated telemetry logs transit velocity, route compliance, and streams estimated time of arrival (ETA) to the hub.',
+      status: 'IN_TRANSIT_TO_HUB',
+      icon: Truck
     },
     {
       num: '4',
-      title: 'Transporter Scan & Custody Handover',
-      tag: 'Middle-Mile Handoff',
-      desc: 'Transporter vehicle arrives at the village node. The transporter scans the barcode to take physical custody of the batch.',
-      desc2: 'Custody transfers from SHG to Transporter vehicle manifest, en route to the GMU Central Hub.',
-      status: 'PICKUP_TRANSPORTER_LOADED',
-      icon: Truck
+      title: 'GMU Hub Scan-In & Warehouse Ingest',
+      tag: 'Hub Intake Verification',
+      desc: 'Vehicle docks at the GMU Regional Hub. Warehouse intake supervisor scans all incoming barcodes to verify and ingest the batch.',
+      desc2: 'Custody transfers to GMU Hub sorting system, completing first-mile leg and locking trip mileage for payout.',
+      status: 'HUB_INTAKE_VERIFIED',
+      icon: PackageCheck
     }
   ];
 
   const phase2Steps = [
     {
       num: '1',
-      title: 'Transporter Batch Ingestion at Node',
-      tag: 'Inbound Batch Arrival',
-      desc: 'Regional transporter drops consolidated parcel batches at the destination village SHG center.',
-      desc2: 'SHG receives batch arrival notification with assigned local doorstep delivery routes.',
-      status: 'DROP_BATCH_ARRIVED',
-      icon: Truck
+      title: 'Hub Outbound Dispatch Notification',
+      tag: 'Outbound Allocation',
+      desc: 'Driver receives real-time app alert for sorted outbound parcel batches ready at the GMU Regional Logistics Hub.',
+      desc2: 'App populates target village SHG drop-off nodes, delivery windows, and optimized rural drop routing schedule.',
+      status: 'DROP_TRANSPORTER_ASSIGNED',
+      icon: BellRing
     },
     {
       num: '2',
-      title: 'SHG Inbound Barcode Verification',
-      tag: 'Custody Transfer',
-      desc: 'SHG representative scans each incoming parcel barcode to verify parcel integrity and accept custody.',
-      desc2: 'App populates the buyer address, contact navigation, and optimal village delivery sequence.',
-      status: 'DROP_SHG_ACCEPTED',
+      title: 'Transporter Hub Scan-Out',
+      tag: 'Vehicle Custody Intake',
+      desc: 'Transporter scans each outgoing parcel barcode at the GMU Hub dock to transfer custody from warehouse into the vehicle.',
+      desc2: 'Generates a tamper-proof digital transit manifest with verified parcel counts and destination mapping.',
+      status: 'DROP_TRANSPORTER_LOADED',
       icon: QrCode
     },
     {
       num: '3',
-      title: 'Doorstep Delivery Run to Buyer',
-      tag: 'Final Mile Dispatch',
-      desc: 'SHG representative carries the verified package directly to the buyer’s home doorstep.',
-      desc2: 'Presents the package for buyer physical inspection prior to final confirmation.',
-      status: 'OUT_FOR_DELIVERY',
-      icon: Home
+      title: 'Regional Drop-Route Transit',
+      tag: 'Inter-Village Distribution',
+      desc: 'Transporter drives assigned regional circuit delivering to destination village SHG centers with live status tracking.',
+      desc2: 'Destination SHG centers receive proximity arrival notifications when the delivery vehicle approaches.',
+      status: 'IN_TRANSIT_TO_VILLAGE',
+      icon: Truck
     },
     {
       num: '4',
-      title: '4-Digit OTP Confirmation & Instant Payout',
-      tag: 'Tamper-Proof Handover',
-      desc: 'Buyer provides the secret 4-digit OTP sent to their mobile. SHG inputs OTP into the app for instant cryptographic validation.',
-      desc2: 'Order transitions to DROP_SHG_DELIVERED, closing the lifecycle and instantly crediting commission to the SHG wallet.',
-      status: 'DROP_SHG_DELIVERED',
-      icon: KeyRound
+      title: 'Destination SHG Intake Barcode Scan',
+      tag: 'Node Staging Handover',
+      desc: 'Transporter reaches the destination SHG center. SHG coordinator inspects packages and scans barcodes to take intake custody.',
+      desc2: 'Custody transitions to DROP_SHG_ACCEPTED for local buyer doorstep runs, and automated freight settlement is credited to driver ledger.',
+      status: 'DROP_SHG_ACCEPTED',
+      icon: PackageCheck
     }
   ];
 
   const connectedApps = [
     {
-      name: 'Transporter App',
-      desc: 'Middle-mile route logistics & cluster truck fleet',
-      image: '/SHG Delivary and Transporter Logo.jpg',
-      badge: 'Logistics'
-    },
-    {
-      name: 'GramUnnati',
-      desc: 'Digital farm marketplace connecting buyers to SHGs',
-      image: '/Final Logo-09.jpg.jpeg',
-      badge: 'Agritech'
+      name: 'SHG App',
+      desc: 'Rural village producer collection & doorstep delivery',
+      image: '/SHG Delivary and Transporter Logo 01.jpg',
+      badge: 'Village Network'
     },
     {
       name: 'G Track',
@@ -145,6 +140,12 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
       desc: 'Centralized procurement, billing & inventory accounts',
       image: '/ERP Logo.png',
       badge: 'Core ERP'
+    },
+    {
+      name: 'GramUnnati',
+      desc: 'Digital farm marketplace connecting buyers to SHGs',
+      image: '/Final Logo-09.jpg.jpeg',
+      badge: 'Agritech'
     }
   ];
 
@@ -206,7 +207,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
               }}
             >
               <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A' }} />
-              GMU LOGISTICS • SHG FIELD APP v2.0
+              GMU LOGISTICS • TRANSPORTER APP v2.0
             </div>
           </div>
 
@@ -226,12 +227,13 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
                 fontWeight: 400
               }}
             >
-              <span>Rural Village Logistics </span>
+              <span>Middle-Mile & Hub Fleet </span>
               <br className="hidden sm:inline" />
-              <span>of </span>
+              <span>Logistics of </span>
+              <br className="hidden sm:inline" />
               <span className="relative inline-block whitespace-nowrap">
                 <span className="relative z-10 text-slate-900 font-normal">
-                  Self Help Groups
+                  Transporter Network
                 </span>
                 {/* Hand-drawn marker brush stroke highlight matching hero */}
                 <svg
@@ -249,26 +251,26 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
               </span>
             </h1>
 
-            {/* Floating App Logo Square Card with Hand-drawn Curved Arrow */}
-            <div className="hidden sm:flex absolute -right-28 md:-right-36 lg:-right-44 bottom-1 md:bottom-2 items-end z-20 pointer-events-none">
-              {/* Hand-drawn curved arrow pointing to the text */}
+            {/* Floating App Logo Square Card with Hand-drawn Curved Arrow (Positioned beside 'Logistics of' matching red marked location) */}
+            <div className="hidden sm:flex absolute -right-24 sm:-right-28 md:-right-36 lg:-right-44 top-[26%] sm:top-[28%] md:top-[30%] items-center z-20 pointer-events-none">
+              {/* Hand-drawn curved arrow pointing to 'Logistics of' */}
               <svg
-                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 text-slate-700 pointer-events-none overflow-visible -mr-1 mb-2"
+                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 text-slate-700 pointer-events-none overflow-visible -mr-1"
                 viewBox="0 0 80 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                {/* Curved arc from logo towards the text */}
+                {/* Curved arc from logo towards 'Logistics of' */}
                 <path
-                  d="M 76 38 C 55 46, 24 38, 8 14"
+                  d="M 76 26 C 52 40, 24 34, 8 16"
                   stroke="#475569"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
                 />
-                {/* Arrowhead */}
+                {/* Arrowhead pointing left/upward */}
                 <path
-                  d="M 6 24 L 8 12 L 20 16"
+                  d="M 20 10 L 8 16 L 16 28"
                   stroke="#475569"
                   strokeWidth="2.5"
                   strokeLinecap="round"
@@ -296,8 +298,8 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
                 className="hover:scale-105 transition-transform duration-200"
               >
                 <img 
-                  src="/SHG Delivary and Transporter Logo 01.jpg" 
-                  alt="SHG App Logo" 
+                  src="/SHG Delivary and Transporter Logo.jpg" 
+                  alt="Transporter App Logo" 
                   style={{
                     width: '100%',
                     height: '100%',
@@ -322,7 +324,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
               fontWeight: 400
             }}
           >
-            Connect local village artisans, farmers, and micro-producers with enterprise logistics networks. Accelerate rural dispatches with standardized QR labels and doorstep OTP verification.
+            Orchestrate regional cluster pickups, barcode custody handovers, and scheduled GMU Hub dispatches. Connect rural village staging centers directly with centralized sorting facilities.
           </p>
 
           {/* Action Button */}
@@ -349,7 +351,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
             </button>
           </div>
 
-          {/* Support Highlights Ribbon (Moved below into the grey curve) */}
+          {/* Support Highlights Ribbon (Inside the grey curvature arc) */}
           <div
             style={{
               display: 'grid',
@@ -400,7 +402,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. PHASE 1: FIRST-MILE COLLECTION (WHITE CURVED CARD ON GREY BG) */}
+      {/* 2. PHASE 1: VILLAGE NODE PICKUP & GMU HUB INTAKE (WHITE CURVED CARD) */}
       {/* ========================================================================= */}
       <section 
         id="phase-1-section"
@@ -457,32 +459,32 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
                 </span>
                 
                 <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  First-Mile Collection <br />
-                  & Transporter Pickup
+                  Village Node Pickup <br />
+                  & GMU Hub Intake
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Visits producer home & verifies item condition</span>
+                    <span>Receives real-time app notification for village cluster pickup</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Scans QR barcode & registers gross verified weight</span>
+                    <span>Visits SHG staging node & scans barcode to accept custody</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Stages collected goods at the local village SHG node</span>
+                    <span>En-route GPS route telemetry with scheduled GMU Hub ETA logging</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Completes barcode custody handover to pickup transporter</span>
+                    <span>Delivers to GMU Hub where hub supervisor scans & intakes batch</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT: Phase 1 Process Steps (Right side by scrollbar) */}
+            {/* RIGHT: Phase 1 Process Steps */}
             <div style={{ position: 'relative', width: '100%', maxWidth: '530px', flexShrink: 0 }}>
               <div 
                 style={{
@@ -619,7 +621,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. PHASE 2: LAST-MILE DELIVERY (OPPOSITE DIRECTION: LEFT PROCESS, RIGHT INFO) */}
+      {/* 3. PHASE 2: GMU HUB OUTBOUND DISPATCH & DESTINATION SHG DROP (WHITE CURVED CARD) */}
       {/* ========================================================================= */}
       <section 
         id="phase-2-section"
@@ -667,7 +669,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
             className="gap-6 sm:gap-8 lg:gap-10 py-6 sm:py-8 pr-12 sm:pr-16 md:pr-20 pl-4 sm:pl-6 md:pl-8"
           >
             
-            {/* LEFT: Phase 2 Process Steps (Left side with fixed compact width) */}
+            {/* LEFT: Phase 2 Process Steps */}
             <div style={{ position: 'relative', width: '100%', maxWidth: '540px', flexShrink: 0, order: 1 }}>
               <div 
                 style={{
@@ -798,7 +800,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
               </div>
             </div>
 
-            {/* RIGHT: Phase 2 Info (Clean fixed width, placed beside process) */}
+            {/* RIGHT: Phase 2 Info */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem', order: 2, width: '100%', maxWidth: '380px', flexShrink: 0 }}>
               <div>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.75rem', fontWeight: '400', color: '#0B3A70', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.35rem' }}>
@@ -807,26 +809,26 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal }) {
                 </span>
                 
                 <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
-                  Last-Mile Delivery <br />
-                  & Buyer OTP Verification
+                  Hub Outbound Dispatch <br />
+                  & Destination SHG Drop-off
                 </h2>
                 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem', marginTop: '0.5rem' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Ingests consolidated transporter parcel batches at village node</span>
+                    <span>Receives outbound dispatch notification for sorted parcel batches at GMU Hub</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Scans inbound barcodes & maps optimal village delivery route</span>
+                    <span>Transporter scans parcels at hub dock to accept custody into delivery vehicle</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>Direct final-mile doorstep delivery visit to the buyer</span>
+                    <span>Navigates delivery transit to destination village drop centers</span>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: '#475569', fontSize: '0.88rem', lineHeight: '1.5', fontWeight: '400' }}>
                     <span style={{ color: '#0B3A70', marginTop: '2px' }}>•</span>
-                    <span>4-digit secret OTP verification & instant commission credit</span>
+                    <span>Destination SHG scans barcode to intake parcels for last-mile delivery</span>
                   </div>
                 </div>
               </div>
