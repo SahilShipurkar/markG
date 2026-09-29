@@ -67,9 +67,11 @@ export default function DataVisionSection() {
           {/* Main Headline */}
           <div className="relative mb-6 sm:mb-8 max-w-4xl w-full">
             <h2
-              className="text-slate-900 font-normal leading-[1.2] sm:leading-[1.25] tracking-tight"
+              className="text-slate-900 font-normal tracking-tight"
               style={{
-                fontSize: 'clamp(2.25rem, 4.2vw, 3.85rem)',
+                fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.02em',
                 fontWeight: 400,
               }}
             >

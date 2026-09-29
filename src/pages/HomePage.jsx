@@ -30,7 +30,7 @@ export default function HomePage({ onOpenExpertModal, onNavigate }) {
       {/* 3rd Page: Data Vision / Higher Grounds Section */}
       <section 
         id="data-vision-section" 
-        className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-start"
+        className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-center"
         style={{ backgroundColor: '#e8e8e8' }}
       >
         <DataVisionSection />

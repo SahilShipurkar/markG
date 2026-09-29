@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import ExpertModal from './components/ExpertModal';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
@@ -73,6 +74,12 @@ export default function App() {
           />
         )}
       </main>
+
+      {/* Enterprise Footer Component */}
+      <Footer 
+        onNavigate={handleNavigate}
+        onOpenExpertModal={() => setIsExpertModalOpen(true)}
+      />
 
       {/* Interactive Consultation Modal */}
       <ExpertModal 

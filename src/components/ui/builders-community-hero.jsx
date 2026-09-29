@@ -283,7 +283,15 @@ export default function CommunityOrbit({
             animate="show"
             transition={{ duration: 0.7, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
           >
-            <h2 className="w-full max-w-[700px] text-center text-[26px] sm:text-[32px] md:text-[36px] font-semibold leading-snug tracking-tight text-neutral-900 mx-auto">
+            <h2 
+              className="w-full max-w-[850px] text-center font-normal tracking-tight text-slate-800 mx-auto"
+              style={{
+                fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.02em',
+                fontWeight: 400,
+              }}
+            >
               {headline}
             </h2>
           </motion.div>

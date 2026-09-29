@@ -130,7 +130,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
             className="relative group w-full"
           >
             <svg
-              className="w-full h-auto block"
+              className="w-full h-auto block overflow-visible"
               width="100%"
               height="100%"
               viewBox="0 0 100 40"
@@ -151,7 +151,15 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 preserveAspectRatio="xMidYMid slice"
                 width="100%"
                 height="100%"
-                href="https://cdn.21st.dev/assets/mirror/26/265e57e9ecac16be739b6bb56df7d13b1cddfb0be4d59958c534a03d95b48bb3.jpg"
+                href="/group.jpeg"
+              />
+              <path
+                d="M0.0998072 1H0.422076H0.749756C0.767072 1 0.774207 0.961783 0.77561 0.942675V0.807325C0.777053 0.743631 0.791844 0.731953 0.799059 0.734076H0.969813C0.996268 0.730255 1.00088 0.693206 0.999875 0.675159V0.0700637C0.999875 0.0254777 0.985045 0.00477707 0.977629 0H0.902473C0.854975 0 0.890448 0.138535 0.850165 0.138535H0.0204424C0.00408849 0.142357 0 0.180467 0 0.199045V0.410828C0 0.449045 0.0136283 0.46603 0.0204424 0.469745H0.0523086C0.0696245 0.471019 0.0735527 0.497877 0.0733523 0.511146V0.915605C0.0723903 0.983121 0.090588 1 0.0998072 1Z"
+                transform="scale(100, 40)"
+                fill="none"
+                stroke="#000000"
+                strokeWidth="2"
+                vectorEffect="non-scaling-stroke"
               />
             </svg>
           </TimelineContent>
@@ -204,7 +212,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-8 mt-6">
           <div className="md:col-span-2">
-            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-gray-900 mb-8">
+            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[135%] sm:!leading-[125%] font-semibold text-gray-900 mb-8">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.04}
@@ -235,7 +243,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 customVariants={revealVariants}
                 className="sm:text-base text-xs"
               >
-                <p className="leading-relaxed text-justify">
+                <p className="leading-[1.8] sm:leading-[1.9] text-justify">
                   <strong className="text-gray-900 font-semibold">G Mark Software Private Limited</strong> is a premier enterprise IT and industrial software provider, specializing in digital platforms, 4M CMMS, smart agriculture e-commerce, and industrial IoT telemetry networks.
                 </p>
               </TimelineContent>
@@ -246,7 +254,7 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
                 customVariants={revealVariants}
                 className="sm:text-base text-xs"
               >
-                <p className="leading-relaxed text-justify">
+                <p className="leading-[1.8] sm:leading-[1.9] text-justify">
                   We engineer high-availability platforms designed for mission-critical resilience, rapid deployment cycles, and real-time streaming analytics to optimize industrial and agricultural operations.
                 </p>
               </TimelineContent>
