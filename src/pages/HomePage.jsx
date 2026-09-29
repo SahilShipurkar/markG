@@ -4,7 +4,7 @@ import ApplicationsGridSection from '@/components/ApplicationsGridSection';
 import DataVisionSection from '@/components/DataVisionSection';
 import CommunityOrbitDemo from '@/components/ui/builders-community-hero-demo';
 
-export default function HomePage({ onOpenExpertModal, onNavigate }) {
+export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp }) {
   return (
     <div className="w-full flex flex-col bg-[#e8e8e8] text-slate-900" style={{ backgroundColor: '#e8e8e8' }}>
       {/* 1st Page: Hero Section */}
@@ -24,7 +24,10 @@ export default function HomePage({ onOpenExpertModal, onNavigate }) {
         className="w-full min-h-screen bg-[#e8e8e8] flex flex-col items-center justify-center"
         style={{ backgroundColor: '#e8e8e8' }}
       >
-        <ApplicationsGridSection onOpenExpertModal={onOpenExpertModal} />
+        <ApplicationsGridSection 
+          onOpenExpertModal={onOpenExpertModal} 
+          onSelectApp={onSelectApp}
+        />
       </section>
 
       {/* 3rd Page: Data Vision / Higher Grounds Section */}

@@ -21,10 +21,10 @@ import {
   X
 } from 'lucide-react';
 
-const APPLICATIONS = [
+export const APPLICATIONS = [
   {
-    id: 'cmms-4m',
-    name: '4M CMMS',
+    id: 'cmms',
+    name: 'CMMS',
     category: 'Enterprise Operations',
     tagline: 'Man, Machine, Method & Material orchestration',
     image: '/4M.png',
@@ -36,7 +36,7 @@ const APPLICATIONS = [
   },
   {
     id: 'gram-unnati',
-    name: 'Gram Unnati',
+    name: 'GramUnnati',
     category: 'Agritech Supply Chain',
     tagline: 'Digital agriculture marketplace & farmer advisory',
     image: '/Final Logo-09.jpg.jpeg',
@@ -59,8 +59,8 @@ const APPLICATIONS = [
     features: ['50Hz streaming analytics', 'Edge anomaly detection', 'RS485/Modbus/MQTT bridge', 'Zero-latency sensor telemetry']
   },
   {
-    id: 'opstream-erp',
-    name: 'Opstream ERP',
+    id: 'erp',
+    name: 'ERP',
     category: 'Enterprise Operations',
     tagline: 'Enterprise Resource Planning & Automation',
     image: '/ERP Logo.png',
@@ -85,8 +85,8 @@ const APPLICATIONS = [
     features: ['Sub-second GPS location tracking', 'Geofencing & smart route alerts', 'Driver safety scorecards', 'Fuel & engine diagnostics']
   },
   {
-    id: 'shg-transporter',
-    name: 'G-Kart SHG',
+    id: 'shg-app',
+    name: 'SHG App',
     category: 'Agritech Supply Chain',
     tagline: 'Rural logistics & self-help group distribution',
     image: '/SHG Delivary and Transporter Logo 01.jpg',
@@ -97,8 +97,8 @@ const APPLICATIONS = [
     features: ['Hyperlocal routing engine', 'Farmer-to-market direct dispatch', 'Proof-of-delivery with digital signature', 'Transparent pricing telemetry']
   },
   {
-    id: 'shg-delivery',
-    name: 'SHG Transporter',
+    id: 'transporter-app',
+    name: 'Transporter App',
     category: 'Agritech Supply Chain',
     tagline: 'Rural transport & distribution management',
     image: '/SHG Delivary and Transporter Logo.jpg',
@@ -109,8 +109,8 @@ const APPLICATIONS = [
     features: ['Cluster-based batch dispatch', 'Consolidated route planning', 'Driver telemetry & verification', 'Automated freight settlement']
   },
   {
-    id: 'task-collab',
-    name: 'Task & Team',
+    id: 'task-management',
+    name: 'Task Management',
     category: 'Workforce Productivity',
     tagline: 'Digital work orders & field collaboration',
     image: '/Task Management & Team Collaboration Logo 01.jpg',
@@ -122,8 +122,16 @@ const APPLICATIONS = [
   }
 ];
 
-export default function ApplicationsGridSection({ onOpenExpertModal }) {
+export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp }) {
   const [selectedApp, setSelectedApp] = useState(null);
+
+  const handleAppClick = (app) => {
+    if (onSelectApp) {
+      onSelectApp(app);
+    } else {
+      setSelectedApp(app);
+    }
+  };
 
   return (
     <div className="w-full min-h-screen bg-[#e8e8e8] pt-2 sm:pt-4 pb-16 sm:pb-24 px-4 sm:px-8 lg:px-12 flex flex-col justify-center items-center font-['Inter',sans-serif]">
@@ -176,7 +184,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal }) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: idx * 0.02 }}
-                onClick={() => setSelectedApp(app)}
+                onClick={() => handleAppClick(app)}
                 className="group flex flex-col items-center cursor-pointer w-28 sm:w-32"
               >
                 {/* Odoo Style White Rounded Icon Card */}
