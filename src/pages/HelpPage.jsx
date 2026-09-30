@@ -206,11 +206,12 @@ export default function HelpPage({ onOpenExpertModal }) {
         {/* Headline */}
         <h1 
           style={{ 
-            fontSize: 'clamp(2.5rem, 5vw, 3.85rem)', 
-            fontWeight: '900', 
-            letterSpacing: '-0.035em', 
+            fontFamily: "'Caveat', cursive",
+            fontSize: 'clamp(3rem, 6vw, 4.75rem)', 
+            fontWeight: 600, 
+            letterSpacing: '0', 
             color: '#0F172A',
-            lineHeight: 1.12,
+            lineHeight: 1.15,
             marginBottom: '1.25rem',
             opacity: heroMounted ? 1 : 0,
             transform: heroMounted ? 'translateY(0)' : 'translateY(24px)',
@@ -403,10 +404,11 @@ export default function HelpPage({ onOpenExpertModal }) {
                 DIRECT ACTION PATHWAYS
               </span>
               <h2 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '800', 
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', 
+                fontWeight: 600, 
                 color: '#0F172A',
-                letterSpacing: '-0.02em',
+                letterSpacing: '0',
                 display: 'block',
                 marginTop: '4px',
                 position: 'relative'

@@ -2,19 +2,58 @@ import React from 'react';
 import ShgAppDetailPage from '../components/apps/ShgAppDetailPage';
 import TransporterAppDetailPage from '../components/apps/TransporterAppDetailPage';
 import ErpAppDetailPage from '../components/apps/ErpAppDetailPage';
+import IotAppDetailPage from '../components/apps/IotAppDetailPage';
+import GramUnnatiAppDetailPage from '../components/apps/GramUnnatiAppDetailPage';
+import GTrackAppDetailPage from '../components/apps/GTrackAppDetailPage';
+import SynkroBoardAppDetailPage from '../components/apps/SynkroBoardAppDetailPage';
 import { 
   ArrowLeft, 
   CheckCircle2, 
   Layers, 
   Sparkles, 
   ArrowRight,
-  ShieldCheck,
-  Zap,
-  Globe,
+  ShieldCheck, 
+  Zap, 
+  Globe, 
   Wallet
 } from 'lucide-react';
 
-export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
+export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelectApp }) {
+  // If G-Track is selected, render full GMark Tracking & Field Force Management page
+  if (app?.id === 'g-track' || app?.id === 'gtrack' || app?.id === 'tracking' || app?.name?.toLowerCase().includes('track')) {
+    return (
+      <GTrackAppDetailPage 
+        app={app} 
+        onBack={onBack} 
+        onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
+      />
+    );
+  }
+  // If GramUnnati is selected, render full GramUnnati Agri-Commerce & Rural Marketplace page
+  if (app?.id === 'gram-unnati' || app?.id === 'gramunnati' || app?.name?.toLowerCase().includes('gram') || app?.name?.toLowerCase().includes('unnati')) {
+    return (
+      <GramUnnatiAppDetailPage 
+        app={app} 
+        onBack={onBack} 
+        onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
+      />
+    );
+  }
+
+  // If G-Nova IoT is selected, render full IoT & 4M ERP System page
+  if (app?.id === 'g-nova-iot' || app?.id === 'iot' || app?.name?.toLowerCase().includes('iot') || app?.name?.toLowerCase().includes('g-nova')) {
+    return (
+      <IotAppDetailPage 
+        app={app} 
+        onBack={onBack} 
+        onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
+      />
+    );
+  }
+
   // If ERP App is selected, render full ERP workflow & architecture page
   if (app?.id === 'erp' || app?.name?.toLowerCase().includes('erp')) {
     return (
@@ -22,6 +61,7 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
         app={app} 
         onBack={onBack} 
         onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
       />
     );
   }
@@ -33,6 +73,7 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
         app={app} 
         onBack={onBack} 
         onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
       />
     );
   }
@@ -44,6 +85,19 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
         app={app} 
         onBack={onBack} 
         onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
+      />
+    );
+  }
+
+  // If SynkroBoard / Task Management is selected, render full SynkroBoard enterprise ecosystem page
+  if (app?.id === 'task-management' || app?.id === 'synkroboard' || app?.id === 'synkro' || app?.name?.toLowerCase().includes('task') || app?.name?.toLowerCase().includes('synkro')) {
+    return (
+      <SynkroBoardAppDetailPage 
+        app={app} 
+        onBack={onBack} 
+        onOpenExpertModal={onOpenExpertModal} 
+        onSelectApp={onSelectApp}
       />
     );
   }
@@ -110,26 +164,27 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
             </div>
           </div>
 
-          {/* Headline with #00A3FF brush underline */}
+          {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <h1 
-            className="text-balance font-normal text-slate-900"
+            className="text-balance text-slate-900"
             style={{ 
-              fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
-              lineHeight: '1.25',
-              letterSpacing: '-0.03em',
+              fontFamily: "'Caveat', cursive",
+              fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
+              lineHeight: '1.15',
+              letterSpacing: '-0.01em',
               paddingTop: '0.25rem',
               paddingBottom: '0.75rem',
               display: 'inline-block',
               position: 'relative',
               zIndex: 1,
-              fontWeight: 400
+              fontWeight: 600
             }}
           >
             <span>{app?.name || 'Application'} </span>
             <br className="hidden sm:inline" />
             <span>Platform </span>
             <span className="relative inline-block whitespace-nowrap">
-              <span className="relative z-10 text-slate-900 font-normal">
+              <span className="relative z-10 text-slate-900 font-semibold">
                 Overview
               </span>
               <svg
@@ -167,19 +222,20 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.8rem 1.75rem',
-                borderRadius: '12px',
+                padding: '0.8rem 1.85rem',
+                borderRadius: '9999px',
                 fontSize: '0.95rem',
-                fontWeight: '400',
-                backgroundColor: '#0F172A',
+                fontWeight: '500',
+                backgroundColor: '#7B5872',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
               }}
+              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Request {app?.name || 'Platform'} Demo</span>
               <ArrowRight size={16} />
@@ -204,10 +260,11 @@ export default function AppDetailPage({ app, onBack, onOpenExpertModal }) {
               CAPABILITIES & ARCHITECTURE
             </span>
             <h2 style={{ 
-              fontSize: '2rem', 
-              fontWeight: '400', 
+              fontFamily: "'Caveat', cursive",
+              fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', 
+              fontWeight: 600, 
               color: '#0F172A',
-              letterSpacing: '-0.02em',
+              letterSpacing: '0',
               display: 'block',
               marginTop: '4px',
               position: 'relative'

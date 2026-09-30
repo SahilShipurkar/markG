@@ -178,18 +178,20 @@ body {
 }
 
 .section-headline {
-  font-size: clamp(2rem, 3.8vw, 3.25rem);
-  font-weight: 700;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2.3rem, 4.2vw, 3.5rem);
+  font-weight: 600;
   line-height: 1.15;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   color: var(--text-primary);
 }
 
 .section-subheadline {
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.025em;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0;
   color: var(--text-primary);
 }
 

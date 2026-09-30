@@ -66,19 +66,21 @@ export function Hero({
         <h1
           className="animate-fade-in text-balance font-semibold text-slate-900 dark:text-white"
           style={{ 
-            fontSize: 'clamp(2.5rem, 5.4vw, 4.75rem)',
-            lineHeight: '1.25',
-            letterSpacing: '-0.03em',
+            fontFamily: "'Caveat', cursive",
+            fontSize: 'clamp(3.2rem, 6.5vw, 5.25rem)',
+            lineHeight: '1.15',
+            letterSpacing: '0',
             paddingTop: '0.5rem',
             paddingBottom: '0.75rem',
-            display: 'inline-block'
+            display: 'inline-block',
+            fontWeight: 600
           }}
         >
           <span>The New Standard </span>
           <br className="hidden sm:inline" />
           <span>of </span>
           <span className="relative inline-block whitespace-nowrap">
-            <span className="relative z-10 text-slate-900 dark:text-white">
+            <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
               {highlightText || "Digital Industry"}
             </span>
             {/* Hand-drawn marker brush stroke highlight */}
@@ -118,7 +120,12 @@ export function Hero({
           <div className="flex justify-center z-20">
             <Button
               asChild
-              className="w-fit min-w-40 sm:min-w-48 px-8 py-3.5 h-12 rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg font-medium text-base font-geist tracking-tight cursor-pointer"
+              className="w-fit min-w-40 sm:min-w-48 px-9 py-3.5 h-12 rounded-full text-white hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md font-medium text-base font-geist tracking-tight cursor-pointer"
+              style={{ 
+                backgroundColor: '#7B5872', 
+                borderRadius: '9999px',
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+              }}
               onClick={onCtaClick}
             >
               <a href={ctaHref}>{ctaLabel}</a>

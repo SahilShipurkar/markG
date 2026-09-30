@@ -50,25 +50,91 @@ export function Hero({
 
       {/* Centered Content Container */}
       <div 
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-auto pt-4"
+        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-auto pt-4 w-full"
       >
+        {/* 1. Upper-left caption: Built for real-world operations */}
+        <div className="hidden lg:flex absolute -left-16 xl:-left-48 2xl:-left-64 -top-2 xl:-top-3 flex-col items-start z-20 pointer-events-none select-none">
+          <svg
+            className="w-10 h-10 pointer-events-none overflow-visible mb-1 ml-6"
+            viewBox="0 0 40 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 32 34 C 28 20, 20 12, 8 6"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 8 18 L 8 6 L 20 6"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span 
+            className="font-semibold text-[22px] xl:text-[25px] leading-tight -rotate-3 whitespace-nowrap"
+            style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+          >
+            Built for real-world operations
+          </span>
+        </div>
+
+        {/* 4. Mid-Right near blue underline: From machines to meaningful insights. (Arrow pointing left targeting 'Industry') */}
+        <div className="hidden lg:flex absolute -right-36 xl:-right-60 2xl:-right-72 top-1/2 -translate-y-8 items-center z-20 pointer-events-none select-none">
+          <svg
+            className="w-10 h-7 xl:w-12 xl:h-8 pointer-events-none overflow-visible mr-1.5"
+            viewBox="0 0 50 30"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 46 20 C 32 20, 18 16, 6 12"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 16 6 L 6 12 L 16 18"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span 
+            className="font-semibold text-[22px] xl:text-[25px] leading-tight rotate-2 whitespace-nowrap"
+            style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+          >
+            From machines to meaningful insights.
+          </span>
+        </div>
+
         {/* Title with Highlighted Underline */}
         <h1
           className="animate-fade-in text-balance font-semibold text-slate-900 dark:text-white"
           style={{ 
-            fontSize: 'clamp(2.5rem, 5.4vw, 4.75rem)',
-            lineHeight: '1.25',
-            letterSpacing: '-0.03em',
+            fontFamily: "'Caveat', cursive",
+            fontSize: 'clamp(3.2rem, 6.5vw, 5.25rem)',
+            lineHeight: '1.15',
+            letterSpacing: '0',
             paddingTop: '0.5rem',
             paddingBottom: '0.75rem',
-            display: 'inline-block'
+            display: 'inline-block',
+            fontWeight: 600
           }}
         >
           <span>The New Standard </span>
           <br className="hidden sm:inline" />
           <span>of </span>
           <span className="relative inline-block whitespace-nowrap">
-            <span className="relative z-10 text-slate-900 dark:text-white">
+            <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
               {highlightText || "Digital Industry"}
             </span>
             {/* Hand-drawn marker brush stroke highlight */}
@@ -103,18 +169,87 @@ export function Hero({
           </p>
         )}
 
-        {/* CTA Button */}
-        {ctaLabel && (
-          <div className="flex justify-center z-20">
+        {/* CTA Button Wrapper with caption positioned below */}
+        <div className="relative flex flex-col justify-center items-center z-20 w-full mb-8">
+          {ctaLabel && (
             <Button
               asChild
-              className="w-fit min-w-40 sm:min-w-48 px-8 py-3.5 h-12 rounded-xl bg-zinc-950 text-white hover:bg-zinc-800 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg font-medium text-base font-geist tracking-tight cursor-pointer"
+              className="w-fit min-w-40 sm:min-w-48 px-9 py-3.5 h-12 rounded-full text-white hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md font-medium text-base font-geist tracking-tight cursor-pointer"
+              style={{ 
+                backgroundColor: '#7B5872', 
+                borderRadius: '9999px',
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
+              }}
               onClick={onCtaClick}
             >
-              <a href={ctaHref}>{ctaLabel}</a>
+              <a href={ctaHref} onClick={onCtaClick}>{ctaLabel}</a>
             </Button>
+          )}
+
+          {/* 3. Below CTA button: Explore what we can build for you */}
+          <div className="hidden md:flex items-center justify-center mt-5 z-20 pointer-events-none select-none -translate-x-32 md:-translate-x-44 lg:-translate-x-56 xl:-translate-x-60">
+            <span 
+              className="font-semibold text-[21px] lg:text-[24px] leading-tight -rotate-1 whitespace-nowrap"
+              style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+            >
+              Explore what we can build for you
+            </span>
+            <svg
+              className="w-9 h-9 pointer-events-none overflow-visible ml-2 -mt-4"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M 6 28 C 10 18, 18 10, 26 6"
+                stroke="#7B5872"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M 14 6 L 26 6 L 26 18"
+                stroke="#7B5872"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+              />
+            </svg>
           </div>
-        )}
+        </div>
+
+        {/* 6. Lower-right area: Technology that works beyond the screen. (Moved lower) */}
+        <div className="hidden lg:flex absolute -right-24 lg:-right-40 xl:-right-60 2xl:-right-72 -bottom-20 lg:-bottom-24 xl:-bottom-32 flex-col items-start z-20 pointer-events-none select-none">
+          <span 
+            className="font-semibold text-[22px] xl:text-[25px] leading-tight rotate-2 whitespace-nowrap mb-1"
+            style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+          >
+            Technology that works beyond the screen.
+          </span>
+          <svg
+            className="w-10 h-12 pointer-events-none overflow-visible ml-6"
+            viewBox="0 0 40 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 24 4 C 24 20, 20 32, 10 42"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 8 30 L 10 42 L 22 38"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
       </div>
 
       {/* Sliding Marquee Inside Hero */}

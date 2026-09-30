@@ -43,15 +43,31 @@ import {
   Headphones,
   LifeBuoy,
   MessageSquareQuote,
-  Video
+  Video,
+  SlidersHorizontal,
+  Edit3
 } from 'lucide-react';
+import { APPLICATIONS } from './ApplicationsGridSection';
 
-export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertModal, onScrollToSection }) {
+export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertModal, onScrollToSection, onSelectApp }) {
   const [activeMenu, setActiveMenu] = useState(null); // 'solutions' | 'technology' | 'industries' | null
   const [isClosing, setIsClosing] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const navRef = useRef(null);
+
+  const handleAppItemClick = (appId) => {
+    closeMenu();
+    setMobileMenuOpen(false);
+    if (onSelectApp) {
+      const found = APPLICATIONS.find(a => a.id === appId) || { id: appId };
+      onSelectApp(found);
+    } else {
+      window.history.pushState({ page: 'app-detail', appId }, '', `/app/${appId}`);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -342,161 +358,370 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
         >
           <div className="mega-menu-inner">
 
-            {/* 1. SOLUTIONS MEGA-MENU */}
+            {/* 1. SOLUTIONS MEGA-MENU (ODOO STYLE MINIMALIST 8-CATEGORY DIRECTORY FOR MARKG APPS) */}
             {activeMenu === 'solutions' && (
               <div className="mega-menu-content-fade" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #E2E8F0' }}>
-                <div className="container-enterprise" style={{ padding: '2.75rem 2rem 2.5rem', backgroundColor: '#FFFFFF' }}>
+                <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '2.5rem 2rem 2rem', backgroundColor: '#FFFFFF' }}>
                   
-                  {/* 3 Core Solution Columns */}
+                  {/* 8-Category Clean Responsive Grid (4 columns across, 2 rows) */}
                   <div 
                     style={{
                       display: 'grid',
-                      gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '3rem',
+                      gridTemplateColumns: 'repeat(4, 1fr)',
+                      columnGap: '2.75rem',
+                      rowGap: '2.25rem',
                       alignItems: 'start'
                     }}
-                    className="mega-menu-grid"
+                    className="solutions-odoo-grid"
                   >
                     
-                    {/* COLUMN 1: 4M SMART CMMS */}
-                    <div className="stagger-col-1">
+                    {/* CATEGORY 1: CORE ERP & FINANCE */}
+                    <div>
                       <div style={{ 
-                        borderBottom: '2px solid #0B3A70', 
-                        paddingBottom: '0.65rem', 
-                        marginBottom: '1.25rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
+                        borderBottom: '1.5px solid #0D9488', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
                       }}>
-                        <Wrench size={16} style={{ color: '#0B3A70' }} />
                         <span style={{ 
-                          fontSize: '0.85rem', 
-                          fontWeight: '800', 
-                          color: '#0B3A70', 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#0D9488', 
                           letterSpacing: '0.08em', 
                           textTransform: 'uppercase' 
                         }}>
-                          4M SMART CMMS
+                          CORE ERP & FINANCE
                         </span>
                       </div>
-
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         {[
-                          { label: 'Man (Workforce & Skills)', desc: 'Shift scheduling & technician skill matrix' },
-                          { label: 'Machine (Asset Health & Uptime)', desc: 'Predictive health scoring & MTTR logs' },
-                          { label: 'Method (SOPs & Checklists)', desc: 'Interactive digital compliance checklists' },
-                          { label: 'Material (Spares & Inventory)', desc: 'Low-stock triggers & zero-delay requisitions' },
-                          { label: 'Preventive Calendar Schedules', desc: 'Recurring automated work order dispatch' },
-                          { label: 'Downtime Reduction Engine', desc: 'Cuts unplanned downtime by up to 42%' }
+                          { name: 'Enterprise ERP Core', appId: 'erp' },
+                          { name: 'Double-Entry Accounting', appId: 'erp' },
+                          { name: 'GST & E-Way Invoicing', appId: 'erp' },
+                          { name: 'Sales & Purchase Orders', appId: 'erp' },
+                          { name: 'Multi-Warehouse Inventory', appId: 'erp' },
+                          { name: 'Branch Ledger & Cashflow', appId: 'erp' }
                         ].map((item, idx) => (
                           <div 
                             key={idx} 
-                            onClick={() => handleSolutionNav('solutions')}
+                            onClick={() => handleAppItemClick(item.appId)}
                             style={{ 
                               cursor: 'pointer',
-                              padding: '0.2rem 0',
-                              transition: 'all 0.2s ease'
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
                             }}
-                            className="mega-menu-link"
+                            className="hover:text-slate-900 transition-colors"
                           >
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                            {item.name}
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* COLUMN 2: INDUSTRIAL IOT TELEMETRY */}
-                    <div className="stagger-col-2">
+                    {/* CATEGORY 2: 4M OPERATIONS & CMMS */}
+                    <div>
                       <div style={{ 
-                        borderBottom: '2px solid #0284C7', 
-                        paddingBottom: '0.65rem', 
-                        marginBottom: '1.25rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
+                        borderBottom: '1.5px solid #E11D48', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
                       }}>
-                        <Radio size={16} style={{ color: '#0284C7' }} />
                         <span style={{ 
-                          fontSize: '0.85rem', 
-                          fontWeight: '800', 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#E11D48', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          4M OPERATIONS & CMMS
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {[
+                          { name: '4M Smart CMMS Suite', appId: 'cmms' },
+                          { name: 'Machine Health & MTBF/MTTR', appId: 'cmms' },
+                          { name: 'Preventive Maintenance', appId: 'cmms' },
+                          { name: 'Digital SOPs & Checklists', appId: 'cmms' },
+                          { name: 'Spare Parts & Inventory', appId: 'cmms' },
+                          { name: 'Downtime Reduction Engine', appId: 'cmms' }
+                        ].map((item, idx) => (
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ 
+                              cursor: 'pointer',
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
+                            }}
+                            className="hover:text-slate-900 transition-colors"
+                          >
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CATEGORY 3: INDUSTRIAL IOT & G-NOVA */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #0284C7', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
                           color: '#0284C7', 
                           letterSpacing: '0.08em', 
                           textTransform: 'uppercase' 
                         }}>
-                          INDUSTRIAL IOT & EDGE
+                          INDUSTRIAL IOT & G-NOVA
                         </span>
                       </div>
-
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         {[
-                          { label: 'Real-Time Telemetry Feeds', desc: '50Hz sub-second live sensor stream' },
-                          { label: 'Remote Edge Device Fleet', desc: 'Over-The-Air (OTA) firmware updates' },
-                          { label: 'Predictive AI Vibration Analytics', desc: 'Vibration & acoustic signature FFT' },
-                          { label: 'OEE & Machine Downtime', desc: 'Throughput metrics & micro-stoppages' },
-                          { label: 'Smart Alerts & Multi-Channel', desc: 'Instant SMS, Email, & Webhook dispatch' },
-                          { label: 'Secure Edge Pipeline', desc: 'TLS 1.3 & IEC 62443 cyber standards' }
+                          { name: 'G-Nova IoT Dashboard', appId: 'g-nova-iot' },
+                          { name: 'Sub-Second 50Hz Telemetry', appId: 'g-nova-iot' },
+                          { name: 'Terrace Booster Automation', appId: 'g-nova-iot' },
+                          { name: 'Fire Hydrant Safety G-Nova', appId: 'g-nova-iot' },
+                          { name: 'STP & Water Automation', appId: 'g-nova-iot' },
+                          { name: 'AI Vibration Diagnostics', appId: 'g-nova-iot' }
                         ].map((item, idx) => (
                           <div 
                             key={idx} 
-                            onClick={() => handleSolutionNav('solutions')}
+                            onClick={() => handleAppItemClick(item.appId)}
                             style={{ 
                               cursor: 'pointer',
-                              padding: '0.2rem 0',
-                              transition: 'all 0.2s ease'
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
                             }}
-                            className="mega-menu-link"
+                            className="hover:text-slate-900 transition-colors"
                           >
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                            {item.name}
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    {/* COLUMN 3: GRAMUNNATI E-COMMERCE & AGRI APPS */}
-                    <div className="stagger-col-3">
+                    {/* CATEGORY 4: SUPPLY CHAIN & LOGISTICS */}
+                    <div>
                       <div style={{ 
-                        borderBottom: '2px solid #15803D', 
-                        paddingBottom: '0.65rem', 
-                        marginBottom: '1.25rem',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.5rem'
+                        borderBottom: '1.5px solid #7C3AED', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
                       }}>
-                        <Sprout size={16} style={{ color: '#15803D' }} />
                         <span style={{ 
-                          fontSize: '0.85rem', 
-                          fontWeight: '800', 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#7C3AED', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          SUPPLY CHAIN & LOGISTICS
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {[
+                          { name: 'Transporter Middle-Mile Fleet', appId: 'transporter-app' },
+                          { name: 'SHG Rural Delivery Network', appId: 'shg-app' },
+                          { name: 'QR & Barcode Scan Ingest', appId: 'transporter-app' },
+                          { name: 'Cluster Batch Routing', appId: 'transporter-app' },
+                          { name: 'Village Node Ingestion', appId: 'shg-app' },
+                          { name: 'Doorstep Buyer OTP Handover', appId: 'shg-app' }
+                        ].map((item, idx) => (
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ 
+                              cursor: 'pointer',
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
+                            }}
+                            className="hover:text-slate-900 transition-colors"
+                          >
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CATEGORY 5: FIELD FORCE & TELEMETRY */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #16A34A', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#16A34A', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          FIELD FORCE & TELEMETRY
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {[
+                          { name: 'G Track Field Operations', appId: 'g-track' },
+                          { name: 'Live GPS Telemetry & Trails', appId: 'g-track' },
+                          { name: 'Geo-Fenced Mobile Attendance', appId: 'g-track' },
+                          { name: 'Beat & Route Planning', appId: 'g-track' },
+                          { name: 'On-Field Digital Order Booking', appId: 'g-track' },
+                          { name: 'Client Visit Verification', appId: 'g-track' }
+                        ].map((item, idx) => (
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ 
+                              cursor: 'pointer',
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
+                            }}
+                            className="hover:text-slate-900 transition-colors"
+                          >
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CATEGORY 6: AGRI-COMMERCE & RURAL */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #15803D', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
                           color: '#15803D', 
                           letterSpacing: '0.08em', 
                           textTransform: 'uppercase' 
                         }}>
-                          GRAMUNNATI AGRI-COMMERCE
+                          AGRI-COMMERCE & RURAL
                         </span>
                       </div>
-
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         {[
-                          { label: 'Seller App (Farmer & FPO)', desc: 'Crop listing, digital mandi & direct trade' },
-                          { label: 'Buyer App (B2B & Retail)', desc: 'Bulk procurement, auctions & fair pricing' },
-                          { label: 'Transporter App (Logistics)', desc: 'Vehicle route optimization & produce dispatch' },
-                          { label: 'SHG App (Self Help Groups)', desc: 'Community aggregation & rural micro-centers' },
-                          { label: 'GMU-Hub Web Portal', desc: 'Central management, analytics & settlements' },
-                          { label: 'End-to-End Agri Supply Chain', desc: 'Zero middleman commission & instant payout' }
+                          { name: 'GramUnnati Marketplace', appId: 'gram-unnati' },
+                          { name: 'Farmer & FPO Producer App', appId: 'gram-unnati' },
+                          { name: 'B2B Bulk Buyer Platform', appId: 'gram-unnati' },
+                          { name: 'Digital Mandi Price Discovery', appId: 'gram-unnati' },
+                          { name: 'Master Product Catalog', appId: 'gram-unnati' },
+                          { name: 'T+1 Direct Bank Payouts', appId: 'gram-unnati' }
                         ].map((item, idx) => (
                           <div 
                             key={idx} 
-                            onClick={() => handleSolutionNav('solutions')}
+                            onClick={() => handleAppItemClick(item.appId)}
                             style={{ 
                               cursor: 'pointer',
-                              padding: '0.2rem 0',
-                              transition: 'all 0.2s ease'
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
                             }}
-                            className="mega-menu-link"
+                            className="hover:text-slate-900 transition-colors"
                           >
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CATEGORY 7: TASK MANAGEMENT & RACI */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #EA580C', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#EA580C', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          TASK MANAGEMENT (SYNKRO)
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {[
+                          { name: 'SynkroBoard Workspace', appId: 'task-management' },
+                          { name: 'Interactive Kanban & Sprints', appId: 'task-management' },
+                          { name: 'RACI Governance Matrix', appId: 'task-management' },
+                          { name: 'Gantt Timelines & Calendar', appId: 'task-management' },
+                          { name: 'Absence & Leave Scheduling Sync', appId: 'task-management' },
+                          { name: 'Role-Based Dashboards', appId: 'task-management' }
+                        ].map((item, idx) => (
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ 
+                              cursor: 'pointer',
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
+                            }}
+                            className="hover:text-slate-900 transition-colors"
+                          >
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* CATEGORY 8: PLATFORM & EDGE CLOUD */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #7B5872', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '0.85rem'
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#7B5872', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          PLATFORM & EDGE CLOUD
+                        </span>
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                        {[
+                          { name: 'Real-Time WebSocket Bus', appId: 'task-management' },
+                          { name: 'Multi-Channel Alert Engine', appId: 'g-nova-iot' },
+                          { name: 'TimescaleDB Timeseries', appId: 'g-nova-iot' },
+                          { name: 'Digital Document Vault', appId: 'erp' },
+                          { name: 'Enterprise REST & Webhook APIs', appId: 'erp' },
+                          { name: 'Edge Microservice Gateways', appId: 'g-nova-iot' }
+                        ].map((item, idx) => (
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ 
+                              cursor: 'pointer',
+                              fontSize: '0.88rem',
+                              color: '#475569',
+                              fontWeight: '400',
+                              transition: 'color 0.15s ease'
+                            }}
+                            className="hover:text-slate-900 transition-colors"
+                          >
+                            {item.name}
                           </div>
                         ))}
                       </div>
@@ -504,7 +729,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
 
                   </div>
 
-                  {/* Bottom Utility Row */}
+                  {/* Bottom Utility Row (Exact Odoo Style for MarkG) */}
                   <div 
                     style={{
                       marginTop: '2.5rem',
@@ -513,24 +738,36 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: '3rem',
+                      gap: '3.5rem',
                       flexWrap: 'wrap',
-                      fontSize: '0.85rem',
+                      fontSize: '0.88rem',
                       color: '#475569'
                     }}
                     className="stagger-bottom"
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} onClick={() => handleSolutionNav('solutions')}>
-                      <Wrench size={16} style={{ color: '#0B3A70' }} />
-                      <span style={{ fontWeight: '600', color: '#0F172A' }}>4M CMMS Platform Details</span>
+                    <div 
+                      onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Package size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>Connected Ecosystem Apps</span>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} onClick={() => handleSolutionNav('solutions')}>
-                      <Radio size={16} style={{ color: '#0284C7' }} />
-                      <span style={{ fontWeight: '600', color: '#0F172A' }}>Industrial IoT Telemetry Blueprint</span>
+                    <div 
+                      onClick={() => { closeMenu(); onOpenExpertModal?.(); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Edit3 size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>MarkG Studio & Custom ERP</span>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} onClick={() => handleSolutionNav('solutions')}>
-                      <Sprout size={16} style={{ color: '#15803D' }} />
-                      <span style={{ fontWeight: '600', color: '#0F172A' }}>GMU-Hub Web & Connected Apps</span>
+                    <div 
+                      onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Cloud size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>MarkG Edge & Cloud Platform</span>
                     </div>
                   </div>
 

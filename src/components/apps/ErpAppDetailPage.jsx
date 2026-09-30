@@ -39,8 +39,9 @@ import {
   HelpCircle,
   Scale
 } from 'lucide-react';
+import { APPLICATIONS } from '../ApplicationsGridSection';
 
-export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
+export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStepSales, setActiveStepSales] = useState(0); // active accordion step for Sales Cycle
   const [activeStepProcure, setActiveStepProcure] = useState(0); // active accordion step for Procurement Cycle
   const [activeFinanceTab, setActiveFinanceTab] = useState(0); // active tab for Finance Vouchers
@@ -310,28 +311,28 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             </div>
           </div>
 
-          {/* Headline matching Home Hero exact font style and #00A3FF brush underline */}
+          {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
             <h1 
-              className="text-balance font-normal text-slate-900"
+              className="text-balance text-slate-900"
               style={{ 
-                fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
-                lineHeight: '1.25',
-                letterSpacing: '-0.03em',
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
+                lineHeight: '1.15',
+                letterSpacing: '-0.01em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
                 display: 'inline-block',
                 position: 'relative',
                 zIndex: 1,
-                fontWeight: 400
+                fontWeight: 600
               }}
             >
               <span>Enterprise Resource </span>
               <br className="hidden sm:inline" />
-              <span>Planning & </span>
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 text-slate-900 font-normal">
-                  Operations
+                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+                  Planning
                 </span>
                 {/* Hand-drawn marker brush stroke highlight matching hero */}
                 <svg
@@ -347,27 +348,28 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
                   />
                 </svg>
               </span>
+              <span className="text-slate-900 font-semibold"> & Operations</span>
             </h1>
 
             {/* Floating App Logo Square Card with Hand-drawn Curved Arrow */}
             <div className="hidden sm:flex absolute -right-28 md:-right-36 lg:-right-44 bottom-1 md:bottom-2 items-end z-20 pointer-events-none">
               {/* Hand-drawn curved arrow pointing to the text */}
               <svg
-                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 text-slate-700 pointer-events-none overflow-visible -mr-1 mb-2"
+                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 pointer-events-none overflow-visible -mr-1 mb-2"
                 viewBox="0 0 80 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
                   d="M 76 38 C 55 46, 24 38, 8 14"
-                  stroke="#475569"
+                  stroke="#7B5872"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
                 />
                 <path
                   d="M 6 24 L 8 12 L 20 16"
-                  stroke="#475569"
+                  stroke="#7B5872"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -391,7 +393,6 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
                   flexShrink: 0,
                   overflow: 'hidden'
                 }}
-                className="hover:scale-105 transition-transform duration-200"
               >
                 <img 
                   src="/ERP Logo.png" 
@@ -428,19 +429,20 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.8rem 1.75rem',
-                borderRadius: '12px',
+                padding: '0.8rem 1.85rem',
+                borderRadius: '9999px',
                 fontSize: '0.95rem',
-                fontWeight: '400',
-                backgroundColor: '#0F172A',
+                fontWeight: '500',
+                backgroundColor: '#7B5872',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
               }}
+              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Request ERP Platform Demo</span>
               <ArrowRight size={16} />
@@ -553,7 +555,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
                   <span>SALES & BILLING CYCLE</span>
                 </span>
                 
-                <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
                   Customer Orders, <br />
                   Challans & Invoices
                 </h2>
@@ -906,7 +908,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
                   <span>PROCUREMENT & GRN LIFECYCLE</span>
                 </span>
                 
-                <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
                   Purchase Orders, <br />
                   GRNs & Inward Stock
                 </h2>
@@ -951,7 +953,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               FINANCIAL CORE & TAX ENGINE
             </span>
-            <h2 style={{ fontSize: '2rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.3rem, 4vw, 2.85rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Double-Entry Accounting & Automated GST Engine
             </h2>
             <p style={{ color: '#64748B', fontSize: '0.95rem', maxWidth: '680px', margin: '0.5rem auto 0', lineHeight: '1.6' }}>
@@ -1097,7 +1099,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               SYSTEM MASTERS & SECURITY
             </span>
-            <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Master Data Hierarchy & Role-Based Access (RBAC)
             </h2>
           </div>
@@ -1128,37 +1130,76 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             ))}
           </div>
 
-          {/* User Roles & Permissions Matrix */}
-          <div style={{ backgroundColor: '#FFFFFF', border: '1px solid #CBD5E1', borderRadius: '18px', padding: '1.75rem', boxShadow: '0 4px 14px rgba(0,0,0,0.04)' }}>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Users size={18} style={{ color: '#0B3A70' }} />
-              <span>User Roles & Permission Boundaries</span>
-            </h3>
+        </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
-              {rolesMatrix.map((r, idx) => (
-                <div 
-                  key={idx}
-                  style={{
-                    backgroundColor: '#F8FAFC',
-                    border: '1px solid #E2E8F0',
-                    borderRadius: '12px',
-                    padding: '1rem',
-                    borderLeft: `4px solid ${r.color}`
-                  }}
-                >
-                  <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#0F172A', marginBottom: '4px' }}>
-                    {r.role}
+        {/* User Roles & Permissions Matrix - Extended to Right Edge */}
+        <div 
+          style={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'flex-end'
+          }}
+        >
+          <div 
+            style={{
+              width: '100%',
+              maxWidth: 'calc(50vw + 560px)',
+              marginLeft: 'auto',
+              marginRight: 0,
+              backgroundColor: '#FFFFFF',
+              borderTop: '1px solid #CBD5E1',
+              borderBottom: '1px solid #CBD5E1',
+              borderLeft: '1px solid #CBD5E1',
+              borderRight: 'none',
+              borderTopLeftRadius: '28px',
+              borderBottomLeftRadius: '28px',
+              borderTopRightRadius: 0,
+              borderBottomRightRadius: 0,
+              boxShadow: '0 8px 30px rgba(0, 0, 0, 0.05)',
+              paddingTop: '2.25rem',
+              paddingBottom: '2.25rem',
+              paddingLeft: '1.5rem',
+              paddingRight: 'max(1.5rem, calc((100vw - 1120px) / 2 + 1.5rem))',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div 
+              style={{
+                maxWidth: '1072px',
+                marginLeft: 'auto',
+                marginRight: 0
+              }}
+            >
+              <h3 style={{ fontSize: '1.15rem', fontWeight: '500', color: '#0F172A', margin: 0, marginBottom: '1.25rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Users size={18} style={{ color: '#0B3A70' }} />
+                <span>User Roles & Permission Boundaries</span>
+              </h3>
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '1rem' }}>
+                {rolesMatrix.map((r, idx) => (
+                  <div 
+                    key={idx}
+                    style={{
+                      backgroundColor: '#F8FAFC',
+                      border: '1px solid #E2E8F0',
+                      borderRadius: '12px',
+                      padding: '1rem',
+                      borderLeft: `4px solid ${r.color}`
+                    }}
+                  >
+                    <div style={{ fontSize: '0.9rem', fontWeight: '500', color: '#0F172A', marginBottom: '4px' }}>
+                      {r.role}
+                    </div>
+                    <div style={{ fontSize: '0.76rem', color: '#64748B', lineHeight: '1.45' }}>
+                      {r.desc}
+                    </div>
                   </div>
-                  <div style={{ fontSize: '0.76rem', color: '#64748B', lineHeight: '1.45' }}>
-                    {r.desc}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-
         </div>
+
       </section>
 
       {/* ========================================================================= */}
@@ -1171,7 +1212,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               ARCHITECTURE & INFRASTRUCTURE
             </span>
-            <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Enterprise Full-Stack Technology Architecture
             </h2>
           </div>
@@ -1242,16 +1283,30 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ECOSYSTEM
             </span>
-            <h2 style={{ fontSize: '1.75rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Connected Enterprise Platforms
             </h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
-            {connectedApps.map((app, idx) => (
+            {[
+              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: '/G-Nova IOT logo 02.jpg' },
+              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' },
+              { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: '/Task Management & Team Collaboration Logo 01.jpg' }
+            ].map((app, idx) => (
               <div 
                 key={idx}
-                onClick={onOpenExpertModal}
+                onClick={() => {
+                  if (onSelectApp) {
+                    const found = APPLICATIONS.find(a => a.id === app.id) || { id: app.id };
+                    onSelectApp(found);
+                  } else {
+                    window.history.pushState({ page: 'app-detail', appId: app.id }, '', `/app/${app.id}`);
+                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
                 style={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #CBD5E1',
@@ -1272,16 +1327,11 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
                   style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
                 />
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                    <h3 style={{ fontSize: '0.92rem', fontWeight: '500', color: '#0F172A', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {app.name}
-                    </h3>
-                    <span style={{ fontSize: '0.65rem', fontWeight: '400', padding: '1px 5px', borderRadius: '4px', backgroundColor: '#F1F5F9', border: '1px solid #E2E8F0', color: '#475569' }}>
-                      {app.badge}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: '0.75rem', color: '#64748B', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: '400' }}>
-                    {app.desc}
+                  <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0F172A', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {app.name}
+                  </h3>
+                  <p style={{ fontSize: '0.74rem', color: '#EA580C', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {app.tag}
                   </p>
                 </div>
               </div>
@@ -1296,8 +1346,26 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
       {/* ========================================================================= */}
       <section style={{ backgroundColor: '#FFFFFF', color: '#0F172A', padding: '4.5rem 1.5rem', textAlign: 'center', borderTop: '1px solid #CBD5E1' }}>
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '2.25rem', fontWeight: '400', letterSpacing: '-0.02em', margin: 0, marginBottom: '1rem', color: '#0F172A' }}>
-            Transform Your Enterprise Operations with Gmark ERP
+          <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.4rem, 4.2vw, 3rem)', fontWeight: 600, letterSpacing: '0', margin: 0, marginBottom: '1rem', color: '#0F172A', lineHeight: '1.3' }}>
+            <span>Transform Your Enterprise Operations with </span>
+            <span className="relative inline-block whitespace-nowrap">
+              <span className="relative z-10 text-slate-900 font-normal">
+                Gmark ERP
+              </span>
+              {/* Hand-drawn marker brush stroke highlight */}
+              <svg
+                className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-2.5 sm:h-3.5 pointer-events-none z-0 overflow-visible"
+                viewBox="0 0 260 22"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M 4,14 Q 130,5 256,12 Q 130,20 6,17"
+                  fill="#00A3FF"
+                />
+              </svg>
+            </span>
           </h2>
           <p style={{ fontSize: '1rem', color: '#64748B', lineHeight: '1.6', margin: 0, marginBottom: '2rem' }}>
             Schedule an interactive product consultation with our engineering and deployment team to evaluate tailored ERP integration for your supply chain.
@@ -1306,19 +1374,20 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal }) {
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.85rem 2rem',
-                borderRadius: '12px',
+                padding: '0.85rem 2.15rem',
+                borderRadius: '9999px',
                 fontSize: '0.95rem',
                 fontWeight: '500',
-                backgroundColor: '#0F172A',
+                backgroundColor: '#7B5872',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
               }}
+              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Schedule Enterprise Consultation</span>
               <ArrowRight size={16} />

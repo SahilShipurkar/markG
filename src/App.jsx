@@ -68,6 +68,7 @@ export default function App() {
         currentPage={currentPage}
         onNavigate={handleNavigate}
         onOpenExpertModal={() => setIsExpertModalOpen(true)}
+        onSelectApp={handleSelectApp}
       />
 
       {/* Main View Router */}
@@ -85,6 +86,7 @@ export default function App() {
             app={selectedApp}
             onBack={() => handleNavigate('home')}
             onOpenExpertModal={() => setIsExpertModalOpen(true)}
+            onSelectApp={handleSelectApp}
           />
         )}
 

@@ -26,7 +26,16 @@ export default function NextGenTransformationSection({ onOpenExpertModal }) {
             </div>
 
             {/* Main Headline */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-bold text-neutral-950 tracking-tight leading-[1.2] sm:leading-[1.22]">
+            <h2 
+              className="text-neutral-950"
+              style={{
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.5rem, 4.5vw, 3.6rem)',
+                lineHeight: '1.15',
+                letterSpacing: '0',
+                fontWeight: 600
+              }}
+            >
               Are You Ready to{' '}
               <span className="underline decoration-[2.5px] decoration-neutral-950 underline-offset-[6px]">
                 Accelerate

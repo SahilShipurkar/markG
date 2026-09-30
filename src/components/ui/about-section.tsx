@@ -212,7 +212,16 @@ export function AboutSection3({ onCollaborateClick }: { onCollaborateClick?: () 
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-8 mt-6">
           <div className="md:col-span-2">
-            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[135%] sm:!leading-[125%] font-semibold text-gray-900 mb-8">
+            <h1 
+              className="text-gray-900 mb-8"
+              style={{
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(3rem, 5.5vw, 4.5rem)',
+                lineHeight: '1.15',
+                letterSpacing: '0',
+                fontWeight: 600
+              }}
+            >
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.04}

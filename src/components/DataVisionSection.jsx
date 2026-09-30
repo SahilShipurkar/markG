@@ -67,18 +67,19 @@ export default function DataVisionSection() {
           {/* Main Headline */}
           <div className="relative mb-6 sm:mb-8 max-w-4xl w-full">
             <h2
-              className="text-slate-900 font-normal tracking-tight"
+              className="text-slate-900 tracking-normal"
               style={{
-                fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
-                lineHeight: '1.2',
-                letterSpacing: '-0.02em',
-                fontWeight: 400,
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.6rem, 4.8vw, 4rem)',
+                lineHeight: '1.15',
+                letterSpacing: '0',
+                fontWeight: 600,
               }}
             >
               <span className="block whitespace-normal sm:whitespace-nowrap">
                 Let Your Data Take Your Business to
               </span>
-              <span className="text-[#ff5c6c] font-normal block mt-1">
+              <span className="text-[#ff5c6c] block mt-1 font-semibold">
                 Higher Grounds
               </span>
             </h2>

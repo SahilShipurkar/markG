@@ -284,12 +284,13 @@ export default function CommunityOrbit({
             transition={{ duration: 0.7, delay: 1.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <h2 
-              className="w-full max-w-[850px] text-center font-normal tracking-tight text-slate-800 mx-auto"
+              className="w-full max-w-[850px] text-center text-slate-900 mx-auto"
               style={{
-                fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
-                lineHeight: '1.2',
-                letterSpacing: '-0.02em',
-                fontWeight: 400,
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.5rem, 4.5vw, 3.8rem)',
+                lineHeight: '1.15',
+                letterSpacing: '0',
+                fontWeight: 600,
               }}
             >
               {headline}

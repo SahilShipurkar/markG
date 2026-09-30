@@ -38,25 +38,26 @@ export const APPLICATIONS = [
     id: 'gram-unnati',
     name: 'GramUnnati',
     category: 'Agritech Supply Chain',
-    tagline: 'Digital agriculture marketplace & farmer advisory',
+    tagline: 'Agricultural e-commerce & rural empowerment marketplace',
     image: '/Final Logo-09.jpg.jpeg',
     fallbackIcon: Sprout,
-    badge: 'Agritech',
-    accent: '#14b8a6',
-    description: 'End-to-end digital marketplace connecting farming communities to enterprise buyers with real-time soil and crop health advisories.',
-    features: ['Direct market price discovery', 'Soil telemetry & weather forecasts', 'Crop health diagnostic tools', 'Transparent settlement gateway']
+    badge: 'Agri-Commerce',
+    accent: '#16a34a',
+    description: 'All-in-one digital marketplace connecting farmers, rural micro-enterprises, and Women Self-Help Groups with verified sellers, fair pricing, and live shipment tracking.',
+    features: ['Buyer & Seller Mobile Apps', 'Master Catalog with variants & combos', 'Verified seller KYC pipeline', 'T+1 direct bank settlements']
   },
   {
     id: 'g-nova-iot',
     name: 'G-Nova IoT',
     category: 'Industrial Automation',
-    tagline: '50Hz sensor ingestion & telemetry controllers',
+    tagline: 'G-Nova visualization & 4M facility telemetry',
     image: '/G-Nova IOT logo 02.jpg',
+    imageClassName: 'scale-[1.5] object-contain',
     fallbackIcon: Cpu,
-    badge: 'Hardware & Cloud',
+    badge: 'Hardware & G-Nova',
     accent: '#8b5cf6',
-    description: 'Industrial IoT telemetry gateways connecting PLC, SCADA, vibration sensors, and environmental monitoring nodes.',
-    features: ['50Hz streaming analytics', 'Edge anomaly detection', 'RS485/Modbus/MQTT bridge', 'Zero-latency sensor telemetry']
+    description: 'Sub-second G-Nova visualization, predictive fault alarms, and complete 4M (Man, Machine, Material, Method) asset governance.',
+    features: ['< 500ms telemetry latency', '4M asset governance framework', 'Pre-engineered G-Nova templates', 'Multi-tenant hierarchy & alerts']
   },
   {
     id: 'erp',
@@ -74,15 +75,15 @@ export const APPLICATIONS = [
   {
     id: 'g-track',
     name: 'G Track',
-    category: 'Fleet & Logistics',
-    tagline: 'Real-time GPS telemetry & cold-chain monitoring',
+    category: 'Field Force & Telemetry',
+    tagline: 'Field force management, geo-attendance & order booking',
     image: '/G Track logo.png',
     imageClassName: 'p-1.5 sm:p-2 scale-[0.86]',
     fallbackIcon: Truck,
-    badge: 'Live GPS',
+    badge: 'Live Tracking',
     accent: '#10b981',
-    description: 'Enterprise fleet tracking, route optimization, vehicle health telemetry, and cold-chain temperature monitoring.',
-    features: ['Sub-second GPS location tracking', 'Geofencing & smart route alerts', 'Driver safety scorecards', 'Fuel & engine diagnostics']
+    description: 'All-in-one employee tracking and field operations platform. Real-time GPS telemetry, geo-fenced attendance, client visits, and on-field digital order booking.',
+    features: ['Real-time location & breadcrumb trails', 'Geo-verified mobile attendance', 'On-field order booking & catalog', 'Beat planning & productivity reports']
   },
   {
     id: 'shg-app',
@@ -111,14 +112,14 @@ export const APPLICATIONS = [
   {
     id: 'task-management',
     name: 'Task Management',
-    category: 'Workforce Productivity',
-    tagline: 'Digital work orders & field collaboration',
+    category: 'Enterprise Productivity',
+    tagline: 'All-in-one collaborative workspace & agile project governance',
     image: '/Task Management & Team Collaboration Logo 01.jpg',
     fallbackIcon: Users,
-    badge: 'Collaboration',
-    accent: '#ec4899',
-    description: 'Comprehensive task dispatch and shift coordination platform for industrial maintenance engineers and field operators.',
-    features: ['Automated shift dispatch', 'Digital sign-off checklists', 'Real-time incident escalation', 'Team productivity metrics']
+    badge: 'SynkroBoard',
+    accent: '#F97316',
+    description: 'Collaborative project and workspace management platform with interactive Kanban, RACI matrix, Gantt timelines, absence-aware scheduling, and live WebSocket sync.',
+    features: ['Multi-View Project Visualization (Kanban/Gantt/RACI)', 'Automated Leave & Absence Scheduling Sync', 'Contextual Real-Time WebSocket Team Chat', 'Role-Based Dashboards & RBAC Governance']
   }
 ];
 
@@ -137,20 +138,21 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
     <div className="w-full min-h-screen bg-[#e8e8e8] pt-2 sm:pt-4 pb-16 sm:pb-24 px-4 sm:px-8 lg:px-12 flex flex-col justify-center items-center font-['Inter',sans-serif]">
       <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
         
-        {/* Section Heading with minimized boldness */}
+        {/* Section Heading with Caveat handwriting font style */}
         <h2
-          className="text-balance font-normal text-slate-800 text-center mb-8 sm:mb-12 md:mb-14 -translate-y-14 sm:-translate-y-24 md:-translate-y-28"
+          className="text-balance text-slate-900 text-center mb-8 sm:mb-12 md:mb-14 -translate-y-14 sm:-translate-y-24 md:-translate-y-28"
           style={{ 
-            fontSize: 'clamp(2rem, 3.8vw, 3.25rem)',
-            lineHeight: '1.2',
-            letterSpacing: '-0.02em',
-            fontWeight: 400,
+            fontFamily: "'Caveat', cursive",
+            fontSize: 'clamp(2.6rem, 4.8vw, 4rem)',
+            lineHeight: '1.15',
+            letterSpacing: '0',
+            fontWeight: 600,
             display: 'inline-block'
           }}
         >
           <span>Integrated Applications </span>
           <span className="relative inline-block whitespace-nowrap">
-            <span className="relative z-10 text-slate-800 font-normal">
+            <span className="relative z-10 text-slate-900 font-semibold">
               & Platforms
             </span>
             {/* Hand-drawn marker brush stroke highlight matching hero */}
@@ -193,7 +195,7 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                     <img
                       src={app.image}
                       alt={app.name}
-                      className={`w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-300 ${app.imageClassName || ''}`}
+                      className={`w-full h-full object-contain rounded-xl ${app.imageClassName || ''}`}
                     />
                   ) : (
                     <div 
@@ -287,7 +289,8 @@ export default function ApplicationsGridSection({ onOpenExpertModal, onSelectApp
                     setSelectedApp(null);
                     onOpenExpertModal();
                   }}
-                  className="flex-1 py-3 bg-neutral-950 hover:bg-neutral-800 text-white text-xs font-bold uppercase tracking-wider rounded-xl shadow-md transition-colors text-center cursor-pointer"
+                  style={{ backgroundColor: '#7B5872', boxShadow: '0 4px 14px rgba(123, 88, 114, 0.35)' }}
+                  className="flex-1 py-3 text-white text-xs font-bold uppercase tracking-wider rounded-full hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all text-center cursor-pointer"
                 >
                   Request Platform Demo
                 </button>

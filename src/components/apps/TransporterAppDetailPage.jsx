@@ -32,8 +32,9 @@ import {
   Home,
   BellRing
 } from 'lucide-react';
+import { APPLICATIONS } from '../ApplicationsGridSection';
 
-export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) {
+export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStepP1, setActiveStepP1] = useState(0); // active accordion step for Phase 1
   const [activeStepP2, setActiveStepP2] = useState(0); // active accordion step for Phase 2
 
@@ -211,20 +212,21 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
             </div>
           </div>
 
-          {/* Headline matching Home Hero exact font style and #00A3FF brush underline */}
+          {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
             <h1 
-              className="text-balance font-normal text-slate-900"
+              className="text-balance text-slate-900"
               style={{ 
-                fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
-                lineHeight: '1.25',
-                letterSpacing: '-0.03em',
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(3rem, 6.4vw, 5.25rem)',
+                lineHeight: '1.15',
+                letterSpacing: '-0.01em',
                 paddingTop: '0.25rem',
                 paddingBottom: '0.75rem',
                 display: 'inline-block',
                 position: 'relative',
                 zIndex: 1,
-                fontWeight: 400
+                fontWeight: 600
               }}
             >
               <span>Middle-Mile & Hub Fleet </span>
@@ -232,8 +234,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
               <span>Logistics of </span>
               <br className="hidden sm:inline" />
               <span className="relative inline-block whitespace-nowrap">
-                <span className="relative z-10 text-slate-900 font-normal">
-                  Transporter Network
+                <span className="relative z-10 font-semibold" style={{ color: '#FC787D' }}>
+                  Transporter
                 </span>
                 {/* Hand-drawn marker brush stroke highlight matching hero */}
                 <svg
@@ -249,13 +251,14 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                   />
                 </svg>
               </span>
+              <span className="text-slate-900 font-semibold"> Network</span>
             </h1>
 
             {/* Floating App Logo Square Card with Hand-drawn Curved Arrow (Positioned beside 'Logistics of' matching red marked location) */}
             <div className="hidden sm:flex absolute -right-24 sm:-right-28 md:-right-36 lg:-right-44 top-[26%] sm:top-[28%] md:top-[30%] items-center z-20 pointer-events-none">
               {/* Hand-drawn curved arrow pointing to 'Logistics of' */}
               <svg
-                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 text-slate-700 pointer-events-none overflow-visible -mr-1"
+                className="w-14 h-10 md:w-16 md:h-12 lg:w-20 lg:h-14 pointer-events-none overflow-visible -mr-1"
                 viewBox="0 0 80 50"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -263,7 +266,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                 {/* Curved arc from logo towards 'Logistics of' */}
                 <path
                   d="M 76 26 C 52 40, 24 34, 8 16"
-                  stroke="#475569"
+                  stroke="#7B5872"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   fill="none"
@@ -271,7 +274,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                 {/* Arrowhead pointing left/upward */}
                 <path
                   d="M 20 10 L 8 16 L 16 28"
-                  stroke="#475569"
+                  stroke="#7B5872"
                   strokeWidth="2.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -295,7 +298,6 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                   flexShrink: 0,
                   overflow: 'hidden'
                 }}
-                className="hover:scale-105 transition-transform duration-200"
               >
                 <img 
                   src="/SHG Delivary and Transporter Logo.jpg" 
@@ -332,19 +334,20 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
             <button
               onClick={onOpenExpertModal}
               style={{
-                padding: '0.8rem 1.75rem',
-                borderRadius: '12px',
+                padding: '0.8rem 1.85rem',
+                borderRadius: '9999px',
                 fontSize: '0.95rem',
-                fontWeight: '400',
-                backgroundColor: '#0F172A',
+                fontWeight: '500',
+                backgroundColor: '#7B5872',
                 color: '#FFFFFF',
                 border: 'none',
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '8px',
-                boxShadow: '0 4px 14px rgba(15, 23, 42, 0.15)'
+                boxShadow: '0 4px 16px rgba(123, 88, 114, 0.35)'
               }}
+              className="hover:scale-[1.02] active:scale-[0.98] transition-transform"
             >
               <span>Request Platform Demo</span>
               <ArrowRight size={16} />
@@ -458,7 +461,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                   <span>PHASE 1 WORKFLOW</span>
                 </span>
                 
-                <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
                   Village Node Pickup <br />
                   & GMU Hub Intake
                 </h2>
@@ -808,7 +811,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                   <span>PHASE 2 WORKFLOW</span>
                 </span>
                 
-                <h2 style={{ fontSize: '1.85rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', lineHeight: '1.25', marginTop: '2px', marginBottom: '0.75rem' }}>
+                <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.2rem, 3.8vw, 2.75rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', lineHeight: '1.2', marginTop: '2px', marginBottom: '0.75rem' }}>
                   Hub Outbound Dispatch <br />
                   & Destination SHG Drop-off
                 </h2>
@@ -842,23 +845,37 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
       {/* ========================================================================= */}
       {/* 4. CONNECTED SUPPLY CHAIN APPS GRID (CLEAN UNBOLDED) */}
       {/* ========================================================================= */}
-      <section style={{ backgroundColor: '#e8e8e8', padding: '4rem 0 4.5rem', borderTop: '1px solid #CBD5E1' }}>
+      <section style={{ backgroundColor: '#FFFFFF', padding: '4rem 0 4.5rem', borderTop: '1px solid #E2E8F0' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
           
           <div style={{ marginBottom: '1.75rem' }}>
             <span style={{ fontSize: '0.78rem', color: '#0B3A70', fontWeight: '400', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
               INTEGRATED ECOSYSTEM
             </span>
-            <h2 style={{ fontSize: '1.75rem', fontWeight: '400', color: '#0F172A', letterSpacing: '-0.02em', marginTop: '4px' }}>
+            <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
               Connected GMU Logistics Applications
             </h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
-            {connectedApps.map((app, idx) => (
+            {[
+              { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: '/ERP Logo.png' },
+              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: '/G-Nova IOT logo 02.jpg' },
+              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' }
+            ].map((app, idx) => (
               <div 
                 key={idx}
-                onClick={onOpenExpertModal}
+                onClick={() => {
+                  if (onSelectApp) {
+                    const found = APPLICATIONS.find(a => a.id === app.id) || { id: app.id };
+                    onSelectApp(found);
+                  } else {
+                    window.history.pushState({ page: 'app-detail', appId: app.id }, '', `/app/${app.id}`);
+                    window.dispatchEvent(new PopStateEvent('popstate'));
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
                 style={{
                   backgroundColor: '#FFFFFF',
                   border: '1px solid #CBD5E1',
@@ -879,16 +896,11 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal }) 
                   style={{ width: '42px', height: '42px', objectFit: 'contain', borderRadius: '10px', border: '1px solid #E2E8F0', padding: '2px', backgroundColor: '#FFFFFF', flexShrink: 0 }} 
                 />
                 <div style={{ minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '2px' }}>
-                    <h3 style={{ fontSize: '0.92rem', fontWeight: '400', color: '#0F172A', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                      {app.name}
-                    </h3>
-                    <span style={{ fontSize: '0.65rem', fontWeight: '400', padding: '1px 5px', borderRadius: '4px', backgroundColor: '#FFFFFF', border: '1px solid #E2E8F0', color: '#475569' }}>
-                      {app.badge}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: '0.75rem', color: '#64748B', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: '400' }}>
-                    {app.desc}
+                  <h3 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#0F172A', margin: '0 0 2px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {app.name}
+                  </h3>
+                  <p style={{ fontSize: '0.74rem', color: '#EA580C', fontWeight: '700', margin: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {app.tag}
                   </p>
                 </div>
               </div>

@@ -5,6 +5,14 @@ import DataVisionSection from '@/components/DataVisionSection';
 import CommunityOrbitDemo from '@/components/ui/builders-community-hero-demo';
 
 export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp }) {
+  const scrollToApplications = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    const section = document.getElementById('applications-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="w-full flex flex-col bg-[#e8e8e8] text-slate-900" style={{ backgroundColor: '#e8e8e8' }}>
       {/* 1st Page: Hero Section */}
@@ -13,8 +21,8 @@ export default function HomePage({ onOpenExpertModal, onNavigate, onSelectApp })
         highlightText="Digital Industry"
         subtitle="Use Accurate Data to Get a 360-Degree View of Your Business. Accelerate decisions with industrial-grade intelligence."
         ctaLabel="Learn More"
-        ctaHref="#solutions"
-        onCtaClick={onOpenExpertModal}
+        ctaHref="#applications-section"
+        onCtaClick={scrollToApplications}
         showMarquee={true}
       />
       
