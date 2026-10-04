@@ -778,6 +778,198 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
       </section>
 
       {/* ========================================================================= */}
+      {/* 4.5. VISUAL ODOO-STYLE SHOWCASE 1: "LEVEL UP YOUR FIELD OPERATIONS" (g-track1.jpeg) */}
+      {/* ========================================================================= */}
+      <section 
+        style={{ 
+          backgroundColor: '#e8e8e8', 
+          borderBottom: '1px solid #CBD5E1', 
+          padding: '4.5rem 0 5.5rem' 
+        }}
+      >
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          
+          {/* Odoo Style Heading with Floating Sticky Note */}
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem', position: 'relative' }}>
+            <div className="inline-block relative">
+              
+              {/* Floating Executive Quote Sticky Note */}
+              <div className="hidden sm:flex absolute -top-12 sm:-top-14 -right-4 md:-right-24 z-20 items-start">
+                <div className="relative">
+                  {/* Speech Bubble Icon on Top */}
+                  <div className="absolute -top-4 left-6 z-30">
+                    <div className="w-6 h-6 bg-white rounded-full shadow-md border border-gray-200 flex items-center justify-center text-xs">
+                      💬
+                    </div>
+                  </div>
+                  
+                  {/* Yellow folded note backing */}
+                  <div 
+                    style={{
+                      backgroundColor: '#F59E0B',
+                      borderRadius: '16px',
+                      padding: '4px',
+                      boxShadow: '0 10px 25px rgba(245, 158, 11, 0.28)',
+                      transform: 'rotate(2.5deg)'
+                    }}
+                  >
+                    <div 
+                      style={{
+                        backgroundColor: '#FFFFFF',
+                        borderRadius: '12px',
+                        padding: '8px 14px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.06)'
+                      }}
+                    >
+                      <div style={{ width: '30px', height: '30px', borderRadius: '50%', backgroundColor: '#0B3A70', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '11px', flexShrink: 0 }}>
+                        <span style={{ fontSize: '13px' }}>⚡</span>
+                      </div>
+                      <div style={{ textAlign: 'left' }}>
+                        <p style={{ fontSize: '0.78rem', fontWeight: '600', color: '#1E293B', margin: 0, lineHeight: 1.3, fontStyle: 'italic' }}>
+                          "When you track with precision, you empower every mission!"
+                        </p>
+                        <span style={{ fontSize: '0.68rem', color: '#64748B', fontWeight: '500' }}>
+                          — G Mark Field Intelligence
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Main Headline */}
+              <h2 style={{ 
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.6rem, 5vw, 3.8rem)', 
+                fontWeight: 700, 
+                color: '#0F172A',
+                letterSpacing: '0',
+                lineHeight: 1.2,
+                margin: 0,
+                display: 'inline-flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: '0.35em'
+              }}>
+                {/* "Level up" with coral/salmon highlighter brush background */}
+                <span className="relative inline-block px-3 py-0.5 my-1">
+                  <span 
+                    className="absolute inset-0 rounded-md"
+                    style={{ 
+                      backgroundColor: '#FC787D', 
+                      transform: 'skewX(-4deg) rotate(-1.5deg)',
+                      opacity: 0.95
+                    }} 
+                  />
+                  <span className="relative z-10 text-white font-bold">
+                    Level up
+                  </span>
+                </span>
+
+                <span>your field force</span>
+
+                {/* "operations" with cyan/teal brush underline */}
+                <span className="relative inline-block">
+                  <span className="relative z-10" style={{ color: '#0F172A' }}>
+                    operations
+                  </span>
+                  <svg
+                    className="absolute -bottom-1.5 left-0 w-full h-3 pointer-events-none z-0 overflow-visible"
+                    viewBox="0 0 100 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      d="M 2,7 Q 50,1 98,6 Q 50,11 2,8"
+                      fill="#00D2B4"
+                    />
+                  </svg>
+                </span>
+              </h2>
+            </div>
+
+            <p style={{ fontSize: '1.05rem', color: '#64748B', maxWidth: '640px', margin: '1.25rem auto 0', fontWeight: 400 }}>
+              Continuous GPS tracking, interactive Google Maps waypoint timelines, and real-time trip ping analytics.
+            </p>
+          </div>
+
+          {/* Elevated Showcase Frame with Elevated Window */}
+          <div className="relative w-full max-w-5xl mx-auto">
+            
+            {/* Main Application Window Card */}
+            <div 
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: '24px',
+                border: '1px solid #CBD5E1',
+                boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.12), 0 10px 25px -5px rgba(0, 0, 0, 0.05)',
+                overflow: 'hidden'
+              }}
+            >
+              {/* Browser Header Bar */}
+              <div style={{
+                backgroundColor: '#F8FAFC',
+                borderBottom: '1px solid #E2E8F0',
+                padding: '0.85rem 1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#EF4444' }} />
+                  <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#F59E0B' }} />
+                  <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+                </div>
+                
+                <div style={{
+                  fontSize: '0.78rem',
+                  fontWeight: '600',
+                  color: '#475569',
+                  backgroundColor: '#FFFFFF',
+                  padding: '4px 14px',
+                  borderRadius: '100px',
+                  border: '1px solid #E2E8F0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+                  Live Tracker / Journey Timeline & Map Route
+                </div>
+
+                <div style={{ fontSize: '0.75rem', color: '#16A34A', fontWeight: '700', letterSpacing: '0.04em' }}>
+                  ● LIVE GPS TELEMETRY
+                </div>
+              </div>
+
+              {/* Real Dashboard Image */}
+              <div style={{ padding: '0.85rem', backgroundColor: '#F1F5F9' }}>
+                <img 
+                  src={getAssetUrl("/g-track1.jpeg")} 
+                  alt="G-Track Live GPS Journey Timeline & Route Map"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    borderRadius: '16px',
+                    border: '1px solid #E2E8F0'
+                  }}
+                />
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
       {/* 5. THE 3-TIER PLATFORM ECOSYSTEM (MOBILE APP, ADMIN DASHBOARD, API BACKEND) */}
       {/* ========================================================================= */}
       <section style={{ backgroundColor: '#FFFFFF', padding: '4.5rem 0 5rem', borderBottom: '1px solid #CBD5E1' }}>
@@ -924,6 +1116,239 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                   </div>
                 ))}
               </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5.5. VISUAL ODOO-STYLE SHOWCASE 2: "NO MANUAL TRAVEL LOGS! JUST AUTOMATION" WITH OVERLAPPING CARD & CURVED ARROW (g-track2.jpeg) */}
+      {/* ========================================================================= */}
+      <section 
+        style={{ 
+          backgroundColor: '#FFFFFF', 
+          borderBottom: '1px solid #CBD5E1', 
+          padding: '4.5rem 0 5.5rem' 
+        }}
+      >
+        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem' }}>
+          
+          {/* Odoo Style Handwritten Dual-Line Heading with Cross and Check Badges */}
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            
+            {/* Line 1: No manual travel logs! */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+              <span 
+                style={{
+                  width: '26px',
+                  height: '26px',
+                  borderRadius: '50%',
+                  backgroundColor: '#FEE2E2',
+                  border: '2px solid #EF4444',
+                  color: '#DC2626',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '13px',
+                  fontWeight: '900',
+                  flexShrink: 0
+                }}
+              >
+                ✕
+              </span>
+              <h2 style={{ 
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', 
+                fontWeight: 600, 
+                color: '#0F172A',
+                letterSpacing: '0',
+                lineHeight: 1.1,
+                margin: 0
+              }}>
+                No manual travel logs!
+              </h2>
+            </div>
+
+            {/* Wavy blue brush stroke */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '-4px', marginBottom: '4px' }}>
+              <svg className="w-56 h-3 text-[#00A3FF]" viewBox="0 0 200 12" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round">
+                <path d="M 4,6 Q 28,1 54,6 T 104,6 T 154,6 T 196,6" />
+              </svg>
+            </div>
+
+            {/* Line 2: Just automated performance analytics */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', justifyContent: 'center' }}>
+              <h2 style={{ 
+                fontFamily: "'Caveat', cursive",
+                fontSize: 'clamp(2.4rem, 4.5vw, 3.4rem)', 
+                fontWeight: 600, 
+                color: '#0F172A',
+                letterSpacing: '0',
+                lineHeight: 1.1,
+                margin: 0
+              }}>
+                Just automated performance analytics
+              </h2>
+              <span 
+                style={{
+                  width: '26px',
+                  height: '26px',
+                  borderRadius: '50%',
+                  backgroundColor: '#DCFCE7',
+                  border: '2px solid #16A34A',
+                  color: '#16A34A',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '13px',
+                  fontWeight: '900',
+                  flexShrink: 0
+                }}
+              >
+                ✓
+              </span>
+            </div>
+
+            <p style={{ fontSize: '1.05rem', color: '#64748B', maxWidth: '620px', margin: '1rem auto 0' }}>
+              Experience zero spreadsheet reporting. Our centralized admin dashboard tracks live employee distance, trip attendance, and order completion metrics across field teams automatically.
+            </p>
+
+          </div>
+
+          {/* Overlapping Dual-Card Layout with Hand-Drawn Curved Arrow */}
+          <div className="relative w-full max-w-5xl mx-auto mt-8">
+            
+            {/* Prominent Curved Hand-Drawn Arrow in Berry Plum (#7B5872) pointing from floating card to main board */}
+            <div className="hidden lg:block absolute top-6 right-64 z-30 pointer-events-none">
+              <svg 
+                width="90" 
+                height="80" 
+                viewBox="0 0 90 80" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path 
+                  d="M 75,5 C 25,10 15,55 35,70" 
+                  stroke="#7B5872" 
+                  strokeWidth="3.5" 
+                  strokeLinecap="round" 
+                  fill="none"
+                />
+                <path 
+                  d="M 23,60 L 35,70 L 40,55" 
+                  stroke="#7B5872" 
+                  strokeWidth="3.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  fill="none"
+                />
+              </svg>
+            </div>
+
+            {/* Floating Overlapping Task Inspector Card (Top-Right) */}
+            <div 
+              className="hidden sm:block absolute -top-8 -right-4 lg:-right-6 z-20"
+              style={{
+                width: '270px',
+                backgroundColor: '#0F172A',
+                color: '#FFFFFF',
+                borderRadius: '18px',
+                padding: '1.25rem',
+                border: '2px solid #334155',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.35)',
+                transform: 'rotate(2deg)'
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.75rem' }}>
+                <span style={{ fontSize: '0.7rem', fontWeight: '700', color: '#10B981', backgroundColor: '#ECFDF5', padding: '2px 8px', borderRadius: '100px' }}>
+                  MONTH: OCT 2026
+                </span>
+                <span style={{ fontSize: '0.7rem', color: '#94A3B8' }}>
+                  Active Reps: 3+
+                </span>
+              </div>
+              
+              <h4 style={{ fontSize: '0.95rem', fontWeight: '700', color: '#FFFFFF', margin: '0 0 6px' }}>
+                Field Travel Telemetry
+              </h4>
+              
+              <p style={{ fontSize: '0.75rem', color: '#94A3B8', margin: '0 0 10px' }}>
+                Status: <strong style={{ color: '#E2E8F0' }}>Live Synchronized</strong> • 0.00 km Leakage
+              </p>
+
+              {/* Mini Progress Bar */}
+              <div style={{ width: '100%', height: '6px', backgroundColor: '#334155', borderRadius: '100px', overflow: 'hidden' }}>
+                <div style={{ width: '100%', height: '100%', backgroundColor: '#10B981', borderRadius: '100px' }} />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.7rem', color: '#10B981', fontWeight: '600', marginTop: '4px' }}>
+                <span>100% Geo-Verified</span>
+                <span>Audit Ready</span>
+              </div>
+            </div>
+
+            {/* Main Application Window Card displaying g-track2.jpeg */}
+            <div 
+              style={{
+                backgroundColor: '#FFFFFF',
+                borderRadius: '24px',
+                border: '1px solid #CBD5E1',
+                boxShadow: '0 25px 60px -15px rgba(0, 0, 0, 0.12), 0 10px 25px -5px rgba(0, 0, 0, 0.05)',
+                overflow: 'hidden'
+              }}
+            >
+              {/* Browser Header Bar */}
+              <div style={{
+                backgroundColor: '#F8FAFC',
+                borderBottom: '1px solid #E2E8F0',
+                padding: '0.85rem 1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#EF4444' }} />
+                  <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#F59E0B' }} />
+                  <div style={{ width: '11px', height: '11px', borderRadius: '50%', backgroundColor: '#10B981' }} />
+                </div>
+                
+                <div style={{
+                  fontSize: '0.78rem',
+                  fontWeight: '600',
+                  color: '#475569',
+                  backgroundColor: '#FFFFFF',
+                  padding: '4px 14px',
+                  borderRadius: '100px',
+                  border: '1px solid #E2E8F0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px'
+                }}>
+                  <span style={{ width: '7px', height: '7px', borderRadius: '50%', backgroundColor: '#2563EB' }} />
+                  Admin Dashboard / Monthly Employee Travel Report
+                </div>
+
+                <div style={{ fontSize: '0.75rem', color: '#2563EB', fontWeight: '700', letterSpacing: '0.04em' }}>
+                  ● MONITORED REAL-TIME
+                </div>
+              </div>
+
+              {/* Real Admin Dashboard Screenshot */}
+              <div style={{ padding: '0.85rem', backgroundColor: '#F1F5F9' }}>
+                <img 
+                  src={getAssetUrl("/g-track2.jpeg")} 
+                  alt="G-Track Admin Dashboard & Monthly Employee Travel Report"
+                  style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    borderRadius: '16px',
+                    border: '1px solid #E2E8F0'
+                  }}
+                />
+              </div>
+
             </div>
 
           </div>
