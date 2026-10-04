@@ -1372,26 +1372,6 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               <span>Schedule Enterprise Consultation</span>
               <ArrowRight size={16} />
             </button>
-            <button
-              onClick={onBack}
-              style={{
-                padding: '0.85rem 1.75rem',
-                borderRadius: '12px',
-                fontSize: '0.95rem',
-                fontWeight: '400',
-                backgroundColor: '#F8FAFC',
-                color: '#334155',
-                border: '1px solid #CBD5E1',
-                cursor: 'pointer',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
-              }}
-            >
-              <ArrowLeft size={16} />
-              <span>Back to Platforms</span>
-            </button>
           </div>
         </div>
       </section>

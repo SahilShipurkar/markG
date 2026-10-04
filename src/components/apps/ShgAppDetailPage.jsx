@@ -292,33 +292,6 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         />
 
         <div style={{ maxWidth: '920px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          
-          {/* Back Navigation Bar */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginBottom: '1.5rem' }}>
-            <button
-              onClick={onBack}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '6px 14px',
-                backgroundColor: '#F1F5F9',
-                border: '1px solid #CBD5E1',
-                borderRadius: '100px',
-                color: '#334155',
-                fontSize: '0.82rem',
-                fontWeight: '500',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-              className="hover:bg-slate-200"
-            >
-              <ArrowLeft size={15} />
-              <span>Back to Platforms</span>
-            </button>
-          </div>
-
-
 
           {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">

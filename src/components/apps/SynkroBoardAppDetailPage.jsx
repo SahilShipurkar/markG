@@ -214,28 +214,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
           padding: '0.75rem 1.5rem'
         }}
       >
-        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <button
-            onClick={onBack}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              fontSize: '0.85rem',
-              fontWeight: '500',
-              color: '#334155',
-              backgroundColor: '#FFFFFF',
-              border: '1px solid #CBD5E1',
-              padding: '6px 14px',
-              borderRadius: '8px',
-              cursor: 'pointer',
-              transition: 'all 0.15s ease'
-            }}
-          >
-            <ArrowLeft size={16} />
-            <span>Back to Applications</span>
-          </button>
-
+        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#F97316', backgroundColor: '#FFF7ED', padding: '3px 10px', borderRadius: '100px', border: '1px solid #FFEDD5', letterSpacing: '0.04em' }}>
               ENTERPRISE TASK & WORKSPACE ECOSYSTEM

@@ -234,28 +234,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
           padding: '0.75rem 1.5rem'
         }}
       >
-        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <button
-            onClick={onBack}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              padding: '0.45rem 0.9rem',
-              borderRadius: '8px',
-              border: '1px solid #CBD5E1',
-              backgroundColor: '#FFFFFF',
-              color: '#334155',
-              fontSize: '0.85rem',
-              fontWeight: '500',
-              cursor: 'pointer'
-            }}
-            className="hover:bg-slate-50 transition-colors"
-          >
-            <ArrowLeft size={16} />
-            <span>Back to Platforms</span>
-          </button>
-
+        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <span style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: '500' }}>Platform Suite</span>
             <span style={{ color: '#94A3B8' }}>/</span>
