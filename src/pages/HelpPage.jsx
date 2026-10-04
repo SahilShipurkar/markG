@@ -280,7 +280,7 @@ export default function HelpPage({ onOpenExpertModal }) {
             <Search size={18} style={{ color: '#64748B', marginRight: '10px', flexShrink: 0 }} />
             <input 
               type="text" 
-              placeholder="Ask MarkG AI or search technical guides..."
+              placeholder="Ask G Mark AI or search technical guides..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{

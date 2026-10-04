@@ -302,7 +302,7 @@ export default function HeroTechnologyVisual() {
                   <Database size={16} />
                 </div>
                 <div>
-                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#0F172A' }}>MarkG Cloud Intelligence</div>
+                  <div style={{ fontSize: '0.85rem', fontWeight: '700', color: '#0F172A' }}>G Mark Cloud Intelligence</div>
                   <div style={{ fontSize: '0.7rem', color: '#64748B' }}>Predictive models & continuous anomaly evaluation</div>
                 </div>
               </div>

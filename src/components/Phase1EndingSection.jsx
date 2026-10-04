@@ -159,14 +159,14 @@ export default function Phase1EndingSection({ onOpenExpertModal, onDiscoverSolut
             <div style={{ width: '22px', height: '22px', backgroundColor: '#0B3A70', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <span style={{ color: '#FFFFFF', fontWeight: '800', fontSize: '0.7rem' }}>M</span>
             </div>
-            <span style={{ fontWeight: '700', color: '#0F172A' }}>MarkG Intelligent Systems</span>
+            <span style={{ fontWeight: '700', color: '#0F172A' }}>G Mark Intelligent Systems</span>
             <span>•</span>
             <span>Enterprise Operations Platform</span>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.75rem' }}>
             <span>TRUST • ENGINEERING • INTELLIGENCE • RELIABILITY</span>
-            <span>© {new Date().getFullYear()} MarkG</span>
+            <span>© {new Date().getFullYear()} G Mark</span>
           </div>
         </div>
 

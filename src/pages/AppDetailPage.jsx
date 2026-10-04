@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export default function AppDetailPage({ app, onBack, onOpenExpertModal, onSelectApp }) {
-  // If G-Track is selected, render full GMark Tracking & Field Force Management page
+  // If G-Track is selected, render full G Mark Tracking & Field Force Management page
   if (app?.id === 'g-track' || app?.id === 'gtrack' || app?.id === 'tracking' || app?.name?.toLowerCase().includes('track')) {
     return (
       <GTrackAppDetailPage 

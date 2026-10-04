@@ -303,28 +303,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
           
-          {/* Eyebrow badge */}
-          <div style={{ marginBottom: '1.25rem', position: 'relative', zIndex: 1 }}>
-            <div 
-              style={{
-                padding: '6px 14px',
-                backgroundColor: '#F8FAFC',
-                border: '1px solid #E2E8F0',
-                borderRadius: '100px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
-                fontSize: '0.8rem',
-                fontWeight: '400',
-                color: '#0F172A',
-                letterSpacing: '0.04em'
-              }}
-            >
-              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#8B5CF6' }} />
-              NEXT-GEN INDUSTRIAL TELEMETRY & SMART FACILITY PLATFORM
-            </div>
-          </div>
+
 
           {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
@@ -603,7 +582,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 },
                 {
                   step: '3',
-                  title: 'Gmark Core Engine',
+                  title: 'G Mark Core Engine',
                   desc: 'NestJS Microservices, TimescaleDB, Prisma ORM, Redis Event Bus.',
                   icon: Server
                 },
@@ -934,26 +913,6 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                     border: '1px solid #E2E8F0'
                   }}
                 />
-              </div>
-
-              {/* Bottom Interactive Timeline Scrubber (Odoo Style) */}
-              <div style={{
-                backgroundColor: '#FFFFFF',
-                borderTop: '1px solid #E2E8F0',
-                padding: '0.85rem 1.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1.25rem'
-              }}>
-                <span style={{ fontSize: '0.85rem', color: '#64748B', cursor: 'pointer' }}>⏸</span>
-                <div style={{ width: '220px', height: '5px', backgroundColor: '#E2E8F0', borderRadius: '4px', position: 'relative' }}>
-                  <div style={{ width: '60%', height: '100%', backgroundColor: '#7B5872', borderRadius: '4px' }} />
-                  <div style={{ position: 'absolute', left: '60%', top: '50%', transform: 'translate(-50%, -50%)', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#7B5872', border: '2px solid #FFFFFF', boxShadow: '0 2px 6px rgba(0,0,0,0.2)' }} />
-                </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: '600', color: '#94A3B8' }}>
-                  Sub-Second Telemetry Refresh
-                </span>
               </div>
 
             </div>
@@ -1650,13 +1609,13 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 INTEGRATED PLATFORM ARCHITECTURE
               </span>
               <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
-                Seamlessly Connected to the MarkG Ecosystem
+                Seamlessly Connected to the G Mark Ecosystem
               </h2>
             </div>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
               {[
-                { id: 'erp', name: 'WeighPro ERP', tag: 'Core Enterprise ERP', image: '/ERP Logo.png' },
+                { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: '/ERP Logo.png' },
                 { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
                 { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' },
                 { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: '/Task Management & Team Collaboration Logo 01.jpg' }

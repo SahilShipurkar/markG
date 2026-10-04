@@ -759,7 +759,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                       className="hover:text-slate-900 transition-colors"
                     >
                       <Edit3 size={16} style={{ color: '#475569' }} />
-                      <span style={{ fontWeight: '500' }}>MarkG Studio & Custom ERP</span>
+                      <span style={{ fontWeight: '500' }}>G Mark Studio & Custom ERP</span>
                     </div>
                     <div 
                       onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
@@ -767,7 +767,7 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
                       className="hover:text-slate-900 transition-colors"
                     >
                       <Cloud size={16} style={{ color: '#475569' }} />
-                      <span style={{ fontWeight: '500' }}>MarkG Edge & Cloud Platform</span>
+                      <span style={{ fontWeight: '500' }}>G Mark Edge & Cloud Platform</span>
                     </div>
                   </div>
 
@@ -775,153 +775,373 @@ export default function Navbar({ currentPage = 'home', onNavigate, onOpenExpertM
               </div>
             )}
 
-            {/* 2. TECHNOLOGY MEGA-MENU */}
+            {/* 2. TECHNOLOGY MEGA-MENU (AUTHENTIC MARKG ENTERPRISE TECH STACK) */}
             {activeMenu === 'technology' && (
               <div className="mega-menu-content-fade" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #E2E8F0' }}>
-                <div className="container-enterprise" style={{ padding: '2.75rem 2rem 2.5rem', backgroundColor: '#FFFFFF' }}>
+                <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '2.5rem 2rem 2.25rem', backgroundColor: '#FFFFFF' }}>
                   <div 
                     style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '3rem',
+                      columnGap: '3.5rem',
+                      rowGap: '2rem',
                       alignItems: 'start'
                     }}
-                    className="mega-menu-grid"
+                    className="technology-odoo-grid"
                   >
-                    <div className="stagger-col-1">
-                      <div style={{ borderBottom: '2px solid #0B3A70', paddingBottom: '0.65rem', marginBottom: '1.25rem', fontWeight: '800', fontSize: '0.85rem', color: '#0B3A70', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        HARDWARE & SENSORS
+                    {/* COLUMN 1: CORE STACK & CLOUD PLATFORM */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #0B3A70', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '1.25rem' 
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#0B3A70', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          CORE STACK & CLOUD PLATFORM
+                        </span>
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                         {[
-                          { label: 'Piezoelectric Vibration Probes', desc: 'Tri-axial high frequency acceleration sensors' },
-                          { label: 'Soil NPK & Capacitive Moisture', desc: 'Multi-depth agricultural telemetry probes' },
-                          { label: 'Ultrasonic Flow & Pressure', desc: 'Hydraulic and pneumatic velocity monitoring' },
-                          { label: 'Thermal IR Imaging Arrays', desc: 'Non-contact stator and bearing hotspots' },
-                          { label: 'Drone Multispectral Sensors', desc: 'Aerial NDVI crop vigor imaging' }
+                          { label: 'React 18 & Vite Architecture', desc: 'Fast, modular single-page interface with dynamic UI states', appId: 'erp' },
+                          { label: 'NestJS Enterprise Backend', desc: 'Scalable TypeScript microservices with event-driven architecture', appId: 'erp' },
+                          { label: 'PostgreSQL & TimescaleDB', desc: 'Relational ledger storage and high-concurrency timeseries telemetry', appId: 'g-nova-iot' },
+                          { label: 'Redis Event Streaming & Cache', desc: 'Sub-15ms real-time state pub/sub and distributed job queues', appId: 'task-management' },
+                          { label: 'Prisma ORM & Multi-Tenancy', desc: 'Type-safe data layer with tenant-level data isolation', appId: 'erp' }
                         ].map((item, idx) => (
-                          <div key={idx} className="mega-menu-link" style={{ padding: '0.2rem 0' }}>
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ cursor: 'pointer' }}
+                            className="group transition-all"
+                          >
+                            <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0F172A', transition: 'color 0.15s ease' }} className="group-hover:text-blue-700">
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: '400' }}>
+                              {item.desc}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="stagger-col-2">
-                      <div style={{ borderBottom: '2px solid #0284C7', paddingBottom: '0.65rem', marginBottom: '1.25rem', fontWeight: '800', fontSize: '0.85rem', color: '#0284C7', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        NETWORKS & INDUSTRIAL PROTOCOLS
+                    {/* COLUMN 2: EDGE TELEMETRY & PROTOCOLS */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #0284C7', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '1.25rem' 
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#0284C7', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          EDGE TELEMETRY & PROTOCOLS
+                        </span>
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                         {[
-                          { label: 'Modbus RTU / TCP Engine', desc: 'Legacy PLC & controller field bus' },
-                          { label: 'LoRaWAN 868 / 915 MHz', desc: 'Long-range low-power rural & plant mesh' },
-                          { label: 'MQTT Broker with QoS 2', desc: 'Guaranteed message delivery pipelines' },
-                          { label: 'OPC-UA Industrial Interface', desc: 'Standardized machine-to-machine exchange' },
-                          { label: 'CANbus J1939 Integration', desc: 'Heavy vehicle and agricultural tractor telemetry' }
+                          { label: 'MQTT Telemetry Broker (QoS 2)', desc: 'Guaranteed edge sensor pub/sub for booster & fire systems', appId: 'g-nova-iot' },
+                          { label: 'Modbus RTU / TCP Field Bus', desc: 'Direct industrial RS485 connection to PLCs and digital meters', appId: 'g-nova-iot' },
+                          { label: 'Real-Time WebSocket Engine', desc: 'Bidirectional live telemetry streams and collaborative Kanban sync', appId: 'task-management' },
+                          { label: 'AIPCU Hardware Edge Gateways', desc: 'Embedded microcontroller telemetry capture & automated trip relays', appId: 'g-nova-iot' },
+                          { label: 'GPS Telemetry & Geo-Fencing', desc: 'Sub-second field vehicle trails and mobile radius verification', appId: 'g-track' }
                         ].map((item, idx) => (
-                          <div key={idx} className="mega-menu-link" style={{ padding: '0.2rem 0' }}>
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ cursor: 'pointer' }}
+                            className="group transition-all"
+                          >
+                            <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0F172A', transition: 'color 0.15s ease' }} className="group-hover:text-blue-700">
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: '400' }}>
+                              {item.desc}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="stagger-col-3">
-                      <div style={{ borderBottom: '2px solid #15803D', paddingBottom: '0.65rem', marginBottom: '1.25rem', fontWeight: '800', fontSize: '0.85rem', color: '#15803D', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        CLOUD & PREDICTIVE ML
+                    {/* COLUMN 3: ENTERPRISE LOGIC & GOVERNANCE */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #16A34A', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '1.25rem' 
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#16A34A', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          ENTERPRISE LOGIC & GOVERNANCE
+                        </span>
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                         {[
-                          { label: 'Real-Time TSDB Engine', desc: 'Sub-15ms high-concurrency data ingestion' },
-                          { label: 'Predictive RUL Analytics', desc: 'Remaining Useful Life time-to-failure forecasting' },
-                          { label: 'Vibration Spectral FFT AI', desc: 'Harmonic peak and bearing defect detection' },
-                          { label: 'Event-Driven Edge Automation', desc: 'Autonomous local threshold cutoffs' },
-                          { label: 'REST & GraphQL Ingestion APIs', desc: 'Seamless enterprise SAP & ERP integration' }
+                          { label: 'RACI Governance & Sprint Engine', desc: 'Role-based ownership matrix, Kanban boards & team timeline sync', appId: 'task-management' },
+                          { label: '4M Asset Governance Framework', desc: 'Integrated Man, Machine, Material & Method maintenance tracking', appId: 'cmms' },
+                          { label: 'QR Code Scanning & OTP Dispatch', desc: 'Package custody verification and secure doorstep delivery', appId: 'transporter-app' },
+                          { label: 'Double-Entry GST & Invoicing Engine', desc: 'Automated tax invoicing, E-Way bills and financial ledgers', appId: 'erp' },
+                          { label: 'RESTful APIs & Webhook Webbus', desc: 'Secure third-party enterprise integrations, SAP & data exports', appId: 'erp' }
                         ].map((item, idx) => (
-                          <div key={idx} className="mega-menu-link" style={{ padding: '0.2rem 0' }}>
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ cursor: 'pointer' }}
+                            className="group transition-all"
+                          >
+                            <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0F172A', transition: 'color 0.15s ease' }} className="group-hover:text-blue-700">
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: '400' }}>
+                              {item.desc}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
+
+                  {/* Bottom Utility Row (Odoo Style) */}
+                  <div 
+                    style={{
+                      marginTop: '2.5rem',
+                      paddingTop: '1.25rem',
+                      borderTop: '1px solid #EDF2F7',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '3.5rem',
+                      flexWrap: 'wrap',
+                      fontSize: '0.88rem',
+                      color: '#475569'
+                    }}
+                    className="stagger-bottom"
+                  >
+                    <div 
+                      onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Zap size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>Sub-Second 50Hz MQTT Streams</span>
+                    </div>
+                    <div 
+                      onClick={() => { closeMenu(); onOpenExpertModal?.(); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <ShieldCheck size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>Enterprise Multi-Tenant Security</span>
+                    </div>
+                    <div 
+                      onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Cloud size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>Open REST & Webhook APIs</span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             )}
 
-            {/* 3. INDUSTRIES MEGA-MENU */}
+            {/* 3. INDUSTRIES MEGA-MENU (AUTHENTIC MARKG ENTERPRISE VERTICALS) */}
             {activeMenu === 'industries' && (
               <div className="mega-menu-content-fade" style={{ backgroundColor: '#FFFFFF', borderTop: '1px solid #F1F5F9', borderBottom: '1px solid #E2E8F0' }}>
-                <div className="container-enterprise" style={{ padding: '2.75rem 2rem 2.5rem', backgroundColor: '#FFFFFF' }}>
+                <div style={{ maxWidth: '1240px', margin: '0 auto', padding: '2.5rem 2rem 2.25rem', backgroundColor: '#FFFFFF' }}>
                   <div 
                     style={{
                       display: 'grid',
                       gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '3rem',
+                      columnGap: '3.5rem',
+                      rowGap: '2rem',
                       alignItems: 'start'
                     }}
-                    className="mega-menu-grid"
+                    className="industries-odoo-grid"
                   >
-                    <div className="stagger-col-1">
-                      <div style={{ borderBottom: '2px solid #0B3A70', paddingBottom: '0.65rem', marginBottom: '1.25rem', fontWeight: '800', fontSize: '0.85rem', color: '#0B3A70', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        MANUFACTURING & AUTOMOTIVE
+                    {/* COLUMN 1: FACILITIES & INFRASTRUCTURE */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #0B3A70', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '1.25rem' 
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#0B3A70', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          FACILITIES & INFRASTRUCTURE
+                        </span>
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                         {[
-                          { label: 'Discrete CNC & Machine Shops', desc: 'Spindle vibration, OEE & tool wear monitoring' },
-                          { label: 'Automotive & Heavy Industry', desc: 'Robotic assembly, body shops & paint telemetry' },
-                          { label: 'Press Lines & Stamping', desc: 'Hydraulic tonnage pressure & cycle monitoring' },
-                          { label: 'Chemical & Process Batches', desc: 'Pharma cleanrooms, reactors & mixing vessels' }
+                          { label: 'Residential Societies & Townships', desc: 'Centralized domestic booster water pumps, STP & sump automation', appId: 'g-nova-iot' },
+                          { label: 'Commercial Complexes & IT Parks', desc: '24/7 Energy monitoring, HVAC baseline & multi-facility dashboards', appId: 'g-nova-iot' },
+                          { label: 'Life Safety & Fire Protection', desc: 'Real-time hydrant pressure, jockey pump monitoring & zero-fault alarms', appId: 'g-nova-iot' },
+                          { label: 'Water & Sewage Treatment (STP)', desc: 'Level transmitter telemetry, automated pump cycling & effluent logs', appId: 'g-nova-iot' }
                         ].map((item, idx) => (
-                          <div key={idx} className="mega-menu-link" style={{ padding: '0.2rem 0' }}>
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ cursor: 'pointer' }}
+                            className="group transition-all"
+                          >
+                            <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0F172A', transition: 'color 0.15s ease' }} className="group-hover:text-blue-700">
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: '400' }}>
+                              {item.desc}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="stagger-col-2">
-                      <div style={{ borderBottom: '2px solid #15803D', paddingBottom: '0.65rem', marginBottom: '1.25rem', fontWeight: '800', fontSize: '0.85rem', color: '#15803D', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        AGRICULTURE & AGRIBUSINESS
+                    {/* COLUMN 2: RURAL COMMERCE & AGRI-SUPPLY */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #16A34A', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '1.25rem' 
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#16A34A', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          RURAL COMMERCE & AGRI-SUPPLY
+                        </span>
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                         {[
-                          { label: 'Commercial Farms & Croplands', desc: 'Precision soil telemetry & automated irrigation' },
-                          { label: 'High-Tech Greenhouses', desc: 'Microclimate canopy temperature & humidity control' },
-                          { label: 'Irrigation & Water Districts', desc: 'Canal flow rates, reservoir levels & pump control' },
-                          { label: 'Food Processing & Cold Storage', desc: 'End-to-end cold chain temperature logging' }
+                          { label: 'Farmers & Producer Groups (FPOs)', desc: 'Direct digital mandi price discovery, product combos & bulk trade', appId: 'gram-unnati' },
+                          { label: 'Self-Help Groups (SHG Networks)', desc: 'Rural women micro-entrepreneur order aggregation & doorstep delivery', appId: 'shg-app' },
+                          { label: 'Agri-Inputs & Rural Distribution', desc: 'Verified vendor KYC, batch purchasing and T+1 direct bank payouts', appId: 'gram-unnati' },
+                          { label: 'Cold Chain & Perishables Storage', desc: 'Live temperature & humidity logging during rural transit', appId: 'g-track' }
                         ].map((item, idx) => (
-                          <div key={idx} className="mega-menu-link" style={{ padding: '0.2rem 0' }}>
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ cursor: 'pointer' }}
+                            className="group transition-all"
+                          >
+                            <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0F172A', transition: 'color 0.15s ease' }} className="group-hover:text-blue-700">
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: '400' }}>
+                              {item.desc}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
 
-                    <div className="stagger-col-3">
-                      <div style={{ borderBottom: '2px solid #0284C7', paddingBottom: '0.65rem', marginBottom: '1.25rem', fontWeight: '800', fontSize: '0.85rem', color: '#0284C7', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                        ENERGY, UTILITIES & LOGISTICS
+                    {/* COLUMN 3: MANUFACTURING & FLEET OPERATIONS */}
+                    <div>
+                      <div style={{ 
+                        borderBottom: '1.5px solid #0284C7', 
+                        paddingBottom: '0.45rem', 
+                        marginBottom: '1.25rem' 
+                      }}>
+                        <span style={{ 
+                          fontSize: '0.82rem', 
+                          fontWeight: '700', 
+                          color: '#0284C7', 
+                          letterSpacing: '0.08em', 
+                          textTransform: 'uppercase' 
+                        }}>
+                          MANUFACTURING & FLEET OPERATIONS
+                        </span>
                       </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.15rem' }}>
                         {[
-                          { label: 'Power Grid & Solar Substations', desc: 'Transformer temperatures, voltage & energy meters' },
-                          { label: 'Water & Wastewater Utilities', desc: 'Pump station telemetry & effluent monitoring' },
-                          { label: 'Logistics & Automated Warehouses', desc: 'AGVs, conveyors & battery telemetry' },
-                          { label: 'Smart Industrial Facilities', desc: 'HVAC chillers, compressors & energy baselining' }
+                          { label: 'Industrial Manufacturing Plants', desc: '4M CMMS preventive maintenance, MTTR tracking & downtime reduction', appId: 'cmms' },
+                          { label: 'Middle-Mile Transporter Fleets', desc: 'Cluster batch routing, vehicle capacity fill & barcode manifests', appId: 'transporter-app' },
+                          { label: 'Field Force & Sales Operations', desc: 'Geo-fenced attendance, beat planning & on-field digital order booking', appId: 'g-track' },
+                          { label: 'Multi-Branch Corporate Enterprises', desc: 'Consolidated ERP accounting, branch ledgers & task boards', appId: 'erp' }
                         ].map((item, idx) => (
-                          <div key={idx} className="mega-menu-link" style={{ padding: '0.2rem 0' }}>
-                            <div style={{ fontSize: '0.9rem', fontWeight: '600', color: '#1E293B' }}>{item.label}</div>
-                            <div style={{ fontSize: '0.75rem', color: '#64748B' }}>{item.desc}</div>
+                          <div 
+                            key={idx} 
+                            onClick={() => handleAppItemClick(item.appId)}
+                            style={{ cursor: 'pointer' }}
+                            className="group transition-all"
+                          >
+                            <div style={{ fontSize: '0.92rem', fontWeight: '600', color: '#0F172A', transition: 'color 0.15s ease' }} className="group-hover:text-blue-700">
+                              {item.label}
+                            </div>
+                            <div style={{ fontSize: '0.78rem', color: '#64748B', marginTop: '2px', fontWeight: '400' }}>
+                              {item.desc}
+                            </div>
                           </div>
                         ))}
                       </div>
                     </div>
                   </div>
+
+                  {/* Bottom Utility Row (Odoo Style) */}
+                  <div 
+                    style={{
+                      marginTop: '2.5rem',
+                      paddingTop: '1.25rem',
+                      borderTop: '1px solid #EDF2F7',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '3.5rem',
+                      flexWrap: 'wrap',
+                      fontSize: '0.88rem',
+                      color: '#475569'
+                    }}
+                    className="stagger-bottom"
+                  >
+                    <div 
+                      onClick={() => { closeMenu(); handleSolutionNav('solutions'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Building2 size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>50+ Smart Facility Deployments</span>
+                    </div>
+                    <div 
+                      onClick={() => { closeMenu(); handleAppItemClick('gram-unnati'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Sprout size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>100k+ Farmers & Rural SHGs</span>
+                    </div>
+                    <div 
+                      onClick={() => { closeMenu(); handleAppItemClick('g-track'); }}
+                      style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', cursor: 'pointer' }} 
+                      className="hover:text-slate-900 transition-colors"
+                    >
+                      <Truck size={16} style={{ color: '#475569' }} />
+                      <span style={{ fontWeight: '500' }}>10M+ Logistics & Fleet Pings</span>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             )}

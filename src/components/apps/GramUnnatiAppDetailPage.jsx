@@ -257,7 +257,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
 
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
-    { id: 'erp', name: 'WeighPro ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, GST engine & inventory', image: '/ERP Logo.png' },
+    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, GST engine & inventory', image: '/ERP Logo.png' },
     { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry and facility monitoring', image: '/G-Nova IOT logo 02.jpg' },
     { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time vehicle tracking & cold-chain monitoring', image: '/G Track logo.png' },
     { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: '/Task Management & Team Collaboration Logo 01.jpg' }
@@ -330,27 +330,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
       <section style={{ backgroundColor: '#e8e8e8', paddingTop: '3.5rem', paddingBottom: '3rem', position: 'relative' }}>
         <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 1.5rem', textAlign: 'center' }}>
           
-          {/* Eyebrow Tag */}
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1.25rem' }}>
-            <div 
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '0.35rem 1rem',
-                borderRadius: '20px',
-                backgroundColor: '#FFFFFF',
-                border: '1px solid #CBD5E1',
-                fontSize: '0.78rem',
-                fontWeight: '600',
-                color: '#15803D',
-                letterSpacing: '0.04em'
-              }}
-            >
-              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A' }} />
-              GRAMUNNATI • AGRI-COMMERCE & RURAL EMPOWERMENT PLATFORM
-            </div>
-          </div>
+
 
           {/* Headline matching Caveat handwriting font style with #00A3FF brush underline */}
           <div className="relative inline-block">
@@ -1158,7 +1138,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
             <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
-              Seamlessly Connected to the MarkG Ecosystem
+              Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
 

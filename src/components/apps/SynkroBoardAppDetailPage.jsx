@@ -179,7 +179,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
-    { id: 'erp', name: 'WeighPro ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, invoice reconciliation & resource planning', image: '/ERP Logo.png' },
+    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, invoice reconciliation & resource planning', image: '/ERP Logo.png' },
     { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Facility telemetry, machine monitoring & preventive work orders', image: '/G-Nova IOT logo 02.jpg' },
     { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time on-field workforce tracking & client visit automation', image: '/G Track logo.png' },
     { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural self-help enterprises', image: '/Final Logo-09.jpg.jpeg' }
@@ -695,26 +695,6 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                     border: '1px solid #E2E8F0'
                   }}
                 />
-              </div>
-
-              {/* Bottom Interactive Timeline Scrubber (Odoo Style) */}
-              <div style={{
-                backgroundColor: '#FFFFFF',
-                borderTop: '1px solid #E2E8F0',
-                padding: '0.85rem 1.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1.25rem'
-              }}>
-                <span style={{ fontSize: '0.85rem', color: '#64748B', cursor: 'pointer' }}>⏸</span>
-                <div style={{ width: '220px', height: '5px', backgroundColor: '#E2E8F0', borderRadius: '4px', position: 'relative' }}>
-                  <div style={{ width: '45%', height: '100%', backgroundColor: '#7B5872', borderRadius: '4px' }} />
-                  <div style={{ position: 'absolute', left: '45%', top: '50%', transform: 'translate(-50%, -50%)', width: '12px', height: '12px', borderRadius: '50%', backgroundColor: '#7B5872', border: '2px solid #FFFFFF', boxShadow: '0 2px 6px rgba(0,0,0,0.2)' }} />
-                </div>
-                <span style={{ fontSize: '0.75rem', fontWeight: '600', color: '#94A3B8' }}>
-                  Live Telemetry Feed
-                </span>
               </div>
 
             </div>
@@ -1464,7 +1444,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               INTEGRATED PLATFORM ARCHITECTURE
             </span>
             <h2 style={{ fontFamily: "'Caveat', cursive", fontSize: 'clamp(2.1rem, 3.5vw, 2.6rem)', fontWeight: 600, color: '#0F172A', letterSpacing: '0', marginTop: '4px' }}>
-              Seamlessly Connected to the MarkG Ecosystem
+              Seamlessly Connected to the G Mark Ecosystem
             </h2>
           </div>
 

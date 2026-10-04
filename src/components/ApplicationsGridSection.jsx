@@ -88,26 +88,26 @@ export const APPLICATIONS = [
   {
     id: 'shg-app',
     name: 'SHG App',
-    category: 'Agritech Supply Chain',
-    tagline: 'Rural logistics & self-help group distribution',
+    category: 'Rural Logistics & Delivery',
+    tagline: 'Self-Help Group Operations, Pickup & Delivery Management',
     image: '/SHG Delivary and Transporter Logo 01.jpg',
     fallbackIcon: Sprout,
-    badge: 'Agri Supply',
-    accent: '#f59e0b',
-    description: 'Hyperlocal rural delivery network empowering Self Help Groups with digital dispatch, order routing, and market linkages.',
-    features: ['Hyperlocal routing engine', 'Farmer-to-market direct dispatch', 'Proof-of-delivery with digital signature', 'Transparent pricing telemetry']
+    badge: 'Gkart SHG',
+    accent: '#16a34a',
+    description: 'Gkart provides Self-Help Group (SHG) delivery partners with a mobile application to receive assigned logistics orders, manage doorstep pickups, coordinate with GHub, and earn per-order commissions.',
+    features: ['Real-time batch & hub transfers', 'Mobile pickup with QR & weight verification', 'Doorstep delivery with 4-digit OTP handover', 'Instant per-order earnings ledger (₹15/order)']
   },
   {
     id: 'transporter-app',
     name: 'Transporter App',
-    category: 'Agritech Supply Chain',
-    tagline: 'Rural transport & distribution management',
+    category: 'Middle-Mile & Fleet Logistics',
+    tagline: 'Transporter Operations, Shipment Movement & Delivery Management',
     image: '/SHG Delivary and Transporter Logo.jpg',
     fallbackIcon: Truck,
-    badge: 'Logistics Network',
-    accent: '#10b981',
-    description: 'Specialized delivery management solution connecting Self Help Group production clusters to regional supply chains.',
-    features: ['Cluster-based batch dispatch', 'Consolidated route planning', 'Driver telemetry & verification', 'Automated freight settlement']
+    badge: 'Gship Fleet',
+    accent: '#0284c7',
+    description: 'Gship provides transporters with a mobile application to manage assigned logistics tasks, perform pickup and delivery operations, update order statuses, and report damage or exceptions with GHub.',
+    features: ['Assigned shipment & cluster dispatch', 'SHG node pickup with QR batch scan', 'Warehouse hub intake & transit routing', 'Damage & operational exception reporting']
   },
   {
     id: 'task-management',

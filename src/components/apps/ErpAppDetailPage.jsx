@@ -288,28 +288,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         />
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
-          {/* Eyebrow badge */}
-          <div style={{ marginBottom: '1.25rem', position: 'relative', zIndex: 1 }}>
-            <div 
-              style={{
-                padding: '6px 14px',
-                backgroundColor: '#F8FAFC',
-                border: '1px solid #E2E8F0',
-                borderRadius: '100px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
-                fontSize: '0.8rem',
-                fontWeight: '400',
-                color: '#0F172A',
-                letterSpacing: '0.04em'
-              }}
-            >
-              <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#16A34A' }} />
-              GMARK ENTERPRISE • WEIGHPRO ERP SUITE v2.0
-            </div>
-          </div>
+
 
           {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
@@ -396,7 +375,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               >
                 <img 
                   src="/ERP Logo.png" 
-                  alt="Gmark ERP Logo" 
+                  alt="G Mark ERP Logo" 
                   style={{
                     width: '100%',
                     height: '100%',
@@ -1058,7 +1037,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                   Automated Intra-State vs Inter-State Tax Rules
                 </h3>
                 <p style={{ fontSize: '0.88rem', color: '#475569', lineHeight: '1.6', margin: 0 }}>
-                  Gmark ERP automatically inspects company registration state vs customer/supplier state to apply compliant statutory tax schedules without manual calculation errors.
+                  G Mark ERP automatically inspects company registration state vs customer/supplier state to apply compliant statutory tax schedules without manual calculation errors.
                 </p>
               </div>
 
@@ -1262,7 +1241,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             </div>
             <div>
               <h4 style={{ fontSize: '0.95rem', fontWeight: '600', color: '#1E40AF', margin: 0, marginBottom: '4px' }}>
-                The Golden Architectural Rule of Gmark ERP
+                The Golden Architectural Rule of G Mark ERP
               </h4>
               <p style={{ fontSize: '0.85rem', color: '#1E3A8A', margin: 0, lineHeight: '1.6' }}>
                 "Understand the business flow first → Understand the code → Make the smallest safe change → Test the complete affected downstream flow (Sales Order → Challan → Invoice → Receipt → Ledger)."
@@ -1350,7 +1329,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
             <span>Transform Your Enterprise Operations with </span>
             <span className="relative inline-block whitespace-nowrap">
               <span className="relative z-10 text-slate-900 font-normal">
-                Gmark ERP
+                G Mark ERP
               </span>
               {/* Hand-drawn marker brush stroke highlight */}
               <svg
