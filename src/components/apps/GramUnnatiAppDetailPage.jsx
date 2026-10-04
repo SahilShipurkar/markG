@@ -30,6 +30,7 @@ import {
 } from 'lucide-react';
 
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStakeholderTab, setActiveStakeholderTab] = useState('farmers');
@@ -257,10 +258,10 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
 
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
-    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, GST engine & inventory', image: '/ERP Logo.png' },
-    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry and facility monitoring', image: '/G-Nova IOT logo 02.jpg' },
-    { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time vehicle tracking & cold-chain monitoring', image: '/G Track logo.png' },
-    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: '/Task Management & Team Collaboration Logo 01.jpg' }
+    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, GST engine & inventory', image: getAssetUrl('/ERP Logo.png') },
+    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry and facility monitoring', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+    { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time vehicle tracking & cold-chain monitoring', image: getAssetUrl('/G Track logo.png') },
+    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
   ];
 
   const handleAppClick = (targetId) => {
@@ -416,7 +417,7 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
                 }}
               >
                 <img 
-                  src="/Final Logo-09.jpg.jpeg" 
+                  src={getAssetUrl("/Final Logo-09.jpg.jpeg")} 
                   alt="GramUnnati Logo" 
                   style={{
                     width: '100%',

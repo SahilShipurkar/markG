@@ -41,6 +41,7 @@ import {
 } from 'lucide-react';
 
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeVisualizationTab, setActiveVisualizationTab] = useState(0);
@@ -179,10 +180,10 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
 
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
-    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, invoice reconciliation & resource planning', image: '/ERP Logo.png' },
-    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Facility telemetry, machine monitoring & preventive work orders', image: '/G-Nova IOT logo 02.jpg' },
-    { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time on-field workforce tracking & client visit automation', image: '/G Track logo.png' },
-    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural self-help enterprises', image: '/Final Logo-09.jpg.jpeg' }
+    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, invoice reconciliation & resource planning', image: getAssetUrl('/ERP Logo.png') },
+    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Facility telemetry, machine monitoring & preventive work orders', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+    { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', desc: 'Real-time on-field workforce tracking & client visit automation', image: getAssetUrl('/G Track logo.png') },
+    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural self-help enterprises', image: getAssetUrl('/Final Logo-09.jpg.jpeg') }
   ];
 
   const handleAppClick = (targetId) => {
@@ -306,7 +307,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
                   }}
                 >
                   <img 
-                    src="/Task Management & Team Collaboration Logo 01.jpg" 
+                    src={getAssetUrl("/Task Management & Team Collaboration Logo 01.jpg")} 
                     alt="SynkroBoard Logo" 
                     style={{
                       width: '100%',
@@ -685,7 +686,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               {/* Real Dashboard Image */}
               <div style={{ padding: '0.85rem', backgroundColor: '#F1F5F9' }}>
                 <img 
-                  src="/syn1.jpeg" 
+                  src={getAssetUrl("/syn1.jpeg")} 
                   alt="SynkroBoard System Overview Dashboard"
                   style={{
                     width: '100%',
@@ -918,7 +919,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
               {/* Real Project Boards Screenshot */}
               <div style={{ padding: '0.85rem', backgroundColor: '#F1F5F9' }}>
                 <img 
-                  src="/syn2.jpeg" 
+                  src={getAssetUrl("/syn2.jpeg")} 
                   alt="SynkroBoard Project Boards System"
                   style={{
                     width: '100%',

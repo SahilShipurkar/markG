@@ -37,6 +37,7 @@ import {
   Power
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeGNovaTab, setActiveGNovaTab] = useState(0);
@@ -390,7 +391,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 }}
               >
                 <img 
-                  src="/G-Nova IOT logo 02.jpg" 
+                  src={getAssetUrl("/G-Nova IOT logo 02.jpg")} 
                   alt="G-Nova IoT Logo" 
                   style={{ width: '100%', height: '100%', objectFit: 'contain', transform: 'scale(1.4)' }}
                 />
@@ -903,7 +904,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               {/* Real Booster System Dashboard Screenshot */}
               <div style={{ padding: '0.85rem', backgroundColor: '#F1F5F9' }}>
                 <img 
-                  src="/iot2.jpeg" 
+                  src={getAssetUrl("/iot2.jpeg")} 
                   alt="Flushing Terrace Booster System G-Nova Dashboard"
                   style={{
                     width: '100%',
@@ -1136,7 +1137,7 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
               {/* Real Fire Panel G-Nova Screenshot */}
               <div style={{ padding: '0.85rem', backgroundColor: '#F1F5F9' }}>
                 <img 
-                  src="/iot1.jpeg" 
+                  src={getAssetUrl("/iot1.jpeg")} 
                   alt="Fire Panel System G-Nova Dashboard"
                   style={{
                     width: '100%',
@@ -1615,10 +1616,10 @@ export default function IotAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
               {[
-                { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: '/ERP Logo.png' },
-                { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
-                { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' },
-                { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: '/Task Management & Team Collaboration Logo 01.jpg' }
+                { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: getAssetUrl('/ERP Logo.png') },
+                { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
+                { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
+                { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
               ].map((app, idx) => (
                 <div 
                   key={idx}

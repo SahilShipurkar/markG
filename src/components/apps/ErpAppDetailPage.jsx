@@ -40,6 +40,7 @@ import {
   Scale
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStepSales, setActiveStepSales] = useState(0); // active accordion step for Sales Cycle
@@ -208,43 +209,43 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
     {
       name: 'CMMS',
       desc: 'Man, Machine, Method & Material maintenance orchestration',
-      image: '/4M.png',
+      image: getAssetUrl('/4M.png'),
       badge: 'Operations'
     },
     {
       name: 'GramUnnati',
       desc: 'Digital agriculture marketplace & farmer trade advisory',
-      image: '/Final Logo-09.jpg.jpeg',
+      image: getAssetUrl('/Final Logo-09.jpg.jpeg'),
       badge: 'Agritech'
     },
     {
       name: 'G-Nova IoT',
       desc: '50Hz telemetry ingestion & weighbridge automation',
-      image: '/G-Nova IOT logo 02.jpg',
+      image: getAssetUrl('/G-Nova IOT logo 02.jpg'),
       badge: 'Hardware IoT'
     },
     {
       name: 'G Track',
       desc: 'Enterprise GPS fleet tracking & cold-chain telemetry',
-      image: '/G Track logo.png',
+      image: getAssetUrl('/G Track logo.png'),
       badge: 'Live Fleet'
     },
     {
       name: 'SHG App',
       desc: 'Rural logistics & self-help group dispatch network',
-      image: '/SHG Delivary and Transporter Logo 01.jpg',
+      image: getAssetUrl('/SHG Delivary and Transporter Logo 01.jpg'),
       badge: 'Village Network'
     },
     {
       name: 'Transporter App',
       desc: 'Middle-mile route logistics & cluster fleet tracking',
-      image: '/SHG Delivary and Transporter Logo.jpg',
+      image: getAssetUrl('/SHG Delivary and Transporter Logo.jpg'),
       badge: 'Logistics'
     },
     {
       name: 'Task Management',
       desc: 'Digital work orders & industrial shift collaboration',
-      image: '/Task Management & Team Collaboration Logo 01.jpg',
+      image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg'),
       badge: 'Productivity'
     }
   ];
@@ -374,7 +375,7 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 }}
               >
                 <img 
-                  src="/ERP Logo.png" 
+                  src={getAssetUrl("/ERP Logo.png")} 
                   alt="G Mark ERP Logo" 
                   style={{
                     width: '100%',
@@ -1269,10 +1270,10 @@ export default function ErpAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
             {[
-              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: '/G-Nova IOT logo 02.jpg' },
-              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
-              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' },
-              { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: '/Task Management & Team Collaboration Logo 01.jpg' }
+              { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
+              { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
             ].map((app, idx) => (
               <div 
                 key={idx}

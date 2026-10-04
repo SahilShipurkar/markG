@@ -28,6 +28,7 @@ import {
   X
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStepP1, setActiveStepP1] = useState(0); // active accordion step for Phase 1
@@ -49,7 +50,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       title: 'Partner Onboarding',
       subtitle: 'Connecting Villages With Faster Deliveries',
       badge: 'Welcome Screen',
-      image: '/shg2.jpeg',
+      image: getAssetUrl('/shg2.jpeg'),
       description: 'Clean onboarding interface empowering Self-Help Group members with key benefits: Easy Pickups, Wide Area Coverage, Faster Deliveries, and Timely Earnings.',
       highlights: [
         'Accessible registration for rural women SHG members',
@@ -62,7 +63,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       title: 'Activity Dashboard',
       subtitle: 'Daily Earnings & Scheduled Tasks',
       badge: 'Home Overview',
-      image: '/shg4.jpeg',
+      image: getAssetUrl('/shg4.jpeg'),
       description: 'Personalized dashboard displaying real-time monthly earnings (e.g. ₹12,750.00), today’s income, this week’s progress, upcoming scheduled pickups, and delivery runs.',
       highlights: [
         'Total monthly & daily earnings metrics widget',
@@ -75,7 +76,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       title: 'Order Management',
       subtitle: 'Real-time Batch & Hub Transfers',
       badge: 'Logistics Control',
-      image: '/shg1.jpeg',
+      image: getAssetUrl('/shg1.jpeg'),
       description: 'Comprehensive operational board categorizing orders into Incoming (for processing), Upcoming, Return / RTO Items, Redirected, and Completed deliveries.',
       highlights: [
         'Multi-status order tracking (Incoming, Return, Redirected)',
@@ -88,7 +89,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
       title: 'Earnings Ledger',
       subtitle: 'Transparent Income & Payout Tracking',
       badge: 'Financial Autonomy',
-      image: '/shg3.jpeg',
+      image: getAssetUrl('/shg3.jpeg'),
       description: 'Transparent commission wallet providing breakdown of completed orders, verified ₹15/order rate, and daily/weekly/monthly payout statements.',
       highlights: [
         'Guaranteed ₹15 payout for every verified completed order',
@@ -400,7 +401,7 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
                 }}
               >
                 <img 
-                  src="/SHG Delivary and Transporter Logo 01.jpg" 
+                  src={getAssetUrl("/SHG Delivary and Transporter Logo 01.jpg")} 
                   alt="SHG App Logo" 
                   style={{
                     width: '100%',
@@ -1768,10 +1769,10 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
             {[
-              { id: 'transporter-app', name: 'Transporter App', tag: 'Middle-Mile Hauling Fleet', image: '/SHG Delivary and Transporter Logo.jpg' },
-              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' },
-              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
-              { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: '/ERP Logo.png' }
+              { id: 'transporter-app', name: 'Transporter App', tag: 'Middle-Mile Hauling Fleet', image: getAssetUrl('/SHG Delivary and Transporter Logo.jpg') },
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
+              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
+              { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: getAssetUrl('/ERP Logo.png') }
             ].map((app, idx) => (
               <div 
                 key={idx}

@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStakeholderTab, setActiveStakeholderTab] = useState('fieldStaff');
@@ -196,10 +197,10 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
 
   // Connected Ecosystem Applications
   const CONNECTED_APPS = [
-    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, order fulfillment & billing', image: '/ERP Logo.png' },
-    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry & facility asset governance', image: '/G-Nova IOT logo 02.jpg' },
-    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural enterprises', image: '/Final Logo-09.jpg.jpeg' },
-    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: '/Task Management & Team Collaboration Logo 01.jpg' }
+    { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', desc: 'Double-entry accounting, order fulfillment & billing', image: getAssetUrl('/ERP Logo.png') },
+    { id: 'g-nova-iot', name: 'G-Nova IoT', tag: 'G-Nova Telemetry & 4M ERP', desc: 'Industrial telemetry & facility asset governance', image: getAssetUrl('/G-Nova IOT logo 02.jpg') },
+    { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', desc: 'Digital marketplace for farmers & rural enterprises', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
+    { id: 'task-management', name: 'SynkroBoard', tag: 'Task Management & Collaboration', desc: 'Enterprise sprint, kanban & RACI workflows', image: getAssetUrl('/Task Management & Team Collaboration Logo 01.jpg') }
   ];
 
   const handleAppClick = (targetId) => {
@@ -355,7 +356,7 @@ export default function GTrackAppDetailPage({ onBack, onOpenExpertModal, onSelec
                 }}
               >
                 <img 
-                  src="/G Track logo.png" 
+                  src={getAssetUrl("/G Track logo.png")} 
                   alt="G Track Logo" 
                   style={{
                     width: '100%',

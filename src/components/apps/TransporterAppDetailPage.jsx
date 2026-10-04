@@ -30,6 +30,7 @@ import {
   Check
 } from 'lucide-react';
 import { APPLICATIONS } from '../ApplicationsGridSection';
+import { getAssetUrl } from '@/utils/asset';
 
 export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, onSelectApp }) {
   const [activeStepP1, setActiveStepP1] = useState(0); // active accordion step for Phase 1
@@ -51,7 +52,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       title: 'Fleet Partner Onboarding',
       subtitle: 'Streamlined Rural Hauling & Middle-Mile Logistics',
       badge: 'Driver Portal',
-      image: '/trans1.jpeg',
+      image: getAssetUrl('/trans1.jpeg'),
       description: 'Dedicated transporter onboarding portal empowering fleet drivers and vehicle owners to register, verify licenses, and accept real-time haul assignments across rural village clusters.',
       highlights: [
         'Rapid vehicle & driver KYC credential verification',
@@ -64,7 +65,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       title: 'Shipment & Batch Manifest',
       subtitle: 'Live Route Tracking & Node Aggregation',
       badge: 'Logistics Control',
-      image: '/trans2.jpeg',
+      image: getAssetUrl('/trans2.jpeg'),
       description: 'Real-time operational dashboard displaying assigned shipment batches, pickup SHG coordinates, destination warehouse docks, parcel counts, and gross verified payload weight.',
       highlights: [
         'Real-time QR barcode intake and handover validation',
@@ -77,7 +78,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
       title: 'Trip Closure & Exception Logs',
       subtitle: 'Damage Reporting & Automated Freight Settlement',
       badge: 'Operations Ledger',
-      image: '/TRANS3.jpeg',
+      image: getAssetUrl('/TRANS3.jpeg'),
       description: 'Comprehensive trip reconciliation screen enabling drivers to verify hub custody handoffs, log damage or transit exceptions with photographic proof, and receive instant ledger settlements.',
       highlights: [
         'One-touch exception and damage photo reporting mechanism',
@@ -388,7 +389,7 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
                 }}
               >
                 <img 
-                  src="/SHG Delivary and Transporter Logo.jpg" 
+                  src={getAssetUrl("/SHG Delivary and Transporter Logo.jpg")} 
                   alt="Transporter App Logo" 
                   style={{
                     width: '100%',
@@ -1750,10 +1751,10 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
             {[
-              { id: 'shg-app', name: 'SHG App', tag: 'Village Collection & Doorstep', image: '/SHG Delivary and Transporter Logo 01.jpg' },
-              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: '/Final Logo-09.jpg.jpeg' },
-              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: '/G Track logo.png' },
-              { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: '/ERP Logo.png' }
+              { id: 'shg-app', name: 'SHG App', tag: 'Village Collection & Doorstep', image: getAssetUrl('/SHG Delivary and Transporter Logo 01.jpg') },
+              { id: 'gram-unnati', name: 'GramUnnati', tag: 'Agri-Commerce Platform', image: getAssetUrl('/Final Logo-09.jpg.jpeg') },
+              { id: 'g-track', name: 'G Track', tag: 'Field Force & GPS Telemetry', image: getAssetUrl('/G Track logo.png') },
+              { id: 'erp', name: 'ERP', tag: 'Core Enterprise ERP', image: getAssetUrl('/ERP Logo.png') }
             ].map((app, idx) => (
               <div 
                 key={idx}
