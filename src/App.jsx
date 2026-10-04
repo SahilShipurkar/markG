@@ -9,9 +9,16 @@ import AppDetailPage from './pages/AppDetailPage';
 import { APPLICATIONS } from './components/ApplicationsGridSection';
 
 export default function App() {
-  // Read initial route from URL path or hash
+  // Read initial route from URL path or hash with base path awareness
   const getRouteInfo = () => {
-    const path = window.location.pathname.toLowerCase().replace(/^\/+/, '').replace(/\/+$/, '');
+    const rawBase = (import.meta.env.BASE_URL || '/').replace(/^\/+|\/+$/g, '');
+    let path = window.location.pathname.toLowerCase().replace(/^\/+|\/+$/g, '');
+    
+    // Strip repository name if hosted under subfolder (e.g., /markg/ or /markg)
+    if (rawBase && path.startsWith(rawBase.toLowerCase())) {
+      path = path.slice(rawBase.length).replace(/^\/+/, '');
+    }
+    
     const hash = window.location.hash.toLowerCase().replace(/^#\/?/, '');
     const full = path || hash;
     
@@ -29,6 +36,17 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState(initialRoute.page);
   const [selectedApp, setSelectedApp] = useState(initialRoute.app);
   const [isExpertModalOpen, setIsExpertModalOpen] = useState(false);
+
+  // Helper to build canonical URL respecting base
+  const getTargetUrl = (target) => {
+    const base = import.meta.env.BASE_URL || '/';
+    const cleanBase = base.endsWith('/') ? base : `${base}/`;
+    if (target === 'home' || target === '/' || target === '') {
+      return cleanBase;
+    }
+    const cleanTarget = target.replace(/^\/+/, '');
+    return `${cleanBase}${cleanTarget}`;
+  };
 
   // Sync state with browser Back and Forward navigation (popstate event)
   useEffect(() => {
@@ -48,16 +66,17 @@ export default function App() {
 
     setCurrentPage(page);
     setSelectedApp(null);
-    const targetPath = page === 'home' ? '/' : `/${page}`;
+    const targetUrl = getTargetUrl(page);
     
-    window.history.pushState({ page }, '', targetPath);
+    window.history.pushState({ page }, '', targetUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleSelectApp = (app) => {
     setSelectedApp(app);
     setCurrentPage('app-detail');
-    window.history.pushState({ page: 'app-detail', appId: app.id }, '', `/app/${app.id}`);
+    const targetUrl = getTargetUrl(`app/${app.id}`);
+    window.history.pushState({ page: 'app-detail', appId: app.id }, '', targetUrl);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
