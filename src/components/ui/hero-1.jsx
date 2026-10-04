@@ -16,14 +16,15 @@ export function Hero({
   return (
     <section
       id="hero"
-      className="relative mx-auto w-full overflow-hidden bg-white text-center flex flex-col justify-between items-center select-none"
+      className="relative mx-auto w-full overflow-hidden bg-white px-6 md:px-8 text-center"
       style={{
         minHeight: '100vh',
-        height: '100vh',
-        paddingTop: 'clamp(4.5rem, 8vh, 5.5rem)',
-        paddingBottom: 'clamp(1rem, 2vh, 1.75rem)',
-        paddingLeft: 'clamp(1rem, 3vw, 2.5rem)',
-        paddingRight: 'clamp(1rem, 3vw, 2.5rem)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: '5.5rem',
+        paddingBottom: '2.5rem',
         position: 'relative',
         backgroundColor: '#ffffff'
       }}
@@ -36,151 +37,95 @@ export function Hero({
         [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_110%)] pointer-events-none"
       />
 
-      {/* Gentle Horizon Curvature Arc in Grey (#e8e8e8) */}
+      {/* Horizon Curvature Arc in Grey (#e8e8e8) */}
       <div
-        className="absolute left-1/2 bottom-[-320px] sm:bottom-[-380px] md:bottom-[-440px] lg:bottom-[-520px] 
-        h-[460px] sm:h-[540px] md:h-[620px] lg:h-[720px] w-[145%] sm:w-[135%] lg:w-[125%] 
+        className="absolute left-1/2 top-[calc(100%-110px)] sm:top-[calc(100%-130px)] md:top-[calc(100%-150px)] lg:top-[calc(100%-170px)] 
+        h-[480px] w-[700px] md:h-[550px] md:w-[1100px] lg:h-[750px] lg:w-[140%] 
         -translate-x-1/2 rounded-[100%] border-t border-slate-300/40 bg-[#e8e8e8] 
-        shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
+        animate-fade-up shadow-[0_-20px_50px_rgba(0,0,0,0.06)] pointer-events-none z-0"
         style={{
           backgroundColor: '#e8e8e8'
         }}
       />
 
-      {/* ========================================================================= */}
-      {/* FLOATING HANDWRITTEN ANNOTATIONS                                         */}
-      {/* ========================================================================= */}
-
-      {/* 1. Upper-left: Built for real-world operations */}
+      {/* Centered Content Container */}
       <div 
-        className="hidden md:flex absolute flex-col items-start z-20 pointer-events-none select-none"
-        style={{
-          top: 'clamp(4.75rem, 11vh, 7.5rem)',
-          left: 'clamp(1rem, 4vw, 5.5rem)'
-        }}
+        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-auto pt-4 w-full"
       >
-        <svg
-          className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 pointer-events-none overflow-visible mb-1 ml-5"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M 32 34 C 28 20, 20 12, 8 6"
-            stroke="#7B5872"
-            strokeWidth="2.2"
-            strokeLinecap="round"
+        {/* 1. Upper-left caption: Built for real-world operations */}
+        <div className="hidden lg:flex absolute -left-16 xl:-left-48 2xl:-left-64 -top-2 xl:-top-3 flex-col items-start z-20 pointer-events-none select-none">
+          <svg
+            className="w-10 h-10 pointer-events-none overflow-visible mb-1 ml-6"
+            viewBox="0 0 40 40"
             fill="none"
-          />
-          <path
-            d="M 8 18 L 8 6 L 20 6"
-            stroke="#7B5872"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
-        <span 
-          className="font-semibold text-[20px] sm:text-[22px] lg:text-[25px] leading-tight -rotate-3 whitespace-nowrap"
-          style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
-        >
-          Built for real-world operations
-        </span>
-      </div>
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 32 34 C 28 20, 20 12, 8 6"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 8 18 L 8 6 L 20 6"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span 
+            className="font-semibold text-[22px] xl:text-[25px] leading-tight -rotate-3 whitespace-nowrap"
+            style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+          >
+            Built for real-world operations
+          </span>
+        </div>
 
-      {/* 2. Mid-Right near title: From machines to meaningful insights. */}
-      <div 
-        className="hidden md:flex absolute items-center z-20 pointer-events-none select-none"
-        style={{
-          top: 'clamp(10rem, 28vh, 15rem)',
-          right: 'clamp(1rem, 4vw, 5.5rem)'
-        }}
-      >
-        <svg
-          className="w-8 h-6 sm:w-10 sm:h-7 lg:w-12 lg:h-8 pointer-events-none overflow-visible mr-1.5"
-          viewBox="0 0 50 30"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M 46 20 C 32 20, 18 16, 6 12"
-            stroke="#7B5872"
-            strokeWidth="2.2"
-            strokeLinecap="round"
+        {/* 4. Mid-Right near blue underline: From machines to meaningful insights. (Arrow pointing left targeting 'Industry') */}
+        <div className="hidden lg:flex absolute -right-36 xl:-right-60 2xl:-right-72 top-1/2 -translate-y-8 items-center z-20 pointer-events-none select-none">
+          <svg
+            className="w-10 h-7 xl:w-12 xl:h-8 pointer-events-none overflow-visible mr-1.5"
+            viewBox="0 0 50 30"
             fill="none"
-          />
-          <path
-            d="M 16 6 L 6 12 L 16 18"
-            stroke="#7B5872"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
-        <span 
-          className="font-semibold text-[20px] sm:text-[22px] lg:text-[25px] leading-tight rotate-2 whitespace-nowrap"
-          style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
-        >
-          From machines to meaningful insights.
-        </span>
-      </div>
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 46 20 C 32 20, 18 16, 6 12"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 16 6 L 6 12 L 16 18"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+          <span 
+            className="font-semibold text-[22px] xl:text-[25px] leading-tight rotate-2 whitespace-nowrap"
+            style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+          >
+            From machines to meaningful insights.
+          </span>
+        </div>
 
-      {/* 4. Lower-right in white area above grey arc: Technology that works beyond the screen */}
-      <div 
-        className="hidden lg:flex absolute flex-col items-start z-20 pointer-events-none select-none"
-        style={{
-          bottom: 'clamp(130px, 20vh, 190px)',
-          right: 'clamp(1.5rem, 6vw, 8rem)'
-        }}
-      >
-        <span 
-          className="font-semibold text-[20px] sm:text-[22px] lg:text-[25px] leading-tight rotate-2 whitespace-nowrap mb-1"
-          style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
-        >
-          Technology that works beyond the screen.
-        </span>
-        <svg
-          className="w-8 h-10 sm:w-9 sm:h-11 lg:w-10 lg:h-12 pointer-events-none overflow-visible ml-6"
-          viewBox="0 0 40 50"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M 24 4 C 24 20, 20 32, 10 42"
-            stroke="#7B5872"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            fill="none"
-          />
-          <path
-            d="M 8 30 L 10 42 L 22 38"
-            stroke="#7B5872"
-            strokeWidth="2.2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
-      </div>
-
-      {/* ========================================================================= */}
-      {/* CENTERED HERO HEADLINE, SUBTITLE & CTA BUTTON                             */}
-      {/* ========================================================================= */}
-      <div 
-        className="relative z-10 max-w-4xl mx-auto flex flex-col items-center justify-center text-center my-auto w-full px-2"
-      >
         {/* Title with Highlighted Underline */}
         <h1
           className="animate-fade-in text-balance font-semibold text-slate-900 dark:text-white"
           style={{ 
             fontFamily: "'Caveat', cursive",
-            fontSize: 'clamp(2.8rem, min(5.2vw, 8vh), 5.1rem)',
-            lineHeight: '1.14',
+            fontSize: 'clamp(3.2rem, 6.5vw, 5.25rem)',
+            lineHeight: '1.15',
             letterSpacing: '0',
-            paddingTop: '0.25rem',
-            paddingBottom: '0.4rem',
+            paddingTop: '0.5rem',
+            paddingBottom: '0.75rem',
             display: 'inline-block',
             fontWeight: 600
           }}
@@ -194,7 +139,7 @@ export function Hero({
             </span>
             {/* Hand-drawn marker brush stroke highlight */}
             <svg
-              className="absolute -bottom-1.5 sm:-bottom-2.5 left-0 w-full h-2.5 sm:h-3.5 lg:h-4.5 pointer-events-none z-0 overflow-visible"
+              className="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-3 sm:h-4.5 pointer-events-none z-0 overflow-visible"
               viewBox="0 0 260 22"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -213,23 +158,23 @@ export function Hero({
           <p
             className="animate-fade-in text-balance text-gray-600 dark:text-gray-400 font-normal"
             style={{
-              fontSize: 'clamp(0.95rem, min(1.25vw, 2.2vh), 1.2rem)',
-              lineHeight: '1.55',
-              maxWidth: 'clamp(500px, 60vw, 760px)',
-              marginTop: 'clamp(0.5rem, 1.5vh, 1.1rem)',
-              marginBottom: 'clamp(0.9rem, 2.2vh, 1.75rem)'
+              fontSize: 'clamp(1.05rem, 1.8vw, 1.25rem)',
+              lineHeight: '1.65',
+              maxWidth: '760px',
+              marginTop: '1.25rem',
+              marginBottom: '2rem'
             }}
           >
             {subtitle}
           </p>
         )}
 
-        {/* CTA Button Wrapper with caption pointing toward button */}
-        <div className="relative flex flex-col justify-center items-center z-20 w-full">
+        {/* CTA Button Wrapper with caption positioned below */}
+        <div className="relative flex flex-col justify-center items-center z-20 w-full mb-8">
           {ctaLabel && (
             <Button
               asChild
-              className="w-fit min-w-36 sm:min-w-44 px-8 sm:px-10 py-3 sm:py-3.5 h-11 sm:h-12 rounded-full text-white hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md font-medium text-sm sm:text-base font-geist tracking-tight cursor-pointer"
+              className="w-fit min-w-40 sm:min-w-48 px-9 py-3.5 h-12 rounded-full text-white hover:opacity-95 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md font-medium text-base font-geist tracking-tight cursor-pointer"
               style={{ 
                 backgroundColor: '#7B5872', 
                 borderRadius: '9999px',
@@ -241,16 +186,16 @@ export function Hero({
             </Button>
           )}
 
-          {/* 3. Below CTA button in white area: Explore what we can build for you */}
-          <div className="hidden md:flex items-center justify-center mt-3 sm:mt-4 z-20 pointer-events-none select-none -translate-x-24 sm:-translate-x-36 md:-translate-x-44 lg:-translate-x-52">
+          {/* 3. Below CTA button: Explore what we can build for you */}
+          <div className="hidden md:flex items-center justify-center mt-5 z-20 pointer-events-none select-none -translate-x-32 md:-translate-x-44 lg:-translate-x-56 xl:-translate-x-60">
             <span 
-              className="font-semibold text-[20px] sm:text-[22px] lg:text-[24px] leading-tight -rotate-2 whitespace-nowrap"
+              className="font-semibold text-[21px] lg:text-[24px] leading-tight -rotate-1 whitespace-nowrap"
               style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
             >
               Explore what we can build for you
             </span>
             <svg
-              className="w-8 h-8 sm:w-9 sm:h-9 pointer-events-none overflow-visible ml-1.5 -mt-3"
+              className="w-9 h-9 pointer-events-none overflow-visible ml-2 -mt-4"
               viewBox="0 0 36 36"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -273,11 +218,43 @@ export function Hero({
             </svg>
           </div>
         </div>
+
+        {/* 6. Lower-right area: Technology that works beyond the screen. (Moved lower) */}
+        <div className="hidden lg:flex absolute -right-24 lg:-right-40 xl:-right-60 2xl:-right-72 -bottom-20 lg:-bottom-24 xl:-bottom-32 flex-col items-start z-20 pointer-events-none select-none">
+          <span 
+            className="font-semibold text-[22px] xl:text-[25px] leading-tight rotate-2 whitespace-nowrap mb-1"
+            style={{ fontFamily: "'Caveat', cursive", color: '#7B5872' }}
+          >
+            Technology that works beyond the screen.
+          </span>
+          <svg
+            className="w-10 h-12 pointer-events-none overflow-visible ml-6"
+            viewBox="0 0 40 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M 24 4 C 24 20, 20 32, 10 42"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              fill="none"
+            />
+            <path
+              d="M 8 30 L 10 42 L 22 38"
+              stroke="#7B5872"
+              strokeWidth="2.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              fill="none"
+            />
+          </svg>
+        </div>
       </div>
 
-      {/* Sliding Marquee Inside Hero sitting on the grey crest */}
+      {/* Sliding Marquee Inside Hero */}
       {showMarquee && (
-        <div className="relative z-20 w-full max-w-6xl mx-auto mt-auto pb-1 sm:pb-2">
+        <div className="relative z-20 w-full max-w-6xl mx-auto mt-auto translate-y-12 sm:translate-y-16 md:translate-y-20 pb-2">
           <MarqueeDemo />
         </div>
       )}
@@ -291,4 +268,3 @@ export function Hero({
     </section>
   )
 }
-

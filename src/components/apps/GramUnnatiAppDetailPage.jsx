@@ -282,29 +282,6 @@ export default function GramUnnatiAppDetailPage({ onBack, onOpenExpertModal, onS
     <div style={{ backgroundColor: '#e8e8e8', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Inter', sans-serif" }}>
       
       {/* ========================================================================= */}
-      {/* 1. TOP NAVIGATION / HEADER */}
-      {/* ========================================================================= */}
-      <div 
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 40,
-          backgroundColor: 'rgba(232, 232, 232, 0.92)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid #CBD5E1',
-          padding: '0.75rem 1.5rem'
-        }}
-      >
-        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.8rem', color: '#64748B', fontWeight: '500' }}>Platform Suite</span>
-            <span style={{ color: '#94A3B8' }}>/</span>
-            <span style={{ fontSize: '0.82rem', color: '#0F172A', fontWeight: '600' }}>GramUnnati Agri-Commerce</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ========================================================================= */}
       {/* 2. HERO SECTION */}
       {/* ========================================================================= */}
       <section style={{ backgroundColor: '#e8e8e8', paddingTop: '3.5rem', paddingBottom: '3rem', position: 'relative' }}>

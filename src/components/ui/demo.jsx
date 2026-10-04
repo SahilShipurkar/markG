@@ -87,7 +87,7 @@ export function MarqueeDemo({ className = "" }) {
 
   return (
     <div className={`w-full flex flex-col items-center justify-center ${className}`}>
-      <p className="text-[10px] sm:text-[11px] md:text-xs font-bold uppercase tracking-[0.22em] sm:tracking-[0.25em] text-[#0F172A] mb-2 sm:mb-3">
+      <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#0F172A] -translate-y-5 sm:-translate-y-7 mb-6 sm:mb-8">
         Integrated with Industry-Leading Technologies
       </p>
       <Marquee pauseOnHover={true} speed={36} className="!mt-0 !pt-0 !pb-0">
@@ -95,10 +95,10 @@ export function MarqueeDemo({ className = "" }) {
           <div
             key={index}
             style={{
-              paddingLeft: 'clamp(2rem, 4vw, 4.5rem)',
-              paddingRight: 'clamp(2rem, 4vw, 4.5rem)',
-              marginLeft: 'clamp(0.75rem, 1.5vw, 1.75rem)',
-              marginRight: 'clamp(0.75rem, 1.5vw, 1.75rem)',
+              paddingLeft: '5rem',
+              paddingRight: '5rem',
+              marginLeft: '2rem',
+              marginRight: '2rem',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',

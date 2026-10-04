@@ -202,26 +202,7 @@ export default function SynkroBoardAppDetailPage({ onBack, onOpenExpertModal, on
       
       {/* ========================================================================= */}
       {/* 1. TOP NAVIGATION / HEADER */}
-      {/* ========================================================================= */}
-      <div 
-        style={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 40,
-          backgroundColor: 'rgba(232, 232, 232, 0.92)',
-          backdropFilter: 'blur(12px)',
-          borderBottom: '1px solid #CBD5E1',
-          padding: '0.75rem 1.5rem'
-        }}
-      >
-        <div style={{ maxWidth: '1120px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'flex-end' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: '700', color: '#F97316', backgroundColor: '#FFF7ED', padding: '3px 10px', borderRadius: '100px', border: '1px solid #FFEDD5', letterSpacing: '0.04em' }}>
-              ENTERPRISE TASK & WORKSPACE ECOSYSTEM
-            </span>
-          </div>
-        </div>
-      </div>
+
 
       {/* ========================================================================= */}
       {/* 2. HERO SECTION WITH CAVEAT HEADING & FLOATING SYNKROBOARD LOGO BADGE */}

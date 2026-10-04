@@ -280,6 +280,8 @@ export default function TransporterAppDetailPage({ onBack, onOpenExpertModal, on
         />
 
         <div style={{ maxWidth: '880px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+          
+
 
           {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">

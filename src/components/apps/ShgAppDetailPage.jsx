@@ -292,6 +292,10 @@ export default function ShgAppDetailPage({ onBack, onOpenExpertModal, onSelectAp
         />
 
         <div style={{ maxWidth: '920px', margin: '0 auto', position: 'relative', zIndex: 10 }}>
+          
+
+
+
 
           {/* Headline matching Caveat handwriting font style and #00A3FF brush underline */}
           <div className="relative inline-block">
